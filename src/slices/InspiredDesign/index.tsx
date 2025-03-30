@@ -28,7 +28,7 @@ const InspiredDesign: FC<InspiredDesignProps> = ({ slice }) => {
           </h3>
           {slice.primary.services.map((item) => (
               // Render the item
-              <div key={index} className="mt-4">
+              <div key={item} className="mt-4">
                   <PrismicNextImage field={item.service_image || ""} />
                   <PrismicRichText field={item.service_header || "INTERIOR DESIGN"} />
                   <PrismicRichText field={item.service_text || "Interiors with surprising colors, textures, and details that capture your spirit and bring joy to your life."} />
