@@ -1,45 +1,3 @@
-// import * as prismic from "@prismicio/client";
-// import * as prismicNext from "@prismicio/next";
-// import sm from "../slicemachine.config.json";
-//
-// /**
-//  * The project's Prismic repository name.
-//  */
-// export const repositoryName =
-//   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
-//
-// /**
-//  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
-//  */
-// const routes: prismic.ClientConfig["routes"] = [
-//   { type: "page", path: "/", uid: "home" },
-//   { type: "page", path: "/:uid" },
-//   { type: "settings", path: "/" },
-//   { type: "navigation", path: "/" },
-// ];
-//
-// /**
-//  * Creates a Prismic client for the project's repository. The client is used to
-//  * query content from the Prismic API.
-//  *
-//  * @param config - Configuration for the Prismic client.
-//  */
-// export const createClient = (config: prismic.ClientConfig = {}) => {
-//   const client = prismic.createClient(repositoryName, {
-//     routes,
-//     fetchOptions:
-//       process.env.NODE_ENV === "production"
-//         ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-//         : { next: { revalidate: 5 } },
-//     ...config,
-//   });
-//
-//   prismicNext.enableAutoPreviews({ client });
-//
-//   return client;
-// };
-
-
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import sm from "../slicemachine.config.json";
@@ -48,7 +6,7 @@ import sm from "../slicemachine.config.json";
  * The project's Prismic repository name.
  */
 export const repositoryName =
-    process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
+  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
 
 /**
  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
@@ -61,26 +19,22 @@ const routes: prismic.ClientConfig["routes"] = [
 ];
 
 /**
- * Creates a Prismic client for the project's repository.
+ * Creates a Prismic client for the project's repository. The client is used to
+ * query content from the Prismic API.
  *
  * @param config - Configuration for the Prismic client.
  */
 export const createClient = (config: prismic.ClientConfig = {}) => {
-  try {
-    const client = prismic.createClient(repositoryName, {
-      routes,
-      fetchOptions:
-          process.env.NODE_ENV === "production"
-              ? { next: { revalidate: 60 } } // Refreshes data every 60 seconds
-              : { next: { revalidate: 5 } }, // Refreshes data every 5 seconds in dev
-      ...config,
-    });
+  const client = prismic.createClient(repositoryName, {
+    routes,
+    fetchOptions:
+      process.env.NODE_ENV === "production"
+        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        : { next: { revalidate: 5 } },
+    ...config,
+  });
 
-    prismicNext.enableAutoPreviews({ client });
+  prismicNext.enableAutoPreviews({ client });
 
-    return client;
-  } catch (error) {
-    console.error("Error creating Prismic client:", error);
-    return null;
-  }
+  return client;
 };
