@@ -498,26 +498,6 @@ export interface InspiredDesignSliceDefaultPrimaryServicesItem {
  */
 export interface InspiredDesignSliceDefaultPrimary {
   /**
-   * Heading field in *InspiredDesign → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Inspiring Design
-   * - **API ID Path**: inspired_design.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Header Two field in *InspiredDesign → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Inspired by you
-   * - **API ID Path**: inspired_design.default.primary.header_two
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  header_two: prismic.RichTextField;
-
-  /**
    * Services field in *InspiredDesign → Default → Primary*
    *
    * - **Field Type**: Group

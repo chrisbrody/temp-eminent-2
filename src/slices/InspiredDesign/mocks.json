@@ -3,32 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"heading": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Inspiring Design",
-							"spans": []
-						},
-						"direction": "ltr"
-					}
-				]
-			},
-			"header_two": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading3",
-						"content": {
-							"text": "Inspired by you",
-							"spans": []
-						},
-						"direction": "ltr"
-					}
-				]
-			},
 			"services": {
 				"__TYPE__": "GroupContentType",
 				"value": [
