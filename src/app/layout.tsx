@@ -20,7 +20,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="overflow-x-hidden antialiased">
-        <Header />
+        {/*<Header />*/}
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
