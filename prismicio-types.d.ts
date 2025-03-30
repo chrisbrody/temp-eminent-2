@@ -442,6 +442,124 @@ export type ImageCardsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *InspiredDesign → Default → Primary → Services*
+ */
+export interface InspiredDesignSliceDefaultPrimaryServicesItem {
+  /**
+   * Service Image field in *InspiredDesign → Default → Primary → Services*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inspired_design.default.primary.services[].service_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  service_image: prismic.ImageField<never>;
+
+  /**
+   * Service Header field in *InspiredDesign → Default → Primary → Services*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Interior Design
+   * - **API ID Path**: inspired_design.default.primary.services[].service_header
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_header: prismic.TitleField;
+
+  /**
+   * Service Text field in *InspiredDesign → Default → Primary → Services*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: INTERIOR DESIGN
+   * - **API ID Path**: inspired_design.default.primary.services[].service_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_text: prismic.RichTextField;
+
+  /**
+   * Service Link field in *InspiredDesign → Default → Primary → Services*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Discover More
+   * - **API ID Path**: inspired_design.default.primary.services[].service_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  service_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *InspiredDesign → Default → Primary*
+ */
+export interface InspiredDesignSliceDefaultPrimary {
+  /**
+   * Heading field in *InspiredDesign → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inspiring Design
+   * - **API ID Path**: inspired_design.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Header Two field in *InspiredDesign → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inspired by you
+   * - **API ID Path**: inspired_design.default.primary.header_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  header_two: prismic.RichTextField;
+
+  /**
+   * Services field in *InspiredDesign → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inspired_design.default.primary.services[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services: prismic.GroupField<
+    Simplify<InspiredDesignSliceDefaultPrimaryServicesItem>
+  >;
+}
+
+/**
+ * Default variation for InspiredDesign Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InspiredDesignSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<InspiredDesignSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *InspiredDesign*
+ */
+type InspiredDesignSliceVariation = InspiredDesignSliceDefault;
+
+/**
+ * InspiredDesign Shared Slice
+ *
+ * - **API ID**: `inspired_design`
+ * - **Description**: InspiredDesign
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InspiredDesignSlice = prismic.SharedSlice<
+  "inspired_design",
+  InspiredDesignSliceVariation
+>;
+
+/**
  * Primary content in *Quote → Default → Primary*
  */
 export interface QuoteSliceDefaultPrimary {
@@ -729,6 +847,11 @@ declare module "@prismicio/client" {
       ImageCardsSliceDefaultPrimary,
       ImageCardsSliceVariation,
       ImageCardsSliceDefault,
+      InspiredDesignSlice,
+      InspiredDesignSliceDefaultPrimaryServicesItem,
+      InspiredDesignSliceDefaultPrimary,
+      InspiredDesignSliceVariation,
+      InspiredDesignSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
