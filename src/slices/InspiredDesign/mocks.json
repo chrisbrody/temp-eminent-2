@@ -9,8 +9,10 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Article"
-						}
+							"text": "Inspiring Design",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
@@ -20,8 +22,10 @@
 					{
 						"type": "heading3",
 						"content": {
-							"text": "Slabs"
-						}
+							"text": "Inspired by you",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
@@ -65,7 +69,7 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Ad reprehenderit qui eu ex nulla voluptate nostrud elit veniam ipsum esse voluptate in irure ex. Id consequat voluptate eu magna id do officia quis duis veniam."
+												"text": "Labore mollit eiusmod duis cillum reprehenderit elit et laborum est elit sunt elit aute. Laborum cupidatat cupidatat labore aliquip eu veniam est id adipisicing in. Officia in incididunt ullamco Lorem aliquip laborum veniam velit cupidatat aute est."
 											}
 										}
 									]
@@ -79,8 +83,10 @@
 										{
 											"type": "heading4",
 											"content": {
-												"text": "Topic"
-											}
+												"text": "INTERIOR DESIGN",
+												"spans": []
+											},
+											"direction": "ltr"
 										}
 									]
 								}
@@ -93,7 +99,7 @@
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "http://google.com",
-										"text": "knew"
+										"text": "Discover More"
 									}
 								}
 							]

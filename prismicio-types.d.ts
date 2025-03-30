@@ -470,7 +470,7 @@ export interface InspiredDesignSliceDefaultPrimaryServicesItem {
    * Service Text field in *InspiredDesign → Default → Primary → Services*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: INTERIOR DESIGN
+   * - **Placeholder**: Interiors with surprising colors, textures, and details.
    * - **API ID Path**: inspired_design.default.primary.services[].service_text
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */

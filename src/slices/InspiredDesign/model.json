@@ -57,7 +57,7 @@
                 "type": "StructuredText",
                 "config": {
                   "label": "Service Text",
-                  "placeholder": "INTERIOR DESIGN",
+                  "placeholder": "Interiors with surprising colors, textures, and details.",
                   "allowTargetBlank": true,
                   "multi": "paragraph"
                 }
