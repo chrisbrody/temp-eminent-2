@@ -1,0 +1,11 @@
+.serviceWrap {
+    display: flex;
+    justify-content: center;
+}
+.serviceWrap > div {
+    margin: 0 10px;
+    max-width: 200px;
+}
+.serviceWrap > div > h4 {
+    text-transform: uppercase;
+}
