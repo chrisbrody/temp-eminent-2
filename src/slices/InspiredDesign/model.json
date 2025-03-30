@@ -1,0 +1,83 @@
+{
+  "id": "inspired_design",
+  "type": "SharedSlice",
+  "name": "InspiredDesign",
+  "description": "InspiredDesign",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Inspiring Design",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "header_two": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Header Two",
+            "placeholder": "Inspired by you",
+            "allowTargetBlank": true,
+            "multi": "heading3"
+          }
+        },
+        "services": {
+          "type": "Group",
+          "config": {
+            "label": "Services",
+            "repeat": true,
+            "fields": {
+              "service_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Service Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "service_header": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Service Header",
+                  "placeholder": "Interior Design",
+                  "allowTargetBlank": true,
+                  "single": "heading4"
+                }
+              },
+              "service_text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Service Text",
+                  "placeholder": "INTERIOR DESIGN",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              },
+              "service_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Service Link",
+                  "placeholder": "Discover More",
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
