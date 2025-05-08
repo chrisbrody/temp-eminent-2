@@ -11,4 +11,5 @@ export const components = {
   section_header: dynamic(() => import("./SectionHeader")),
   text: dynamic(() => import("./Text")),
   text_with_image: dynamic(() => import("./TextWithImage")),
+  project_header: dynamic(() => import("./Projects/ProjectHeader")),
 };

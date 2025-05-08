@@ -1,0 +1,47 @@
+{
+  "id": "project_header",
+  "type": "SharedSlice",
+  "name": "ProjectHeader",
+  "description": "ProjectHeader",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "project_category": {
+          "type": "Text",
+          "config": {
+            "label": "Project Category",
+            "placeholder": ""
+          }
+        },
+        "project_title": {
+          "type": "Text",
+          "config": {
+            "label": "Project Title",
+            "placeholder": ""
+          }
+        },
+        "project_date": {
+          "type": "Date",
+          "config": {
+            "label": "Project Date",
+            "placeholder": ""
+          }
+        },
+        "project_location": {
+          "type": "Text",
+          "config": {
+            "label": "Project Location",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

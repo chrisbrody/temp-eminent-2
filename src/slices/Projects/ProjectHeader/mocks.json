@@ -1,0 +1,29 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"project_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2012-08-23"
+			},
+			"project_title": {
+				"__TYPE__": "FieldContent",
+				"value": "circle",
+				"type": "Text"
+			},
+			"project_category": {
+				"__TYPE__": "FieldContent",
+				"value": "species",
+				"type": "Text"
+			},
+			"project_location": {
+				"__TYPE__": "FieldContent",
+				"value": "given",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
