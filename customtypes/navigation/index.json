@@ -27,6 +27,13 @@
                 "placeholder": "Link for navigation item",
                 "select": null
               }
+            },
+            "custom_css_class": {
+              "type": "Text",
+              "config": {
+                "label": "Custom CSS Class",
+                "placeholder": ""
+              }
             }
           }
         }

@@ -9,6 +9,8 @@ import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
 import { Bounded } from "@/components/Bounded";
 
+import {gtAmerica, haigrast, ivarDisplay, ivarText} from './fonts';
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -19,7 +21,7 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${haigrast.variable} ${ivarDisplay.variable} ${ivarText.variable} ${gtAmerica.variable} ${inter.variable}`}>
       <body className="overflow-x-hidden antialiased">
         <Header />
         {children}

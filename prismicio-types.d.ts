@@ -27,6 +27,16 @@ export interface NavigationDocumentDataLinksItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Custom CSS Class field in *Navigation → Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.links[].custom_css_class
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  custom_css_class: prismic.KeyTextField;
 }
 
 /**

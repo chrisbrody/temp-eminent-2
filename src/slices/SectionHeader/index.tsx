@@ -10,9 +10,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({ slice }) => {
         <div className="section-header text-center mt-10">
             <h1>{slice.primary.eyebrow}</h1>
             <h2>{slice.primary.title}</h2>
-            <p style={{ fontFamily: "'Herr Von Muellerhoff', cursive" }}>
-                {slice.primary.cursivetext}
-            </p>
+            <p>{slice.primary.cursivetext}</p>
         </div>
     );
 };
