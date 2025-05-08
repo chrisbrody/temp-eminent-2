@@ -35,6 +35,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_header": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             },

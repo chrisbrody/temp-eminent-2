@@ -5,23 +5,23 @@
 		"primary": {
 			"project_category": {
 				"__TYPE__": "FieldContent",
-				"value": "voice",
-				"type": "Text"
+				"type": "Text",
+				"value": "Remodeling Design"
 			},
 			"project_title": {
 				"__TYPE__": "FieldContent",
-				"value": "date",
-				"type": "Text"
+				"type": "Text",
+				"value": "Remodeled with Character"
 			},
 			"project_date": {
 				"__TYPE__": "FieldContent",
 				"type": "Date",
-				"value": "2020-09-04"
+				"value": "2022-07-14"
 			},
 			"project_location": {
 				"__TYPE__": "FieldContent",
-				"value": "surprise",
-				"type": "Text"
+				"type": "Text",
+				"value": "Sunfish Lake, MN"
 			}
 		},
 		"items": []
