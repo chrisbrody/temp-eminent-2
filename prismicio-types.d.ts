@@ -593,6 +593,71 @@ type QuoteSliceVariation = QuoteSliceDefault;
 export type QuoteSlice = prismic.SharedSlice<"quote", QuoteSliceVariation>;
 
 /**
+ * Primary content in *SectionHeader → Default → Primary*
+ */
+export interface SectionHeaderSliceDefaultPrimary {
+  /**
+   * eyebrow field in *SectionHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section_header.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * title field in *SectionHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section_header.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * scriptText field in *SectionHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section_header.default.primary.scripttext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  scripttext: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SectionHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SectionHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SectionHeader*
+ */
+type SectionHeaderSliceVariation = SectionHeaderSliceDefault;
+
+/**
+ * SectionHeader Shared Slice
+ *
+ * - **API ID**: `section_header`
+ * - **Description**: SectionHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionHeaderSlice = prismic.SharedSlice<
+  "section_header",
+  SectionHeaderSliceVariation
+>;
+
+/**
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
@@ -837,6 +902,10 @@ declare module "@prismicio/client" {
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
       QuoteSliceDefault,
+      SectionHeaderSlice,
+      SectionHeaderSliceDefaultPrimary,
+      SectionHeaderSliceVariation,
+      SectionHeaderSliceDefault,
       TextSlice,
       TextSliceDefaultPrimary,
       TextSliceTwoColumnsPrimary,

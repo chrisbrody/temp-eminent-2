@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Featured Projects"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Design Projects"
+			},
+			"cursivetext": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Our Work"
+			}
+		},
+		"items": []
+	}
+]

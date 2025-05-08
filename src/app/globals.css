@@ -6,3 +6,67 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Playfair+Display:wght@400;700&display=swap');
+
+
+:root {
+  --font-serif: 'Playfair Display', serif;
+  --font-cursive: 'Tangerine', serif;
+  --color-charcoal: #34342e;
+  --color-gold: #996515;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-script {
+  font-family: 'Tangerine', cursive;
+}
+
+.section-header h1 {
+  font-size: 20px;
+  color: var(--color-charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-serif);
+  margin-bottom: 0.5rem;
+}
+
+.section-header h2 {
+  font-size: 80px;
+  color: var(--color-charcoal);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: var(--font-serif);
+  line-height: 1;
+  margin: 0;
+}
+
+.section-header p {
+  font-size: 50px;
+  font-weight: 400;
+  color: var(--color-gold);
+  margin: -2rem 0 0;
+}
+
+@media screen and (max-width: 992px) {
+  .section-header h2 {
+    font-size: 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section-header h1 {
+    font-size: 16px;
+  }
+  .section-header h2 {
+    font-size: 40px;
+  }
+  .section-header p {
+    font-size: 32px;
+    margin: -1rem 0 0;
+  }
+}

@@ -8,6 +8,7 @@ export const components = {
   image_cards: dynamic(() => import("./ImageCards")),
   inspired_design: dynamic(() => import("./InspiredDesign")),
   quote: dynamic(() => import("./Quote")),
+  section_header: dynamic(() => import("./SectionHeader")),
   text: dynamic(() => import("./Text")),
   text_with_image: dynamic(() => import("./TextWithImage")),
 };
