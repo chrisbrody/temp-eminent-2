@@ -45,7 +45,7 @@ async function Header() {
         >
           <PrismicText field={settings.data.siteTitle} />
         </PrismicNextLink>
-        <nav>
+        <nav className="main-nav">
           <ul className="flex flex-wrap gap-6 md:gap-10">
             {navigation.data?.links.map((item) => (
               <li

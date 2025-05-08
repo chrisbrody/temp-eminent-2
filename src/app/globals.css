@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Menu */
-nav a {
+nav.main-nav a {
   font-family: var(--font-gt-america);
   font-weight: 400;
 }
