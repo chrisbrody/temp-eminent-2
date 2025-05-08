@@ -617,14 +617,14 @@ export interface SectionHeaderSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * scriptText field in *SectionHeader → Default → Primary*
+   * cursiveText field in *SectionHeader → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: section_header.default.primary.scripttext
+   * - **API ID Path**: section_header.default.primary.cursivetext
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  scripttext: prismic.KeyTextField;
+  cursivetext: prismic.KeyTextField;
 }
 
 /**

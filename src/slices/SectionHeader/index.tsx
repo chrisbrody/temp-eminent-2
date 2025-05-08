@@ -1,3 +1,4 @@
+// slices/SectionHeader/index.tsx
 import { FC } from "react";
 import type { Content } from "@prismicio/client";
 import type { SliceComponentProps } from "@prismicio/react";
