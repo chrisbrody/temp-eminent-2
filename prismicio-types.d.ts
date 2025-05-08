@@ -552,6 +552,81 @@ export type InspiredDesignSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProjectHeader → Default → Primary*
+ */
+export interface ProjectHeaderSliceDefaultPrimary {
+  /**
+   * Project Category field in *ProjectHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_header.default.primary.project_category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_category: prismic.KeyTextField;
+
+  /**
+   * Project Title field in *ProjectHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_header.default.primary.project_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_title: prismic.KeyTextField;
+
+  /**
+   * Project Date field in *ProjectHeader → Default → Primary*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_header.default.primary.project_date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  project_date: prismic.DateField;
+
+  /**
+   * Project Location field in *ProjectHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_header.default.primary.project_location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_location: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProjectHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectHeader*
+ */
+type ProjectHeaderSliceVariation = ProjectHeaderSliceDefault;
+
+/**
+ * ProjectHeader Shared Slice
+ *
+ * - **API ID**: `project_header`
+ * - **Description**: ProjectHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectHeaderSlice = prismic.SharedSlice<
+  "project_header",
+  ProjectHeaderSliceVariation
+>;
+
+/**
  * Primary content in *Quote → Default → Primary*
  */
 export interface QuoteSliceDefaultPrimary {
@@ -950,6 +1025,10 @@ declare module "@prismicio/client" {
       InspiredDesignSliceDefaultPrimary,
       InspiredDesignSliceVariation,
       InspiredDesignSliceDefault,
+      ProjectHeaderSlice,
+      ProjectHeaderSliceDefaultPrimary,
+      ProjectHeaderSliceVariation,
+      ProjectHeaderSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,

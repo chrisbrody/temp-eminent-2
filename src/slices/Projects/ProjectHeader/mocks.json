@@ -3,24 +3,24 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"project_date": {
+			"project_category": {
 				"__TYPE__": "FieldContent",
-				"type": "Date",
-				"value": "2012-08-23"
+				"value": "voice",
+				"type": "Text"
 			},
 			"project_title": {
 				"__TYPE__": "FieldContent",
-				"value": "circle",
+				"value": "date",
 				"type": "Text"
 			},
-			"project_category": {
+			"project_date": {
 				"__TYPE__": "FieldContent",
-				"value": "species",
-				"type": "Text"
+				"type": "Date",
+				"value": "2020-09-04"
 			},
 			"project_location": {
 				"__TYPE__": "FieldContent",
-				"value": "given",
+				"value": "surprise",
 				"type": "Text"
 			}
 		},

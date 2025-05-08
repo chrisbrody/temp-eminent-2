@@ -1,6 +1,7 @@
 {
-  "libraries": ["./src/slices"],
+  "libraries": ["./src/slices", "./src/slices/Project"],
   "adapter": "@slicemachine/adapter-next",
   "repositoryName": "eminentid2",
+  "apiEndpoint": "https://eminentid2.prismic.io/api/v2",
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }
