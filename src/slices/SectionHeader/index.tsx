@@ -1,7 +1,7 @@
 // slices/SectionHeader/index.tsx
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { SliceComponentProps, PrismicText } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 
 export type SectionHeaderProps = SliceComponentProps<Content.SectionHeaderSlice>;
 
@@ -10,7 +10,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({ slice }) => {
         <div className="section-header text-center mt-10">
             {'eyebrow' in slice.primary && isFilled.keyText(slice.primary.eyebrow) && (
                 <h1>
-                    <PrismicText field={slice.primary.eyebrow} />
+                    {slice.primary.eyebrow}
                 </h1>
             )}
             <h2>{slice.primary.title}</h2>
