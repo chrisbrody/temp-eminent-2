@@ -35,6 +35,31 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "sectionHeaderNoEyebrow",
+      "name": "SectionHeader no eyebrow",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "cursivetext": {
+          "type": "Text",
+          "config": {
+            "label": "cursiveText",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

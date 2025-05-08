@@ -20,5 +20,27 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "sectionHeaderNoEyebrow",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "hair",
+				"type": "Text"
+			},
+			"cursivetext": {
+				"__TYPE__": "FieldContent",
+				"value": "village",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

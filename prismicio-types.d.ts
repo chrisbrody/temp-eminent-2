@@ -651,9 +651,50 @@ export type SectionHeaderSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *SectionHeader → SectionHeader no eyebrow → Primary*
+ */
+export interface SectionHeaderSliceSectionHeaderNoEyebrowPrimary {
+  /**
+   * title field in *SectionHeader → SectionHeader no eyebrow → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section_header.sectionHeaderNoEyebrow.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * cursiveText field in *SectionHeader → SectionHeader no eyebrow → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section_header.sectionHeaderNoEyebrow.primary.cursivetext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cursivetext: prismic.KeyTextField;
+}
+
+/**
+ * SectionHeader no eyebrow variation for SectionHeader Slice
+ *
+ * - **API ID**: `sectionHeaderNoEyebrow`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionHeaderSliceSectionHeaderNoEyebrow =
+  prismic.SharedSliceVariation<
+    "sectionHeaderNoEyebrow",
+    Simplify<SectionHeaderSliceSectionHeaderNoEyebrowPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *SectionHeader*
  */
-type SectionHeaderSliceVariation = SectionHeaderSliceDefault;
+type SectionHeaderSliceVariation =
+  | SectionHeaderSliceDefault
+  | SectionHeaderSliceSectionHeaderNoEyebrow;
 
 /**
  * SectionHeader Shared Slice
@@ -914,8 +955,10 @@ declare module "@prismicio/client" {
       QuoteSliceDefault,
       SectionHeaderSlice,
       SectionHeaderSliceDefaultPrimary,
+      SectionHeaderSliceSectionHeaderNoEyebrowPrimary,
       SectionHeaderSliceVariation,
       SectionHeaderSliceDefault,
+      SectionHeaderSliceSectionHeaderNoEyebrow,
       TextSlice,
       TextSliceDefaultPrimary,
       TextSliceTwoColumnsPrimary,
