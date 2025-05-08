@@ -64,7 +64,6 @@ export type NavigationDocument<Lang extends string = string> =
 type PageDocumentDataSlicesSlice =
   | SectionHeaderSlice
   | InspiredDesignSlice
-  | HeroSlice
   | QuoteSlice
   | TextSlice
   | ImageSlice

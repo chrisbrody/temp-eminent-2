@@ -41,9 +41,6 @@
             "inspired_design": {
               "type": "SharedSlice"
             },
-            "hero": {
-              "type": "SharedSlice"
-            },
             "quote": {
               "type": "SharedSlice"
             },
