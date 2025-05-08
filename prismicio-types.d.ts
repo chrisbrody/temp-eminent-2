@@ -651,11 +651,11 @@ export type SectionHeaderSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *SectionHeader → SectionHeader no eyebrow → Primary*
+ * Primary content in *SectionHeader → no eyebrow → Primary*
  */
 export interface SectionHeaderSliceSectionHeaderNoEyebrowPrimary {
   /**
-   * title field in *SectionHeader → SectionHeader no eyebrow → Primary*
+   * title field in *SectionHeader → no eyebrow → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -665,7 +665,7 @@ export interface SectionHeaderSliceSectionHeaderNoEyebrowPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * cursiveText field in *SectionHeader → SectionHeader no eyebrow → Primary*
+   * cursiveText field in *SectionHeader → no eyebrow → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -676,7 +676,7 @@ export interface SectionHeaderSliceSectionHeaderNoEyebrowPrimary {
 }
 
 /**
- * SectionHeader no eyebrow variation for SectionHeader Slice
+ * no eyebrow variation for SectionHeader Slice
  *
  * - **API ID**: `sectionHeaderNoEyebrow`
  * - **Description**: Default
