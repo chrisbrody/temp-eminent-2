@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "project",
-  "label": "Project",
+  "id": "featured_project",
+  "label": "Featured Project",
   "repeatable": true,
   "status": true,
   "json": {
