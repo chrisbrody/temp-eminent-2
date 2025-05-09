@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
+import { cookies } from 'next/headers';
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
@@ -15,7 +16,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { uid } = await params;
-  const client = createClient();
+  const client = createClient({ cookies });
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
   return {
@@ -30,7 +31,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
-  const client = createClient();
+  const client = createClient({ cookies });
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
   return <SliceZone slices={page.data.slices} components={components} />;

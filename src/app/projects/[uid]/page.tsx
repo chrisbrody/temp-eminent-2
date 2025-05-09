@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
+import { cookies } from 'next/headers';
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
@@ -19,7 +20,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { uid } = await params;
-    const client = createClient();
+    const client = createClient({ cookies });
     const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // Use PageProps in your Page Component and await params
 export default async function ProjectPage({ params }: PageProps) {
     const { uid } = await params;
-    const client = createClient();
+    const client = createClient({ cookies });
     const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return (
