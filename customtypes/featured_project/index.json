@@ -12,12 +12,18 @@
           "label": "UID"
         }
       },
-      "parent": {
-        "type": "Link",
+      "project_title": {
+        "type": "Text",
         "config": {
-          "label": "Parent",
-          "select": "document",
-          "repeat": false
+          "label": "Project Title",
+          "placeholder": ""
+        }
+      },
+      "project_category": {
+        "type": "Text",
+        "config": {
+          "label": "Project Category",
+          "placeholder": ""
         }
       },
       "slices": {
