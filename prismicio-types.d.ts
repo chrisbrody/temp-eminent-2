@@ -13,24 +13,13 @@ interface FeaturedProjectDocumentData {
   /**
    * Project Title field in *Featured Project*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: featured_project.project_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  project_title: prismic.KeyTextField;
-
-  /**
-   * Project Category field in *Featured Project*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_project.project_category
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  project_category: prismic.KeyTextField;
+  project_title: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Featured Project*

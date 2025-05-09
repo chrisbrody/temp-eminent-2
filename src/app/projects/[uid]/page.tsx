@@ -7,7 +7,7 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-// 1. Define a clear type for your route parameters
+// Define a clear type for your route parameters
 type PageParams = {
     uid: string;
 };
@@ -17,11 +17,9 @@ interface PageProps {
     params: Promise<PageParams>;
 }
 
-// Use PageProps in generateMetadata and await params
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { uid } = await params;
     const client = createClient();
-    // Access uid directly after awaiting
     const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return {
@@ -38,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProjectPage({ params }: PageProps) {
     const { uid } = await params;
     const client = createClient();
-    // Access uid directly after awaiting
     const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return (
@@ -49,7 +46,7 @@ export default async function ProjectPage({ params }: PageProps) {
 }
 
 // generateStaticParams returns the resolved shape, so this remains the same
-export async function generateStaticParams(): Promise<{ uid: string | null }[]> {
+export async function generateStaticParams(): Promise<PageParams[]> {
     const client = createClient();
     const pages = await client.getAllByType("featured_project"); // Use your actual Custom Type API ID
     return pages.map((page) => ({
