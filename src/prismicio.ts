@@ -2,8 +2,7 @@
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import sm from "../slicemachine.config.json";
-// Import the type for the cookies object
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import type { CreateClientConfig } from "@prismicio/next";
 
 /**
  * The project's Prismic repository name.
@@ -29,16 +28,17 @@ const routes: prismic.ClientConfig["routes"] = [
  * @param config - Configuration for the Prismic client. Manually add the cookies property type.
  */
 export const createClient = (
-    // Manually augment the ClientConfig type to include the optional cookies property
-    config: prismic.ClientConfig & { cookies?: ReadonlyRequestCookies } = {}
+    config: prismic.ClientConfig & CreateClientConfig = {}
 ) => {
   const client = prismic.createClient(repositoryName, {
     routes,
-    fetchOptions:
-        process.env.NODE_ENV === "production"
-            ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-            : { next: { revalidate: 5 } },
-    ...config, // Spread the config, which now is typed to allow 'cookies'
+    fetchOptions: {
+      next: {
+        tags: ["prismic"],
+        revalidate: process.env.NODE_ENV === "production" ? false : 5,
+      },
+    },
+    ...config,
   });
 
   // enableAutoPreviews only needs the client instance
