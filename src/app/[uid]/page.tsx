@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { uid } = await params;
-  const client = createClient({ cookies });
+  const client = createClient({}, { cookies });
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
   return {
@@ -31,7 +31,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
-  const client = createClient({ cookies });
+  const client = createClient({}, { cookies });
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
   return <SliceZone slices={page.data.slices} components={components} />;

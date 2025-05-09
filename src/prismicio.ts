@@ -2,6 +2,7 @@
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import sm from "../slicemachine.config.json";
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
 /**
  * The project's Prismic repository name.
@@ -26,17 +27,22 @@ const routes: prismic.ClientConfig["routes"] = [
  *
  * @param config - Configuration for the Prismic client.
  */
-export const createClient = (config: prismic.ClientConfig = {}) => {
+export const createClient = (
+    config: prismic.ClientConfig = {},
+    // Add a second argument for Next.js specific config, including cookies
+    nextConfig: { cookies?: () => ReadonlyRequestCookies } = {}
+) => {
   const client = prismic.createClient(repositoryName, {
     routes,
     fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+        process.env.NODE_ENV === "production"
+            ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+            : { next: { revalidate: 5 } },
     ...config,
   });
 
-  prismicNext.enableAutoPreviews({ client });
+  // Pass the cookies from nextConfig to enableAutoPreviews
+  prismicNext.enableAutoPreviews({ client, cookies: nextConfig.cookies });
 
   return client;
 };
