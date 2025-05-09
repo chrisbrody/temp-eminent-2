@@ -12,6 +12,14 @@
           "label": "UID"
         }
       },
+      "parent": {
+        "type": "Link",
+        "config": {
+          "label": "Parent",
+          "select": "document",
+          "repeat": false
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

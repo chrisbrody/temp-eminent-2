@@ -11,6 +11,17 @@ type FeaturedProjectDocumentDataSlicesSlice = ProjectHeaderSlice;
  */
 interface FeaturedProjectDocumentData {
   /**
+   * Parent field in *Featured Project*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_project.parent
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  parent: prismic.ContentRelationshipField;
+
+  /**
    * Slice Zone field in *Featured Project*
    *
    * - **Field Type**: Slice Zone
