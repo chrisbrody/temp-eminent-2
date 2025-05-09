@@ -28,7 +28,7 @@ const routes: prismic.ClientConfig["routes"] = [
  * @param config - Configuration for the Prismic client. Manually add the cookies property type.
  */
 export const createClient = (
-    config: prismic.ClientConfig & CreateClientConfig = {}
+    config: CreateClientConfig = {}
 ) => {
   const client = prismic.createClient(repositoryName, {
     routes,
