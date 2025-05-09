@@ -1,4 +1,4 @@
-// app/featured/[uid]/page.tsx
+// app/projects/[uid]/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asText } from "@prismicio/client";
@@ -12,16 +12,17 @@ type PageParams = {
     uid: string;
 };
 
-// 2. Define a clear type for the props your page component and generateMetadata will receive
+// Define a clear type for the props your page component and generateMetadata will receive
 interface PageProps {
-    params: PageParams; // `params` is an object with a `uid` string
+    params: Promise<PageParams>;
 }
 
-// 3. Use PageProps in generateMetadata
+// Use PageProps in generateMetadata and await params
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { uid } = await params;
     const client = createClient();
-    // Access params.uid directly
-    const page = await client.getByUID("featured_project", params.uid).catch(() => notFound());
+    // Access uid directly after awaiting
+    const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return {
         title: page.data.meta_title || (page.data.project_title ? asText(page.data.project_title) : "Featured Project"),
@@ -33,11 +34,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
-// 4. Use PageProps in your Page Component
+// Use PageProps in your Page Component and await params
 export default async function ProjectPage({ params }: PageProps) {
+    const { uid } = await params;
     const client = createClient();
-    // Access params.uid directly
-    const page = await client.getByUID("featured_project", params.uid).catch(() => notFound()); // Use your actual Custom Type API ID
+    // Access uid directly after awaiting
+    const page = await client.getByUID("featured_project", uid).catch(() => notFound());
 
     return (
         <article>
@@ -46,8 +48,8 @@ export default async function ProjectPage({ params }: PageProps) {
     );
 }
 
-// 5. Ensure generateStaticParams returns the correct shape
-export async function generateStaticParams(): Promise<PageParams[]> {
+// generateStaticParams returns the resolved shape, so this remains the same
+export async function generateStaticParams(): Promise<{ uid: string | null }[]> {
     const client = createClient();
     const pages = await client.getAllByType("featured_project"); // Use your actual Custom Type API ID
     return pages.map((page) => ({
