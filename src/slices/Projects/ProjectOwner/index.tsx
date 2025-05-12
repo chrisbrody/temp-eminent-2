@@ -13,7 +13,7 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
   }
 
   const ownerData = ownerLink.data as Content.OwnerDocument['data'];
-    console.log(ownerData)
+    // console.log(ownerData)
 
   const { name, title, image } = ownerData;
 
@@ -22,9 +22,9 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
         {image?.url && (
             <PrismicNextImage
                 field={image}
-                className="mx-auto rounded-full w-24 h-24 object-cover mb-4"
-                width={96}
-                height={96}
+                className="mx-auto rounded-full object-cover mb-4"
+                width={56}
+                height={56}
                 imgixParams={{ ar: "1:1", fit: "crop" }}
             />
         )}
