@@ -8,6 +8,7 @@ export const components = {
   image_cards: dynamic(() => import("./ImageCards")),
   inspired_design: dynamic(() => import("./InspiredDesign")),
   project_header: dynamic(() => import("./Projects/ProjectHeader")),
+  project_owner: dynamic(() => import("./Projects/ProjectOwner")),
   featured_projects: dynamic(() => import("./Projects/FeaturedProjectsRow")),
   quote: dynamic(() => import("./Quote")),
   section_header: dynamic(() => import("./SectionHeader")),

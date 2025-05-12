@@ -1,0 +1,30 @@
+{
+  "id": "project_owner",
+  "type": "SharedSlice",
+  "name": "ProjectOwner",
+  "description": "ProjectOwner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "owner": {
+          "type": "Link",
+          "config": {
+            "label": "owner",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "owner"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

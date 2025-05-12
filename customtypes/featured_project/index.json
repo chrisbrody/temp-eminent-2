@@ -26,6 +26,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_owner": {
+              "type": "SharedSlice"
+            },
             "project_header": {
               "type": "SharedSlice"
             }

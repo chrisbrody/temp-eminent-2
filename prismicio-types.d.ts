@@ -4,7 +4,9 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FeaturedProjectDocumentDataSlicesSlice = ProjectHeaderSlice;
+type FeaturedProjectDocumentDataSlicesSlice =
+  | ProjectOwnerSlice
+  | ProjectHeaderSlice;
 
 /**
  * Content for Featured Project documents
@@ -147,6 +149,56 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Owner documents
+ */
+interface OwnerDocumentData {
+  /**
+   * Owner Image field in *Owner*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: owner.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Owner Name field in *Owner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: owner.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Owner Title field in *Owner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: owner.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Owner document from Prismic
+ *
+ * - **API ID**: `owner`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OwnerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<OwnerDocumentData>, "owner", Lang>;
+
 type PageDocumentDataSlicesSlice =
   | FeaturedProjectsSlice
   | ProjectHeaderSlice
@@ -275,6 +327,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | FeaturedProjectDocument
   | NavigationDocument
+  | OwnerDocument
   | PageDocument
   | SettingsDocument;
 
@@ -1265,6 +1318,51 @@ export type ProjectHeaderSlice = prismic.SharedSlice<
   ProjectHeaderSliceVariation
 >;
 
+/**
+ * Primary content in *ProjectOwner → Default → Primary*
+ */
+export interface ProjectOwnerSliceDefaultPrimary {
+  /**
+   * owner field in *ProjectOwner → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_owner.default.primary.owner
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  owner: prismic.ContentRelationshipField<"owner">;
+}
+
+/**
+ * Default variation for ProjectOwner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectOwnerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectOwnerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectOwner*
+ */
+type ProjectOwnerSliceVariation = ProjectOwnerSliceDefault;
+
+/**
+ * ProjectOwner Shared Slice
+ *
+ * - **API ID**: `project_owner`
+ * - **Description**: ProjectOwner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectOwnerSlice = prismic.SharedSlice<
+  "project_owner",
+  ProjectOwnerSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1292,6 +1390,8 @@ declare module "@prismicio/client" {
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
+      OwnerDocument,
+      OwnerDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -1352,6 +1452,10 @@ declare module "@prismicio/client" {
       ProjectHeaderSliceDefaultPrimary,
       ProjectHeaderSliceVariation,
       ProjectHeaderSliceDefault,
+      ProjectOwnerSlice,
+      ProjectOwnerSliceDefaultPrimary,
+      ProjectOwnerSliceVariation,
+      ProjectOwnerSliceDefault,
     };
   }
 }
