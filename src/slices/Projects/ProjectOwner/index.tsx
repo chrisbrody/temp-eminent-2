@@ -16,6 +16,7 @@ export type ProjectOwnerProps = SliceComponentProps<Content.ProjectOwnerSlice>;
  * Component for "ProjectOwner" Slices.
  */
 const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
+  console.log(slice.primary)
   // Assign to a clear variable name
   const ownerLink = slice.primary.owner;
 
