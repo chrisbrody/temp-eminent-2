@@ -12,12 +12,7 @@ export type ProjectOwnerProps = SliceComponentProps<Content.ProjectOwnerSlice>;
  */
 const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
   const owner = slice.primary.owner;
-  const ownerData = owner.data;
-  const name = ownerData.name
-  const title = ownerData.title
-  const img = ownerData.image
-
-  console.log(name, title, img)
+  console.log(owner)
 
   return (
     <section
