@@ -49,7 +49,7 @@ export default async function ProjectPage({ params }: PageProps) {
 // generateStaticParams returns the resolved shape, so this remains the same
 export async function generateStaticParams(): Promise<PageParams[]> {
     const client = createClient();
-    const pages = await client.getAllByType("featured_project"); // Use your actual Custom Type API ID
+    const pages = await client.getAllByType("featured_project");
     return pages.map((page) => ({
         uid: page.uid,
     }));

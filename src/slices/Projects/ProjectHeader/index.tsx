@@ -31,34 +31,34 @@ const ProjectHeader: FC<ProjectHeaderProps> = ({ slice }) => {
         >
             <div className="container mx-auto px-4 text-center">
 
-                {/* Project Category (Key Text - render directly) */}
+                {/* Project Category */}
                 {isFilled.keyText(project_category) && (
-                    <div className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold">
-                        {project_category} {/* MODIFIED HERE */}
+                    <div className="mb-3 font-thin uppercase tracking-wider text-gold">
+                        {project_category}
                     </div>
                 )}
 
-                {/* Project Title (Key Text - render directly) */}
+                {/* Project Title */}
                 {isFilled.keyText(project_title) && (
-                    <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6">
-                        {project_title} {/* MODIFIED HERE */}
+                    <h1 className="text-3xl md:text-5xl uppercase font-bold font-serif font-thin mb-6">
+                        {project_title}
                     </h1>
                 )}
 
                 {/* Project Meta: Date and Location */}
                 <div className="meta-info text-sm text-gray-700 font-sans flex flex-col sm:flex-row justify-center items-center gap-x-4 gap-y-1">
                     {formattedDate && (
-                        <span className="project-date">
+                        <span className="project-date text-black-900 text-base md:text-base opacity-50">
                           {formattedDate}
                         </span>
                     )}
                     {formattedDate && isFilled.keyText(project_location) && (
                         <span className="hidden sm:inline">|</span>
                     )}
-                    {/* Project Location (Key Text - render directly) */}
+                    {/* Project Location */}
                     {isFilled.keyText(project_location) && (
-                        <span className="project-location">
-                          {project_location} {/* MODIFIED HERE */}
+                        <span className="project-location text-black-900 text-base md:text-base opacity-50">
+                          {project_location}
                         </span>
                     )}
                 </div>
