@@ -11,7 +11,9 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
     return null; // or a fallback UI
   }
 
-  const { name, title, image } = ownerLink.data;
+    const ownerData = ownerLink.data as Content.OwnerDocument['data'];
+
+  const { name, title, image } = ownerData;
 
   return (
       <section className="text-center">
