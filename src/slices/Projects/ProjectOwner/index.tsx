@@ -1,32 +1,31 @@
-// src/slices/Projects/ProjectOwner/index.tsx
 import { FC } from "react";
-// Make sure to import isFilled
-import { Content, isFilled } from "@prismicio/client";
+import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-// Import rendering components later
-import { PrismicText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next"; // Or PrismicImage
 
-/**
- * Props for `ProjectOwner`.
- */
 export type ProjectOwnerProps = SliceComponentProps<Content.ProjectOwnerSlice>;
 
-/**
- * Component for "ProjectOwner" Slices.
- */
 const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
-  console.log("test from project owner")
-  // Assign to a clear variable name
   const ownerLink = slice.primary.owner;
 
-  console.log(ownerLink)
+  if (!ownerLink || !('data' in ownerLink)) {
+    return null; // or a fallback UI
+  }
 
-  // --- Fallback Rendering ---
-  // If the link is empty, broken, or data wasn't fetched, render nothing or a placeholder
-  // You could also log a warning here if desired during development
-  // console.warn("ProjectOwner Slice: Owner link is missing, broken, or data not fetched.", ownerLink);
-  return <div style={{ color: 'red' }}>ProjectOwner slice rendered</div>;
+  const { name, title, image } = ownerLink.data;
+
+  return (
+      <section className="text-center">
+        {image?.url && (
+            <img
+                src={image.url}
+                alt={image.alt ?? name}
+                className="mx-auto rounded-full w-14 h-14 object-cover mb-2"
+            />
+        )}
+        <h3 className="text-lg font-semibold">{name}</h3>
+        <p className="text-gray-600">{title}</p>
+      </section>
+  );
 };
 
 export default ProjectOwner;
