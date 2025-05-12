@@ -37,7 +37,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProjectPage({ params }: PageProps) {
     const { uid } = await params;
     const client = createClient({ cookies: await cookies() });
-    const page = await client.getByUID("featured_project", uid).catch(() => notFound());
+
+    const page = await client.getByUID("featured_project", uid, {
+        fetchLinks: [
+            'owner.image',
+            'owner.name',
+            'owner.title',
+        ],
+    }).catch(() => notFound());
 
     return (
         <article>
