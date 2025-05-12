@@ -20,7 +20,6 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
         {image?.url && (
             <img
                 src={image.url}
-                alt={image.alt ?? name}
                 className="mx-auto rounded-full w-14 h-14 object-cover mb-2"
             />
         )}
