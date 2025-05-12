@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 
 export type ProjectOwnerProps = SliceComponentProps<Content.ProjectOwnerSlice>;
 
@@ -11,17 +12,20 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
     return null; // or a fallback UI
   }
 
-    const ownerData = ownerLink.data as Content.OwnerDocument['data'];
+  const ownerData = ownerLink.data as Content.OwnerDocument['data'];
+    console.log(ownerData)
 
   const { name, title, image } = ownerData;
 
   return (
       <section className="text-center">
         {image?.url && (
-            <img
-                src={image.url}
-                alt={image.alt ?? name ?? ""}
-                className="mx-auto rounded-full w-14 h-14 object-cover mb-2"
+            <PrismicNextImage
+                field={image}
+                className="mx-auto rounded-full w-24 h-24 object-cover mb-4"
+                width={96}
+                height={96}
+                imgixParams={{ ar: "1:1", fit: "crop" }}
             />
         )}
         <h3 className="text-lg font-semibold">{name}</h3>
