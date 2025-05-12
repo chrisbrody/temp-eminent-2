@@ -95,7 +95,7 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice, index }) => {
                         <div className="w-full mb-4"> {/* Example: Image container */}
                           <PrismicNextImage
                               field={image}
-                              alt={image.alt || ''}
+                              alt={(image.alt || '') as string}
                               // Add responsive image attributes if needed
                               sizes={projectsToDisplay.length === 2 ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (min-width: 1025px) var(--calculated-width)" : "(max-width: 768px) 100vw, 100vw"} // Example sizes
                               className="w-full h-auto object-cover rounded-lg shadow-md" // Example styling
