@@ -19,7 +19,7 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
   // Assign to a clear variable name
   const ownerLink = slice.primary.owner;
 
-  console.log(ownerLink, ownerLink.data)
+  console.log(ownerLink)
 
   // --- Fallback Rendering ---
   // If the link is empty, broken, or data wasn't fetched, render nothing or a placeholder
