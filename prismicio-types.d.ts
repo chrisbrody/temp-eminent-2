@@ -148,6 +148,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | FeaturedProjectsSlice
   | ProjectHeaderSlice
   | HeroSlice
   | SectionHeaderSlice
@@ -979,6 +980,88 @@ export type TextWithImageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *FeaturedProjects → Default → Primary → Featured Project*
+ */
+export interface FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem {
+  /**
+   * Image field in *FeaturedProjects → Default → Primary → Featured Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *FeaturedProjects → Default → Primary → Featured Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Location field in *FeaturedProjects → Default → Primary → Featured Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[].location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *FeaturedProjects → Default → Primary*
+ */
+export interface FeaturedProjectsSliceDefaultPrimary {
+  /**
+   * Featured Project field in *FeaturedProjects → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  featured_project: prismic.GroupField<
+    Simplify<FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem>
+  >;
+}
+
+/**
+ * Default variation for FeaturedProjects Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProjectsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedProjectsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedProjects*
+ */
+type FeaturedProjectsSliceVariation = FeaturedProjectsSliceDefault;
+
+/**
+ * FeaturedProjects Shared Slice
+ *
+ * - **API ID**: `featured_projects`
+ * - **Description**: FeaturedProjects
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProjectsSlice = prismic.SharedSlice<
+  "featured_projects",
+  FeaturedProjectsSliceVariation
+>;
+
+/**
  * Primary content in *ProjectHeader → Default → Primary*
  */
 export interface ProjectHeaderSliceDefaultPrimary {
@@ -1128,6 +1211,11 @@ declare module "@prismicio/client" {
       TextWithImageSliceVariation,
       TextWithImageSliceDefault,
       TextWithImageSliceWithButton,
+      FeaturedProjectsSlice,
+      FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem,
+      FeaturedProjectsSliceDefaultPrimary,
+      FeaturedProjectsSliceVariation,
+      FeaturedProjectsSliceDefault,
       ProjectHeaderSlice,
       ProjectHeaderSliceDefaultPrimary,
       ProjectHeaderSliceVariation,
