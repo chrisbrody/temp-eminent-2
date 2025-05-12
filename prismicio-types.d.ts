@@ -980,11 +980,26 @@ export type TextWithImageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *FeaturedProjects → Default → Primary → Featured Project*
+ * Item in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
  */
 export interface FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem {
   /**
-   * Image field in *FeaturedProjects → Default → Primary → Featured Project*
+   * Project Category field in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[].project_category
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  project_category: prismic.SelectField<
+    | "Kitchen Design"
+    | "Remodeling Design  "
+    | "New Home Design"
+    | "Interior Design"
+  >;
+
+  /**
+   * Image field in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -994,7 +1009,7 @@ export interface FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Title field in *FeaturedProjects → Default → Primary → Featured Project*
+   * Title field in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -1004,7 +1019,7 @@ export interface FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem {
   title: prismic.KeyTextField;
 
   /**
-   * Location field in *FeaturedProjects → Default → Primary → Featured Project*
+   * Location field in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -1012,14 +1027,96 @@ export interface FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   location: prismic.KeyTextField;
+
+  /**
+   * project link field in *FeaturedProjectsRow → 1.5/1 → Primary → Featured Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.default.primary.featured_project[].project_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  project_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
- * Primary content in *FeaturedProjects → Default → Primary*
+ * Item in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+ */
+export interface FeaturedProjectsSlice115PrimaryFeaturedProjectItem {
+  /**
+   * Project Category field in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[].project_category
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  project_category: prismic.SelectField<
+    | "Kitchen Design"
+    | "Remodeling Design  "
+    | "New Home Design"
+    | "Interior Design"
+  >;
+
+  /**
+   * Image field in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Location field in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[].location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * project link field in *FeaturedProjectsRow → 1/1.5 → Primary → Featured Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[].project_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  project_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *FeaturedProjectsRow → 1.5/1 → Primary*
  */
 export interface FeaturedProjectsSliceDefaultPrimary {
   /**
-   * Featured Project field in *FeaturedProjects → Default → Primary*
+   * Featured Project field in *FeaturedProjectsRow → 1.5/1 → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -1032,7 +1129,7 @@ export interface FeaturedProjectsSliceDefaultPrimary {
 }
 
 /**
- * Default variation for FeaturedProjects Slice
+ * 1.5/1 variation for FeaturedProjectsRow Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1045,12 +1142,44 @@ export type FeaturedProjectsSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *FeaturedProjects*
+ * Primary content in *FeaturedProjectsRow → 1/1.5 → Primary*
  */
-type FeaturedProjectsSliceVariation = FeaturedProjectsSliceDefault;
+export interface FeaturedProjectsSlice115Primary {
+  /**
+   * Featured Project field in *FeaturedProjectsRow → 1/1.5 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_projects.115.primary.featured_project[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  featured_project: prismic.GroupField<
+    Simplify<FeaturedProjectsSlice115PrimaryFeaturedProjectItem>
+  >;
+}
 
 /**
- * FeaturedProjects Shared Slice
+ * 1/1.5 variation for FeaturedProjectsRow Slice
+ *
+ * - **API ID**: `115`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProjectsSlice115 = prismic.SharedSliceVariation<
+  "115",
+  Simplify<FeaturedProjectsSlice115Primary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedProjectsRow*
+ */
+type FeaturedProjectsSliceVariation =
+  | FeaturedProjectsSliceDefault
+  | FeaturedProjectsSlice115;
+
+/**
+ * FeaturedProjectsRow Shared Slice
  *
  * - **API ID**: `featured_projects`
  * - **Description**: FeaturedProjects
@@ -1214,8 +1343,11 @@ declare module "@prismicio/client" {
       FeaturedProjectsSlice,
       FeaturedProjectsSliceDefaultPrimaryFeaturedProjectItem,
       FeaturedProjectsSliceDefaultPrimary,
+      FeaturedProjectsSlice115PrimaryFeaturedProjectItem,
+      FeaturedProjectsSlice115Primary,
       FeaturedProjectsSliceVariation,
       FeaturedProjectsSliceDefault,
+      FeaturedProjectsSlice115,
       ProjectHeaderSlice,
       ProjectHeaderSliceDefaultPrimary,
       ProjectHeaderSliceVariation,

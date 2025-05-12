@@ -1,0 +1,140 @@
+{
+  "id": "featured_projects",
+  "type": "SharedSlice",
+  "name": "FeaturedProjectsRow",
+  "description": "FeaturedProjects",
+  "variations": [
+    {
+      "id": "default",
+      "name": "1.5/1",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "featured_project": {
+          "type": "Group",
+          "config": {
+            "label": "Featured Project",
+            "repeat": true,
+            "fields": {
+              "project_category": {
+                "type": "Select",
+                "config": {
+                  "label": "Project Category",
+                  "placeholder": "",
+                  "options": [
+                    "Kitchen Design",
+                    "Remodeling Design  ",
+                    "New Home Design",
+                    "Interior Design"
+                  ]
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "location": {
+                "type": "Text",
+                "config": {
+                  "label": "Location",
+                  "placeholder": ""
+                }
+              },
+              "project_link": {
+                "type": "Link",
+                "config": {
+                  "label": "project link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "115",
+      "name": "1/1.5",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "featured_project": {
+          "type": "Group",
+          "config": {
+            "label": "Featured Project",
+            "repeat": true,
+            "fields": {
+              "project_category": {
+                "type": "Select",
+                "config": {
+                  "label": "Project Category",
+                  "placeholder": "",
+                  "options": [
+                    "Kitchen Design",
+                    "Remodeling Design  ",
+                    "New Home Design",
+                    "Interior Design"
+                  ]
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "location": {
+                "type": "Text",
+                "config": {
+                  "label": "Location",
+                  "placeholder": ""
+                }
+              },
+              "project_link": {
+                "type": "Link",
+                "config": {
+                  "label": "project link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
