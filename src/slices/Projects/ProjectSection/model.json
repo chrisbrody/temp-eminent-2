@@ -163,6 +163,51 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "showcaseImagesWithCaption",
+      "name": "Showcase Images with Caption",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image_one": {
+          "type": "Image",
+          "config": {
+            "label": "Image One (optional)",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "description_one": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description One",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "image_two": {
+          "type": "Image",
+          "config": {
+            "label": "Image Two",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "description_two": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description Two",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

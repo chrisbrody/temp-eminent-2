@@ -179,6 +179,48 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                     </Bounded>
                 </section>
             );
+        case "showcaseImagesWithCaption": // "Showcase Images with Caption"
+            return (
+                <section {...sectionBaseProps} aria-label="Showcase Images with Caption">
+                    <Bounded>
+                        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0">
+
+                            {/* Column 1: Image One & Description One */}
+                            <div className="flex flex-col">
+                                {isFilled.image(primary.image_one) && (
+                                    <PrismicNextImage
+                                        field={primary.image_one}
+                                        className=""
+                                        imgixParams={{ar: "4:3", fit: "crop"}}
+                                    />
+                                )}
+                                {isFilled.richText(primary.description_one) && (
+                                    <div className="text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none">
+                                        <PrismicRichText field={primary.description_one}/>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Column 2: Image Two & Description Two */}
+                            <div className="flex flex-col">
+                                {isFilled.image(primary.image_two) && (
+                                    <PrismicNextImage
+                                        field={primary.image_two}
+                                        className=""
+                                        imgixParams={{ar: "4:3", fit: "crop"}}
+                                    />
+                                )}
+                                {isFilled.richText(primary.description_two) && (
+                                    <div className="text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none">
+                                        <PrismicRichText field={primary.description_two}/>
+                                    </div>
+                                )}
+                            </div>
+
+                        </div>
+                    </Bounded>
+                </section>
+            );
 
         default:
             // Fallback for unknown variations or if you haven't implemented one yet

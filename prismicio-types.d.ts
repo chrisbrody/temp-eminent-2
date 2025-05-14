@@ -1578,13 +1578,73 @@ export type ProjectSectionSliceNarrativeBlockWidth80 =
   >;
 
 /**
+ * Primary content in *ProjectSection → Showcase Images with Caption → Primary*
+ */
+export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
+  /**
+   * Image One (optional) field in *ProjectSection → Showcase Images with Caption → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.image_one
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_one: prismic.ImageField<never>;
+
+  /**
+   * Description One field in *ProjectSection → Showcase Images with Caption → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.description_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description_one: prismic.RichTextField;
+
+  /**
+   * Image Two field in *ProjectSection → Showcase Images with Caption → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.image_two
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_two: prismic.ImageField<never>;
+
+  /**
+   * Description Two field in *ProjectSection → Showcase Images with Caption → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.description_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description_two: prismic.RichTextField;
+}
+
+/**
+ * Showcase Images with Caption variation for ProjectSection Slice
+ *
+ * - **API ID**: `showcaseImagesWithCaption`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSectionSliceShowcaseImagesWithCaption =
+  prismic.SharedSliceVariation<
+    "showcaseImagesWithCaption",
+    Simplify<ProjectSectionSliceShowcaseImagesWithCaptionPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *ProjectSection*
  */
 type ProjectSectionSliceVariation =
   | ProjectSectionSliceDefault
   | ProjectSectionSliceFullWidthText
   | ProjectSectionSliceSplitContent
-  | ProjectSectionSliceNarrativeBlockWidth80;
+  | ProjectSectionSliceNarrativeBlockWidth80
+  | ProjectSectionSliceShowcaseImagesWithCaption;
 
 /**
  * ProjectSection Shared Slice
@@ -1696,11 +1756,13 @@ declare module "@prismicio/client" {
       ProjectSectionSliceFullWidthTextPrimary,
       ProjectSectionSliceSplitContentPrimary,
       ProjectSectionSliceNarrativeBlockWidth80Primary,
+      ProjectSectionSliceShowcaseImagesWithCaptionPrimary,
       ProjectSectionSliceVariation,
       ProjectSectionSliceDefault,
       ProjectSectionSliceFullWidthText,
       ProjectSectionSliceSplitContent,
       ProjectSectionSliceNarrativeBlockWidth80,
+      ProjectSectionSliceShowcaseImagesWithCaption,
     };
   }
 }
