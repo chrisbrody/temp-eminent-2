@@ -6,4 +6,5 @@ export const components = {
   featured_projects: dynamic(() => import("./FeaturedProjectsRow")),
   project_header: dynamic(() => import("./ProjectHeader")),
   project_owner: dynamic(() => import("./ProjectOwner")),
+  project_section: dynamic(() => import("./ProjectSection")),
 };

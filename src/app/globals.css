@@ -33,11 +33,25 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-haigrast), cursive;
 }
 .font-gtAmerica {
-  font-family: var(--font-gtAmerica), cursive;
+  font-family: var(--font-gt-america), sans-serif;
 }
 
+
+/* Reuseable Colors */
 .text-gold {
   color: var(--color-gold);
+}
+.text-gold-900 {
+  --tw-text-opacity: 1;
+  color: rgb(153 101 21 / var(--tw-text-opacity));
+}
+.border-gold-900 {
+  --tw-border-opacity: 1;
+  border-color: rgb(153 101 21 / var(--tw-border-opacity));
+}
+.text-black-700 {
+  --tw-text-opacity: 1;
+  color: rgb(92 92 86 / var(--tw-text-opacity));
 }
 
 /* Menu */
@@ -74,7 +88,7 @@ nav.main-nav a {
   font-size: 50px;
   font-weight: 400;
   color: var(--color-gold);
-  font-family: var(--font-haigrast), cursive;
+  font-family: var(--font-haigrast);
   margin: -2rem 0 0;
 }
 @media screen and (max-width: 992px) {

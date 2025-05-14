@@ -2,16 +2,17 @@
 
 import dynamic from "next/dynamic";
 
+import { components as projectSliceComponents } from './Projects';
+
 export const components = {
   hero: dynamic(() => import("./Hero")),
   image: dynamic(() => import("./Image")),
   image_cards: dynamic(() => import("./ImageCards")),
   inspired_design: dynamic(() => import("./InspiredDesign")),
-  project_header: dynamic(() => import("./Projects/ProjectHeader")),
-  project_owner: dynamic(() => import("./Projects/ProjectOwner")),
-  featured_projects: dynamic(() => import("./Projects/FeaturedProjectsRow")),
   quote: dynamic(() => import("./Quote")),
   section_header: dynamic(() => import("./SectionHeader")),
   text: dynamic(() => import("./Text")),
   text_with_image: dynamic(() => import("./TextWithImage")),
+
+  ...projectSliceComponents,
 };
