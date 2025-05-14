@@ -46,6 +46,12 @@ nav.main-nav a {
   font-weight: 400;
 }
 
+#project-owner,
+#project-owner h3,
+#project-owner p {
+  font-family: var(--font-gt-america);
+}
+
 /* SectionHeader Slice */
 .section-header h1 { /* Eyebrow */
   font-size: 20px;

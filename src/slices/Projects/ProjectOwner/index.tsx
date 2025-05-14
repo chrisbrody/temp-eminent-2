@@ -18,7 +18,7 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
   const { name, title, image } = ownerData;
 
   return (
-      <section className="text-center">
+      <section className="text-center mt-8" id="project-owner">
         {image?.url && (
             <PrismicNextImage
                 field={image}

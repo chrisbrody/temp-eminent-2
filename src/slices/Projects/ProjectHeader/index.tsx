@@ -27,7 +27,7 @@ const ProjectHeader: FC<ProjectHeaderProps> = ({ slice }) => {
         <section
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
-            className="project-header-slice bg-white py-10 md:py-16 text-charcoal"
+            className="project-header-slice bg-white pt-10 md:pt-16 text-charcoal"
         >
             <div className="container mx-auto px-4 text-center">
 
