@@ -194,7 +194,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     />
                                 )}
                                 {isFilled.richText(primary.title_one) && (
-                                    <div className="mt-2 flex items-center uppercase text-lg sm:text-x22 md:text-x26 font-sans text-black-900 leading-tight">
+                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] font-sans text-black-900 leading-tight">
                                         <PrismicRichText field={primary.title_one}/>
                                     </div>
                                 )}
@@ -214,7 +214,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     />
                                 )}
                                 {isFilled.richText(primary.title_two) && (
-                                    <div className="mt-2 flex items-center uppercase text-lg sm:text-x22 md:text-x26 font-sans text-black-900 leading-tight">
+                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] lg:text-[32px] font-sans text-black-900 leading-tight">
                                         <PrismicRichText field={primary.title_two}/>
                                     </div>
                                 )}
