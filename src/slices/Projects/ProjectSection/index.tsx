@@ -103,8 +103,8 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
         case "splitContent": // "Split Content"
             return (
                 <section {...sectionBaseProps} aria-label="Split Content Section">
-                    <Bounded>
-                        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <Bounded widthClass="max-w-5xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                             {/* Column 1: Image */}
                             <div className="md:order-1">
                                 {isFilled.image(primary.image) && (
@@ -142,8 +142,8 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
         case "narrativeBlockWidth80": // "Narrative Block Width 80"
             return (
                 <section {...sectionBaseProps} aria-label="Narrative Block Width 80%">
-                    <Bounded>
-                        <div className="max-w-3xl mx-auto grid grid-cols-1 items-center">
+                    <Bounded widthClass="max-w-5xl">
+                        <div className="grid grid-cols-1 items-center">
                             <div>
                                 {isFilled.image(primary.image) && (
                                     <PrismicNextImage
@@ -182,8 +182,8 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
         case "showcaseImagesWithCaption": // "Showcase Images with Caption"
             return (
                 <section {...sectionBaseProps} aria-label="Showcase Images with Caption">
-                    <Bounded>
-                        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0">
+                    <Bounded widthClass="max-w-5xl">
+                        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0">
 
                             {/* Column 1: Image One & Description One */}
                             <div className="flex flex-col">
