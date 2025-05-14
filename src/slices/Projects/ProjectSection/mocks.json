@@ -297,6 +297,28 @@
 						}
 					}
 				]
+			},
+			"title_one": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat proident magna in deserunt sunt esse esse fugiat. Ipsum esse tempor nisi officia ullamco adipisicing ullamco ad deserunt non et ex sint ut minim."
+						}
+					}
+				]
+			},
+			"title_two": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea nostrud velit in. Aliquip amet culpa Lorem eu quis cupidatat cupidatat mollit dolor veniam aliqua mollit aute consequat laborum. Ut tempor consequat magna aliqua aliqua laborum duis et magna laboris exercitation."
+						}
+					}
+				]
 			}
 		},
 		"items": [

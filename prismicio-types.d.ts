@@ -1578,11 +1578,11 @@ export type ProjectSectionSliceNarrativeBlockWidth80 =
   >;
 
 /**
- * Primary content in *ProjectSection → Showcase Images with Caption → Primary*
+ * Primary content in *ProjectSection → Before and After Basic → Primary*
  */
 export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
   /**
-   * Image One (optional) field in *ProjectSection → Showcase Images with Caption → Primary*
+   * Image One (optional) field in *ProjectSection → Before and After Basic → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1592,7 +1592,17 @@ export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
   image_one: prismic.ImageField<never>;
 
   /**
-   * Description One field in *ProjectSection → Showcase Images with Caption → Primary*
+   * Title One field in *ProjectSection → Before and After Basic → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.title_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_one: prismic.RichTextField;
+
+  /**
+   * Description One field in *ProjectSection → Before and After Basic → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -1602,7 +1612,7 @@ export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
   description_one: prismic.RichTextField;
 
   /**
-   * Image Two field in *ProjectSection → Showcase Images with Caption → Primary*
+   * Image Two field in *ProjectSection → Before and After Basic → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1612,7 +1622,7 @@ export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
   image_two: prismic.ImageField<never>;
 
   /**
-   * Description Two field in *ProjectSection → Showcase Images with Caption → Primary*
+   * Description Two field in *ProjectSection → Before and After Basic → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -1620,10 +1630,20 @@ export interface ProjectSectionSliceShowcaseImagesWithCaptionPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description_two: prismic.RichTextField;
+
+  /**
+   * Title Two field in *ProjectSection → Before and After Basic → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.showcaseImagesWithCaption.primary.title_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_two: prismic.RichTextField;
 }
 
 /**
- * Showcase Images with Caption variation for ProjectSection Slice
+ * Before and After Basic variation for ProjectSection Slice
  *
  * - **API ID**: `showcaseImagesWithCaption`
  * - **Description**: Default

@@ -166,7 +166,7 @@
     },
     {
       "id": "showcaseImagesWithCaption",
-      "name": "Showcase Images with Caption",
+      "name": "Before and After Basic",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -178,6 +178,15 @@
             "label": "Image One (optional)",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "title_one": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title One",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
         "description_one": {
@@ -203,6 +212,15 @@
             "label": "Description Two",
             "placeholder": "",
             "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "title_two": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title Two",
+            "placeholder": "",
+            "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
