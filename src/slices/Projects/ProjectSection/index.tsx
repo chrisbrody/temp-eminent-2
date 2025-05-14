@@ -191,11 +191,10 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     <PrismicNextImage
                                         field={primary.image_one}
                                         className=""
-                                        imgixParams={{ar: "4:3", fit: "crop"}}
                                     />
                                 )}
                                 {isFilled.richText(primary.description_one) && (
-                                    <div className="text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none">
+                                    <div className="text-base text-gray-700 leading-relaxed prose prose-sm max-w-none mt-2">
                                         <PrismicRichText field={primary.description_one}/>
                                     </div>
                                 )}
@@ -206,12 +205,11 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                 {isFilled.image(primary.image_two) && (
                                     <PrismicNextImage
                                         field={primary.image_two}
-                                        className=""
-                                        imgixParams={{ar: "4:3", fit: "crop"}}
+                                        className="img-responsive"
                                     />
                                 )}
                                 {isFilled.richText(primary.description_two) && (
-                                    <div className="text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none">
+                                    <div className="text-base text-gray-700 leading-relaxed prose prose-sm max-w-none mt-2">
                                         <PrismicRichText field={primary.description_two}/>
                                     </div>
                                 )}
