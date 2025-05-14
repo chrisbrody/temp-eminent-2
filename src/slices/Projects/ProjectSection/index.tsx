@@ -46,7 +46,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                 {isFilled.image(primary.image) && (
                                     <PrismicNextImage
                                         field={primary.image}
-                                        className="shadow-md"
+                                        className=""
                                         imgixParams={{ar: "4:3", fit: "crop"}}
                                     />
                                 )}
@@ -54,7 +54,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                             <div className="flex gap-x-8">
                                 <div className="w-[70%]">
                                     {isFilled.richText(primary.title) && (
-                                        <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-10 mb-6">
+                                        <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
                                             <PrismicRichText field={primary.title}/>
                                         </div>
                                     )}
@@ -66,7 +66,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                 </div>
                                 <div className="w-[30%]">
                                     {isFilled.keyText(primary.tag) && (
-                                        <div className="flex items-center mt-20">
+                                        <div className="flex items-center mt-15 justify-end">
                                             <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
                                             <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
                                         </div>
@@ -86,7 +86,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                             <div className="mb-2">
                                 <PrismicNextImage
                                     field={primary.image}
-                                    className="shadow-md"
+                                    className=""
                                     imgixParams={{ar: "4:3", fit: "crop"}}
                                 />
                             </div>
@@ -124,7 +124,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     </div>
                                 )}
                                 {isFilled.richText(primary.title) && (
-                                    <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-10 mb-6">
+                                    <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
                                         <PrismicRichText field={primary.title} />
                                     </div>
                                 )}
@@ -139,35 +139,41 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                 </section>
             );
 
-        case "beforeAndAfter": // "Before and After"
+        case "narrativeBlockWidth80": // "Narrative Block Width 80"
             return (
-                <section {...sectionBaseProps} aria-label="Before and After Section">
+                <section {...sectionBaseProps} aria-label="Narrative Block Width 80%">
                     <Bounded>
-                        <h2 className="text-3xl font-bold text-center mb-8">Before & After</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Before Column */}
+                        <div className="max-w-3xl mx-auto grid grid-cols-1 items-center">
                             <div>
-                                {isFilled.image(primary.image_before) && (
-                                    <PrismicNextImage field={primary.image_before} className="rounded-lg mb-4" imgixParams={{ar:"4:3", fit:"crop"}} />
-                                )}
-                                {isFilled.richText(primary.image_before_title) && (
-                                    <div className="text-xl font-semibold mb-2"><PrismicRichText field={primary.image_before_title} /></div>
-                                )}
-                                {isFilled.richText(primary.image_before_description) && (
-                                    <div className="prose"><PrismicRichText field={primary.image_before_description} /></div>
+                                {isFilled.image(primary.image) && (
+                                    <PrismicNextImage
+                                        field={primary.image}
+                                        className=""
+                                        imgixParams={{ar: "4:3", fit: "crop"}}
+                                    />
                                 )}
                             </div>
-                            {/* After Column */}
-                            <div>
-                                {isFilled.image(primary.image_after) && (
-                                    <PrismicNextImage field={primary.image_after} className="rounded-lg mb-4" imgixParams={{ar:"4:3", fit:"crop"}}/>
-                                )}
-                                {isFilled.richText(primary.image_after_title) && (
-                                    <div className="text-xl font-semibold mb-2"><PrismicRichText field={primary.image_after_title} /></div>
-                                )}
-                                {isFilled.richText(primary.image_after_description) && (
-                                    <div className="prose"><PrismicRichText field={primary.image_after_description} /></div>
-                                )}
+                            <div className="flex gap-x-8">
+                                <div className="w-[70%]">
+                                    {isFilled.richText(primary.title) && (
+                                        <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
+                                            <PrismicRichText field={primary.title}/>
+                                        </div>
+                                    )}
+                                    {isFilled.richText(primary.description) && (
+                                        <div className="text-base md:text-xl text-left text-black-700">
+                                            <PrismicRichText field={primary.description}/>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="w-[30%]">
+                                    {isFilled.keyText(primary.tag) && (
+                                        <div className="flex items-center mt-15 justify-end">
+                                            <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
+                                            <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </Bounded>
@@ -179,7 +185,7 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
             return (
                 <section
                     {...sectionBaseProps}
-                    style={{ border: "2px dashed red", padding: "20px", margin: "20px 0" }}
+                    style={{border: "2px dashed red", padding: "20px", margin: "20px 0"}}
                 >
                     <h2 className="text-xl font-semibold">
                         Project Section - Variation Not Implemented

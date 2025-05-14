@@ -1365,11 +1365,11 @@ export type ProjectOwnerSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ProjectSection → NarrativeBlock → Primary*
+ * Primary content in *ProjectSection → Narrative Block width 100% → Primary*
  */
 export interface ProjectSectionSliceDefaultPrimary {
   /**
-   * Main Image field in *ProjectSection → NarrativeBlock → Primary*
+   * Image (optional) field in *ProjectSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1379,7 +1379,7 @@ export interface ProjectSectionSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Title field in *ProjectSection → NarrativeBlock → Primary*
+   * Title field in *ProjectSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -1389,7 +1389,7 @@ export interface ProjectSectionSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * Description field in *ProjectSection → NarrativeBlock → Primary*
+   * Description field in *ProjectSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -1399,7 +1399,7 @@ export interface ProjectSectionSliceDefaultPrimary {
   description: prismic.RichTextField;
 
   /**
-   * Tag (optional) field in *ProjectSection → NarrativeBlock → Primary*
+   * Tag (optional) field in *ProjectSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -1410,7 +1410,7 @@ export interface ProjectSectionSliceDefaultPrimary {
 }
 
 /**
- * NarrativeBlock variation for ProjectSection Slice
+ * Narrative Block width 100% variation for ProjectSection Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1519,82 +1519,63 @@ export type ProjectSectionSliceSplitContent = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ProjectSection → Before and After → Primary*
+ * Primary content in *ProjectSection → Narrative Block  Width 80% → Primary*
  */
-export interface ProjectSectionSliceBeforeAndAfterPrimary {
+export interface ProjectSectionSliceNarrativeBlockWidth80Primary {
   /**
-   * Image Before field in *ProjectSection → Before and After → Primary*
+   * Image (optional) field in *ProjectSection → Narrative Block  Width 80% → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_before
+   * - **API ID Path**: project_section.narrativeBlockWidth80.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image_before: prismic.ImageField<never>;
+  image: prismic.ImageField<never>;
 
   /**
-   * Image Before Title field in *ProjectSection → Before and After → Primary*
+   * Title field in *ProjectSection → Narrative Block  Width 80% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_before_title
+   * - **API ID Path**: project_section.narrativeBlockWidth80.primary.title
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  image_before_title: prismic.RichTextField;
+  title: prismic.RichTextField;
 
   /**
-   * Image Before Description field in *ProjectSection → Before and After → Primary*
+   * Description field in *ProjectSection → Narrative Block  Width 80% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_before_description
+   * - **API ID Path**: project_section.narrativeBlockWidth80.primary.description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  image_before_description: prismic.RichTextField;
+  description: prismic.RichTextField;
 
   /**
-   * Image After field in *ProjectSection → Before and After → Primary*
+   * Tag (optional) field in *ProjectSection → Narrative Block  Width 80% → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_after
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: project_section.narrativeBlockWidth80.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  image_after: prismic.ImageField<never>;
-
-  /**
-   * Image After Title field in *ProjectSection → Before and After → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_after_title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  image_after_title: prismic.RichTextField;
-
-  /**
-   * Image After Description field in *ProjectSection → Before and After → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfter.primary.image_after_description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  image_after_description: prismic.RichTextField;
+  tag: prismic.KeyTextField;
 }
 
 /**
- * Before and After variation for ProjectSection Slice
+ * Narrative Block  Width 80% variation for ProjectSection Slice
  *
- * - **API ID**: `beforeAndAfter`
+ * - **API ID**: `narrativeBlockWidth80`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ProjectSectionSliceBeforeAndAfter = prismic.SharedSliceVariation<
-  "beforeAndAfter",
-  Simplify<ProjectSectionSliceBeforeAndAfterPrimary>,
-  never
->;
+export type ProjectSectionSliceNarrativeBlockWidth80 =
+  prismic.SharedSliceVariation<
+    "narrativeBlockWidth80",
+    Simplify<ProjectSectionSliceNarrativeBlockWidth80Primary>,
+    never
+  >;
 
 /**
  * Slice variation for *ProjectSection*
@@ -1603,7 +1584,7 @@ type ProjectSectionSliceVariation =
   | ProjectSectionSliceDefault
   | ProjectSectionSliceFullWidthText
   | ProjectSectionSliceSplitContent
-  | ProjectSectionSliceBeforeAndAfter;
+  | ProjectSectionSliceNarrativeBlockWidth80;
 
 /**
  * ProjectSection Shared Slice
@@ -1714,12 +1695,12 @@ declare module "@prismicio/client" {
       ProjectSectionSliceDefaultPrimary,
       ProjectSectionSliceFullWidthTextPrimary,
       ProjectSectionSliceSplitContentPrimary,
-      ProjectSectionSliceBeforeAndAfterPrimary,
+      ProjectSectionSliceNarrativeBlockWidth80Primary,
       ProjectSectionSliceVariation,
       ProjectSectionSliceDefault,
       ProjectSectionSliceFullWidthText,
       ProjectSectionSliceSplitContent,
-      ProjectSectionSliceBeforeAndAfter,
+      ProjectSectionSliceNarrativeBlockWidth80,
     };
   }
 }
