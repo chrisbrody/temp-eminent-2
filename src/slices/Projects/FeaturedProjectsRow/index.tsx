@@ -14,121 +14,93 @@ export type FeaturedProjectsProps = SliceComponentProps<Content.FeaturedProjects
  * Component for "FeaturedProjects" Slices.
  */
 const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
-    const [projectOneData, setProjectOneData] = useState<Content.FeaturedProjectDocument | null>(null);
-    const [projectTwoData, setProjectTwoData] = useState<Content.FeaturedProjectDocument | null>(null);
-    const [projectThreeData, setProjectThreeData] = useState<Content.FeaturedProjectDocument | null>(null);
-    const [projectFourData, setProjectFourData] = useState<Content.FeaturedProjectDocument | null>(null);
+    const [projectData, setProjectData] = useState<{
+        one?: Content.FeaturedProjectDocument;
+        two?: Content.FeaturedProjectDocument;
+        three?: Content.FeaturedProjectDocument;
+        four?: Content.FeaturedProjectDocument;
+    }>({});
 
     useEffect(() => {
-        const fetchRelated = async () => {
+        const fetchProjects = async () => {
             const client = createClient();
+            const variation = slice.variation;
+
+            const newData: typeof projectData = {};
 
             if (
-                slice.primary.project_one &&
-                slice.primary.project_one.link_type === "Document" &&
+                variation === 'ratio115' &&
+                slice.primary.project_one?.link_type === 'Document' &&
                 !slice.primary.project_one.isBroken
             ) {
-                const relatedProject = await client.getByID(slice.primary.project_one.id);
-                setProjectOneData(relatedProject as Content.FeaturedProjectDocument);
+                newData.one = await client.getByID(slice.primary.project_one.id) as Content.FeaturedProjectDocument;
             }
-        };
-
-        fetchRelated();
-
-    }, [slice.primary.project_one]);
-
-    useEffect(() => {
-        const fetchRelated = async () => {
-            const client = createClient();
 
             if (
-                slice.primary.project_two &&
-                slice.primary.project_two.link_type === "Document" &&
+                variation === 'ratio115' &&
+                slice.primary.project_two?.link_type === 'Document' &&
                 !slice.primary.project_two.isBroken
             ) {
-                const relatedProject = await client.getByID(slice.primary.project_two.id);
-                setProjectTwoData(relatedProject as Content.FeaturedProjectDocument);
+                newData.two = await client.getByID(slice.primary.project_two.id) as Content.FeaturedProjectDocument;
             }
-        };
-
-        fetchRelated();
-
-    }, [slice.primary.project_two]);
-
-    useEffect(() => {
-        const fetchRelated = async () => {
-            const client = createClient();
 
             if (
-                slice.primary.project_three &&
-                slice.primary.project_three.link_type === "Document" &&
+                variation === 'ratio151' &&
+                slice.primary.project_three?.link_type === 'Document' &&
                 !slice.primary.project_three.isBroken
             ) {
-                const relatedProject = await client.getByID(slice.primary.project_three.id);
-                setProjectThreeData(relatedProject as Content.FeaturedProjectDocument);
+                newData.three = await client.getByID(slice.primary.project_three.id) as Content.FeaturedProjectDocument;
             }
-        };
-
-        fetchRelated();
-
-    }, [slice.primary.project_three]);
-
-    useEffect(() => {
-        const fetchRelated = async () => {
-            const client = createClient();
 
             if (
-                slice.primary.project_four &&
-                slice.primary.project_four.link_type === "Document" &&
+                variation === 'ratio151' &&
+                slice.primary.project_four?.link_type === 'Document' &&
                 !slice.primary.project_four.isBroken
             ) {
-                const relatedProject = await client.getByID(slice.primary.project_four.id);
-                setProjectFourData(relatedProject as Content.FeaturedProjectDocument);
+                newData.four = await client.getByID(slice.primary.project_four.id) as Content.FeaturedProjectDocument;
             }
+
+            setProjectData(newData);
         };
 
-        fetchRelated();
-
-    }, [slice.primary.project_four]);
+        fetchProjects();
+    }, [slice]);
 
   return (
       <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
-          // Add padding/margin to the section
           className="my-12 px-4 md:px-6 lg:px-8"
       >
           <div className="space-y-6">
-              {projectOneData ? (
-                  <a href={projectOneData.url} className="text-xl text-blue-600 hover:underline block">
-                      {projectOneData.data.project_title?.[0]?.text}
-                  </a>
-              ) : (
-                  null
+              {slice.variation === 'ratio115' && (
+                  <>
+                      {projectData.one && (
+                          <a href={projectData.one.url} className="text-xl text-blue-600 hover:underline block">
+                              {projectData.one.data.project_title?.[0]?.text}
+                          </a>
+                      )}
+                      {projectData.two && (
+                          <a href={projectData.two.url} className="text-xl text-blue-600 hover:underline block">
+                              {projectData.two.data.project_title?.[0]?.text}
+                          </a>
+                      )}
+                  </>
               )}
 
-              {projectTwoData ? (
-                  <a href={projectTwoData.url} className="text-xl text-blue-600 hover:underline block">
-                      {projectTwoData.data.project_title?.[0]?.text}
-                  </a>
-              ) : (
-                  null
-              )}
-
-              {projectThreeData ? (
-                  <a href={projectThreeData.url} className="text-xl text-blue-600 hover:underline block">
-                      {projectThreeData.data.project_title?.[0]?.text}
-                  </a>
-              ) : (
-                  null
-              )}
-
-              {projectFourData ? (
-                  <a href={projectFourData.url} className="text-xl text-blue-600 hover:underline block">
-                      {projectFourData.data.project_title?.[0]?.text}
-                  </a>
-              ) : (
-                  null
+              {slice.variation === 'ratio151' && (
+                  <>
+                      {projectData.three && (
+                          <a href={projectData.three.url} className="text-xl text-blue-600 hover:underline block">
+                              {projectData.three.data.project_title?.[0]?.text}
+                          </a>
+                      )}
+                      {projectData.four && (
+                          <a href={projectData.four.url} className="text-xl text-blue-600 hover:underline block">
+                              {projectData.four.data.project_title?.[0]?.text}
+                          </a>
+                      )}
+                  </>
               )}
           </div>
       </section>
