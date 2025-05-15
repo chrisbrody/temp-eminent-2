@@ -1,11 +1,10 @@
 'use client';
 
-import { FC, useEffect, useState } from "react";
+import {FC, JSX, useEffect, useState} from "react";
 import { Content, isFilled, asText } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
-import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `FeaturedProjects`.
@@ -24,7 +23,7 @@ function isRatio151Slice(slice: Content.FeaturedProjectsSlice): slice is Ratio15
     return slice.variation === 'ratio151';
 }
 
-const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
+const FeaturedProjects: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
     const [projectData, setProjectData] = useState<{
         one?: Content.FeaturedProjectDocument;
         two?: Content.FeaturedProjectDocument;
@@ -39,11 +38,9 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
 
 
             if (isRatio115Slice(slice)) {
-                console.log(slice.primary)
                 if (isFilled.contentRelationship(slice.primary.project_one)) {
                     try {
                         newData.one = await client.getByID(slice.primary.project_one.id) as Content.FeaturedProjectDocument;
-                        console.log(newData.one)
                     } catch (error) {
                         console.error("Fetch project_onw (ratio115) failed:", error);
                     }
