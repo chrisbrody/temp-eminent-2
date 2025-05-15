@@ -1,8 +1,9 @@
 'use client'
 import { FC, useEffect, useState } from "react";
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { Content, isFilled, asText } from "@prismicio/client";
+import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { createClient } from "@/prismicio";
+import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `FeaturedProjects`.
@@ -21,39 +22,43 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
         const fetchProjects = async () => {
             const client = createClient();
             const variation = slice.variation;
+            const primary = slice.primary;
 
             const newData: typeof projectData = {};
 
             if (
-                variation === 'ratio115' &&
-                slice.primary.project_one?.link_type === 'Document' &&
-                !slice.primary.project_one.isBroken
+                variation === 'ratio115' && // Matches model.json id
+                isFilled.contentRelationship(primary.project_one)
             ) {
-                newData.one = await client.getByID(slice.primary.project_one.id) as Content.FeaturedProjectDocument;
+                try {
+                    newData.one = await client.getByID(primary.project_one.id) as Content.FeaturedProjectDocument;
+                } catch (error) { console.error("Fetch project_one (ratio115) failed:", error); }
             }
 
             if (
-                variation === 'ratio115' &&
-                slice.primary.project_two?.link_type === 'Document' &&
-                !slice.primary.project_two.isBroken
+                variation === 'ratio115' && // Matches model.json id
+                isFilled.contentRelationship(primary.project_two)
             ) {
-                newData.two = await client.getByID(slice.primary.project_two.id) as Content.FeaturedProjectDocument;
+                try {
+                    newData.two = await client.getByID(primary.project_two.id) as Content.FeaturedProjectDocument;
+                } catch (error) { console.error("Fetch project_two (ratio115) failed:", error); }
             }
 
             if (
-                variation === 'ratio151' &&
-                slice.primary.project_three?.link_type === 'Document' &&
-                !slice.primary.project_three.isBroken
+                variation === 'ratio151' && // Matches model.json id
+                isFilled.contentRelationship(primary.project_three)
             ) {
-                newData.three = await client.getByID(slice.primary.project_three.id) as Content.FeaturedProjectDocument;
+                try {
+                    newData.three = await client.getByID(primary.project_three.id) as Content.FeaturedProjectDocument;
+                } catch (error) { console.error("Fetch project_three (ratio151) failed:", error); }
             }
-
             if (
-                variation === 'ratio151' &&
-                slice.primary.project_four?.link_type === 'Document' &&
-                !slice.primary.project_four.isBroken
+                variation === 'ratio151' && // Matches model.json id
+                isFilled.contentRelationship(primary.project_four)
             ) {
-                newData.four = await client.getByID(slice.primary.project_four.id) as Content.FeaturedProjectDocument;
+                try {
+                    newData.four = await client.getByID(primary.project_four.id) as Content.FeaturedProjectDocument;
+                } catch (error) { console.error("Fetch project_four (ratio151) failed:", error); }
             }
 
             setProjectData(newData);
@@ -61,6 +66,18 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
 
         fetchProjects();
     }, [slice]);
+
+    const { one, two, three, four } = projectData;
+
+    // Helper to render the project link content
+    const renderProjectLinkContent = (projectDoc: Content.FeaturedProjectDocument | undefined) => {
+        if (!projectDoc) return null;
+        // The project_title on the linked 'featured_project' document is Rich Text
+        if (isFilled.richText(projectDoc.data.project_title)) {
+            return asText(projectDoc.data.project_title);
+        }
+        return projectDoc.uid || "View Project";
+    };
 
     return (
         <section
@@ -71,30 +88,30 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
             <div className="space-y-6">
                 {slice.variation === 'ratio115' && (
                     <>
-                        {projectData.one?.url && (
-                            <a href={projectData.one.url} className="text-xl text-blue-600 hover:underline block">
-                                {projectData.one.data.project_title?.[0]?.text}
-                            </a>
+                        {one && isFilled.contentRelationship(one) && (
+                            <PrismicNextLink document={one} className="text-xl text-blue-600 hover:underline block">
+                                {renderProjectLinkContent(one)}
+                            </PrismicNextLink>
                         )}
-                        {projectData.two?.url && (
-                            <a href={projectData.two.url} className="text-xl text-blue-600 hover:underline block">
-                                {projectData.two.data.project_title?.[0]?.text}
-                            </a>
+                        {two && isFilled.contentRelationship(two) && (
+                            <PrismicNextLink document={two} className="text-xl text-blue-600 hover:underline block">
+                                {renderProjectLinkContent(two)}
+                            </PrismicNextLink>
                         )}
                     </>
                 )}
 
                 {slice.variation === 'ratio151' && (
                     <>
-                        {projectData.three?.url && (
-                            <a href={projectData.three.url} className="text-xl text-blue-600 hover:underline block">
-                                {projectData.three.data.project_title?.[0]?.text}
-                            </a>
+                        {three && isFilled.contentRelationship(three) && (
+                            <PrismicNextLink document={three} className="text-xl text-blue-600 hover:underline block">
+                                {renderProjectLinkContent(three)}
+                            </PrismicNextLink>
                         )}
-                        {projectData.four?.url && (
-                            <a href={projectData.four.url} className="text-xl text-blue-600 hover:underline block">
-                                {projectData.four.data.project_title?.[0]?.text}
-                            </a>
+                        {four && isFilled.contentRelationship(four) && (
+                            <PrismicNextLink document={four} className="text-xl text-blue-600 hover:underline block">
+                                {renderProjectLinkContent(four)}
+                            </PrismicNextLink>
                         )}
                     </>
                 )}
