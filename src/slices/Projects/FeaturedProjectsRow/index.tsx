@@ -5,6 +5,12 @@ import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 
+// Import the specific variation primary types from your prismicio-types.d.ts
+import type {
+    FeaturedProjectsSliceRatio115Primary,
+    FeaturedProjectsSliceRatio151Primary,
+} from "../../../../prismicio-types";
+
 /**
  * Props for `FeaturedProjects`.
  */
@@ -22,36 +28,40 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
         const fetchProjects = async () => {
             const client = createClient();
             const variation = slice.variation;
-            const primary = slice.primary;
+            // We will cast slice.primary within the conditional blocks
 
             const newData: typeof projectData = {};
 
             if (variation === 'ratio115') {
-                if (isFilled.contentRelationship(primary.project_one)) {
+                // Type assertion for primary within this specific variation block
+                const primaryData = slice.primary as FeaturedProjectsSliceRatio115Primary;
+                if (isFilled.contentRelationship(primaryData.project_one)) {
                     try {
-                        newData.one = await client.getByID(primary.project_one.id) as Content.FeaturedProjectDocument;
+                        newData.one = await client.getByID(primaryData.project_one.id) as Content.FeaturedProjectDocument;
                     } catch (error) {
                         console.error("Fetch project_one (ratio115) failed:", error);
                     }
                 }
-                if (isFilled.contentRelationship(primary.project_two)) {
+                if (isFilled.contentRelationship(primaryData.project_two)) {
                     try {
-                        newData.two = await client.getByID(primary.project_two.id) as Content.FeaturedProjectDocument;
+                        newData.two = await client.getByID(primaryData.project_two.id) as Content.FeaturedProjectDocument;
                     } catch (error) {
                         console.error("Fetch project_two (ratio115) failed:", error);
                     }
                 }
             } else if (variation === 'ratio151') {
-                if (isFilled.contentRelationship(primary.project_three)) {
+                // Type assertion for primary within this specific variation block
+                const primaryData = slice.primary as FeaturedProjectsSliceRatio151Primary;
+                if (isFilled.contentRelationship(primaryData.project_three)) {
                     try {
-                        newData.three = await client.getByID(primary.project_three.id) as Content.FeaturedProjectDocument;
+                        newData.three = await client.getByID(primaryData.project_three.id) as Content.FeaturedProjectDocument;
                     } catch (error) {
                         console.error("Fetch project_three (ratio151) failed:", error);
                     }
                 }
-                if (isFilled.contentRelationship(primary.project_four)) {
+                if (isFilled.contentRelationship(primaryData.project_four)) {
                     try {
-                        newData.four = await client.getByID(primary.project_four.id) as Content.FeaturedProjectDocument;
+                        newData.four = await client.getByID(primaryData.project_four.id) as Content.FeaturedProjectDocument;
                     } catch (error) {
                         console.error("Fetch project_four (ratio151) failed:", error);
                     }
@@ -66,10 +76,8 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
 
     const { one, two, three, four } = projectData;
 
-    // Helper to render the project link content
     const renderProjectLinkContent = (projectDoc: Content.FeaturedProjectDocument | undefined) => {
         if (!projectDoc) return null;
-        // The project_title on the linked 'featured_project' document is Rich Text
         if (isFilled.richText(projectDoc.data.project_title)) {
             return asText(projectDoc.data.project_title);
         }
