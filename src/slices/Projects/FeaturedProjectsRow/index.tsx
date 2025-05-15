@@ -6,13 +6,9 @@ import { createClient } from "@/prismicio";
 
 /**
  * Props for `FeaturedProjects`.
- * SliceComponentProps includes the 'index' prop automatically.
  */
 export type FeaturedProjectsProps = SliceComponentProps<Content.FeaturedProjectsSlice>;
 
-/**
- * Component for "FeaturedProjects" Slices.
- */
 const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
     const [projectData, setProjectData] = useState<{
         one?: Content.FeaturedProjectDocument;
@@ -66,45 +62,45 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
         fetchProjects();
     }, [slice]);
 
-  return (
-      <section
-          data-slice-type={slice.slice_type}
-          data-slice-variation={slice.variation}
-          className="my-12 px-4 md:px-6 lg:px-8"
-      >
-          <div className="space-y-6">
-              {slice.variation === 'ratio115' && (
-                  <>
-                      {projectData.one && (
-                          <a href={projectData.one.url} className="text-xl text-blue-600 hover:underline block">
-                              {projectData.one.data.project_title?.[0]?.text}
-                          </a>
-                      )}
-                      {projectData.two && (
-                          <a href={projectData.two.url} className="text-xl text-blue-600 hover:underline block">
-                              {projectData.two.data.project_title?.[0]?.text}
-                          </a>
-                      )}
-                  </>
-              )}
+    return (
+        <section
+            data-slice-type={slice.slice_type}
+            data-slice-variation={slice.variation}
+            className="my-12 px-4 md:px-6 lg:px-8"
+        >
+            <div className="space-y-6">
+                {slice.variation === 'ratio115' && (
+                    <>
+                        {projectData.one?.url && (
+                            <a href={projectData.one.url} className="text-xl text-blue-600 hover:underline block">
+                                {projectData.one.data.project_title?.[0]?.text}
+                            </a>
+                        )}
+                        {projectData.two?.url && (
+                            <a href={projectData.two.url} className="text-xl text-blue-600 hover:underline block">
+                                {projectData.two.data.project_title?.[0]?.text}
+                            </a>
+                        )}
+                    </>
+                )}
 
-              {slice.variation === 'ratio151' && (
-                  <>
-                      {projectData.three && (
-                          <a href={projectData.three.url} className="text-xl text-blue-600 hover:underline block">
-                              {projectData.three.data.project_title?.[0]?.text}
-                          </a>
-                      )}
-                      {projectData.four && (
-                          <a href={projectData.four.url} className="text-xl text-blue-600 hover:underline block">
-                              {projectData.four.data.project_title?.[0]?.text}
-                          </a>
-                      )}
-                  </>
-              )}
-          </div>
-      </section>
-  );
+                {slice.variation === 'ratio151' && (
+                    <>
+                        {projectData.three?.url && (
+                            <a href={projectData.three.url} className="text-xl text-blue-600 hover:underline block">
+                                {projectData.three.data.project_title?.[0]?.text}
+                            </a>
+                        )}
+                        {projectData.four?.url && (
+                            <a href={projectData.four.url} className="text-xl text-blue-600 hover:underline block">
+                                {projectData.four.data.project_title?.[0]?.text}
+                            </a>
+                        )}
+                    </>
+                )}
+            </div>
+        </section>
+    );
 };
 
 export default FeaturedProjects;
