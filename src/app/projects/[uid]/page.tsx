@@ -50,6 +50,7 @@ export default async function ProjectPage({ params }: PageProps) {
             'owner.image',
             'owner.name',
             'owner.title',
+            'featured_project.project_title',
         ],
     }).catch(() => notFound());
 
