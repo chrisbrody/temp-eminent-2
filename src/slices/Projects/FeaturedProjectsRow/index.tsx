@@ -26,39 +26,36 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
 
             const newData: typeof projectData = {};
 
-            if (
-                variation === 'ratio115' && // Matches model.json id
-                isFilled.contentRelationship(primary.project_one)
-            ) {
-                try {
-                    newData.one = await client.getByID(primary.project_one.id) as Content.FeaturedProjectDocument;
-                } catch (error) { console.error("Fetch project_one (ratio115) failed:", error); }
-            }
-
-            if (
-                variation === 'ratio115' && // Matches model.json id
-                isFilled.contentRelationship(primary.project_two)
-            ) {
-                try {
-                    newData.two = await client.getByID(primary.project_two.id) as Content.FeaturedProjectDocument;
-                } catch (error) { console.error("Fetch project_two (ratio115) failed:", error); }
-            }
-
-            if (
-                variation === 'ratio151' && // Matches model.json id
-                isFilled.contentRelationship(primary.project_three)
-            ) {
-                try {
-                    newData.three = await client.getByID(primary.project_three.id) as Content.FeaturedProjectDocument;
-                } catch (error) { console.error("Fetch project_three (ratio151) failed:", error); }
-            }
-            if (
-                variation === 'ratio151' && // Matches model.json id
-                isFilled.contentRelationship(primary.project_four)
-            ) {
-                try {
-                    newData.four = await client.getByID(primary.project_four.id) as Content.FeaturedProjectDocument;
-                } catch (error) { console.error("Fetch project_four (ratio151) failed:", error); }
+            if (variation === 'ratio115') {
+                if (isFilled.contentRelationship(primary.project_one)) {
+                    try {
+                        newData.one = await client.getByID(primary.project_one.id) as Content.FeaturedProjectDocument;
+                    } catch (error) {
+                        console.error("Fetch project_one (ratio115) failed:", error);
+                    }
+                }
+                if (isFilled.contentRelationship(primary.project_two)) {
+                    try {
+                        newData.two = await client.getByID(primary.project_two.id) as Content.FeaturedProjectDocument;
+                    } catch (error) {
+                        console.error("Fetch project_two (ratio115) failed:", error);
+                    }
+                }
+            } else if (variation === 'ratio151') {
+                if (isFilled.contentRelationship(primary.project_three)) {
+                    try {
+                        newData.three = await client.getByID(primary.project_three.id) as Content.FeaturedProjectDocument;
+                    } catch (error) {
+                        console.error("Fetch project_three (ratio151) failed:", error);
+                    }
+                }
+                if (isFilled.contentRelationship(primary.project_four)) {
+                    try {
+                        newData.four = await client.getByID(primary.project_four.id) as Content.FeaturedProjectDocument;
+                    } catch (error) {
+                        console.error("Fetch project_four (ratio151) failed:", error);
+                    }
+                }
             }
 
             setProjectData(newData);
