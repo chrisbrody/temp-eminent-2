@@ -86,7 +86,8 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
             ? asText(projectDoc.data.project_title)
             : projectDoc.uid || "View Project";
 
-        const location = projectDoc.data.project_location?.[0]?.text;
+        const location = isFilled.richText(projectDoc.data.project_location)
+            ? asText(projectDoc.data.project_location) : null
         const imageUrl = projectDoc.data.project_image?.url;
 
         return (
