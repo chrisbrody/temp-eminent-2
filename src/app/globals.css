@@ -49,6 +49,10 @@ h1, h2, h3, h4, h5, h6 {
   --tw-border-opacity: 1;
   border-color: rgb(153 101 21 / var(--tw-border-opacity));
 }
+.text-black-500 {
+  --tw-text-opacity: 1;
+  color: rgb(121 121 121 / var(--tw-text-opacity));
+}
 .text-black-700 {
   --tw-text-opacity: 1;
   color: rgb(92 92 86 / var(--tw-text-opacity));

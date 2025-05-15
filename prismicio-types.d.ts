@@ -14,6 +14,17 @@ type FeaturedProjectDocumentDataSlicesSlice =
  */
 interface FeaturedProjectDocumentData {
   /**
+   * Featured Project Image field in *Featured Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_project.project_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  project_image: prismic.ImageField<never>;
+
+  /**
    * Project Title field in *Featured Project*
    *
    * - **Field Type**: Rich Text
@@ -25,37 +36,33 @@ interface FeaturedProjectDocumentData {
   project_title: prismic.RichTextField;
 
   /**
-   * Location field in *Featured Project*
+   * Project Location field in *Featured Project*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: featured_project.location
+   * - **API ID Path**: featured_project.project_location
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  location: prismic.RichTextField;
+  project_location: prismic.RichTextField;
 
   /**
-   * Tag field in *Featured Project*
+   * Project Filter Tag field in *Featured Project*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
-   * - **API ID Path**: featured_project.tag
+   * - **Default Value**: Kitchen Design
+   * - **API ID Path**: featured_project.project_tag
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  tag: prismic.KeyTextField;
-
-  /**
-   * Featured Image field in *Featured Project*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_project.featured_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  featured_image: prismic.ImageField<never>;
+  project_tag: prismic.SelectField<
+    | "Kitchen Design"
+    | "Remodeling Design"
+    | "New Home Design"
+    | "Interior Design",
+    "filled"
+  >;
 
   /**
    * Slice Zone field in *Featured Project*

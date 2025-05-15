@@ -5,6 +5,7 @@ import { Content, isFilled, asText } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `FeaturedProjects`.
@@ -36,12 +37,15 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
             const client = createClient();
             const newData: typeof projectData = {};
 
+
             if (isRatio115Slice(slice)) {
+                console.log(slice.primary)
                 if (isFilled.contentRelationship(slice.primary.project_one)) {
                     try {
                         newData.one = await client.getByID(slice.primary.project_one.id) as Content.FeaturedProjectDocument;
+                        console.log(newData.one)
                     } catch (error) {
-                        console.error("Fetch project_one (ratio115) failed:", error);
+                        console.error("Fetch project_onw (ratio115) failed:", error);
                     }
                 }
                 if (isFilled.contentRelationship(slice.primary.project_two)) {
@@ -67,7 +71,6 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
                     }
                 }
             }
-
             setProjectData(newData);
         };
 
@@ -78,28 +81,49 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
 
     const renderProjectLinkContent = (projectDoc: Content.FeaturedProjectDocument | undefined) => {
         if (!projectDoc) return null;
-        if (isFilled.richText(projectDoc.data.project_title)) {
-            return asText(projectDoc.data.project_title);
-        }
-        return projectDoc.uid || "View Project";
+
+        const title = isFilled.richText(projectDoc.data.project_title)
+            ? asText(projectDoc.data.project_title)
+            : projectDoc.uid || "View Project";
+
+        const location = projectDoc.data.project_location?.[0]?.text;
+        const imageUrl = projectDoc.data.project_image?.url;
+
+        return (
+            <div>
+                {imageUrl && (
+                    <div className="rounded overflow-hidden h-[300px] w-full">
+                        <img
+                            src={imageUrl}
+                            alt={title}
+                            className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
+                        />
+                    </div>
+                )}
+                <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-6 mb-2 font-ivar-display">{title}</div>
+                {location && (
+                    <div className="text-[18px] lg:text-xl text-black-500">{location}</div>
+                )}
+            </div>
+        );
     };
 
     return (
         <section
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
-            className="my-12 px-4 md:px-6 lg:px-8"
+            className="my-12 px-4 md:px-6 lg:px-8 mx-auto w-full max-w-6xl"
         >
-            <div className="space-y-6">
+            <div className="space-y-6 flex gap-6">
                 {isRatio115Slice(slice) && (
                     <>
                         {one && (
-                            <PrismicNextLink document={one} className="text-xl text-blue-600 hover:underline block">
+                            <PrismicNextLink document={one} className="block flex-[2] mb-0">
                                 {renderProjectLinkContent(one)}
                             </PrismicNextLink>
                         )}
                         {two && (
-                            <PrismicNextLink document={two} className="text-xl text-blue-600 hover:underline block">
+                            <PrismicNextLink document={two} className="block flex-[3] mb-0">
                                 {renderProjectLinkContent(two)}
                             </PrismicNextLink>
                         )}
@@ -109,12 +133,12 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ slice }) => {
                 {isRatio151Slice(slice) && (
                     <>
                         {three && (
-                            <PrismicNextLink document={three} className="text-xl text-blue-600 hover:underline block">
+                            <PrismicNextLink document={three} className="block flex-[3] mb-0">
                                 {renderProjectLinkContent(three)}
                             </PrismicNextLink>
                         )}
                         {four && (
-                            <PrismicNextLink document={four} className="text-xl text-blue-600 hover:underline block">
+                            <PrismicNextLink document={four} className="tblock flex-[2] mb-0">
                                 {renderProjectLinkContent(four)}
                             </PrismicNextLink>
                         )}

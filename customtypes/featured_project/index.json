@@ -12,6 +12,14 @@
           "label": "UID"
         }
       },
+      "project_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Project Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "project_title": {
         "type": "StructuredText",
         "config": {
@@ -21,28 +29,27 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "location": {
+      "project_location": {
         "type": "StructuredText",
         "config": {
-          "label": "Location",
+          "label": "Project Location",
           "placeholder": "",
           "allowTargetBlank": false,
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "tag": {
-        "type": "Text",
+      "project_tag": {
+        "type": "Select",
         "config": {
-          "label": "Tag",
-          "placeholder": ""
-        }
-      },
-      "featured_image": {
-        "type": "Image",
-        "config": {
-          "label": "Featured Image",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Project Filter Tag",
+          "placeholder": "",
+          "options": [
+            "Kitchen Design",
+            "Remodeling Design",
+            "New Home Design",
+            "Interior Design"
+          ],
+          "default_value": "Kitchen Design"
         }
       },
       "slices": {
