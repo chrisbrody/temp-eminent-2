@@ -20,6 +20,13 @@
             "thumbnails": []
           }
         },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -62,6 +69,13 @@
             "label": "Image (optional)",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
           }
         },
         "title": {
@@ -164,6 +178,13 @@
             "thumbnails": []
           }
         },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -206,6 +227,13 @@
             "label": "Main Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
           }
         },
         "title": {

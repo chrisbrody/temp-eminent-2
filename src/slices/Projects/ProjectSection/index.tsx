@@ -37,7 +37,7 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
     // Render different layouts based on the variation ID
     switch (variation) {
         case "default": // "NarrativeBlock"
-            console.log(primary.tag, isFilled.keyText(primary.tag))
+        case "narrativeBlockWidth80": // "Narrative Block Width 80"
             return (
                 <section {...sectionBaseProps} aria-label="Narrative Block Section">
                     <Bounded>
@@ -49,6 +49,11 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
                                         className=""
                                         imgixParams={{ar: "4:3", fit: "crop"}}
                                     />
+                                )}
+                                {isFilled.keyText(slice.primary.image_caption) && (
+                                    <p className="text-black-900 opacity-90 text-center font-gtAmerica">
+                                        {slice.primary.image_caption}
+                                    </p>
                                 )}
                             </div>
                             <div className="flex gap-x-8">
@@ -81,8 +86,8 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
         case "fullWidthText": // Image and Text width 100%
         case "imageAndTextWidth80": // Image and Text width 80%
             return (
-                <section {...sectionBaseProps} aria-label="Full Width Text Section">
-                    <Bounded widthClass={slice.variation === "imageAndTextWidth80" ? "max-w-5xl" : "" }>
+                <section {...sectionBaseProps} aria-label={slice.variation === "imageAndTextWidth80" ? "Image and Text width 80%" : "Image and Text width 100%"}>
+                    <Bounded widthClass={slice.variation === "imageAndTextWidth80" ? "max-w-5xl" : ""}>
                         {isFilled.image(primary.image) && (
                             <div className="mb-2">
                                 <PrismicNextImage
@@ -145,46 +150,6 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
                 </section>
             );
 
-        case "narrativeBlockWidth80": // "Narrative Block Width 80"
-            return (
-                <section {...sectionBaseProps} aria-label="Narrative Block Width 80%">
-                    <Bounded widthClass="max-w-5xl">
-                        <div className="grid grid-cols-1 items-center">
-                            <div>
-                                {isFilled.image(primary.image) && (
-                                    <PrismicNextImage
-                                        field={primary.image}
-                                        className=""
-                                        imgixParams={{ar: "4:3", fit: "crop"}}
-                                    />
-                                )}
-                            </div>
-                            <div className="flex gap-x-8">
-                                <div className="w-[70%]">
-                                    {isFilled.richText(primary.title) && (
-                                        <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
-                                            <PrismicRichText field={primary.title}/>
-                                        </div>
-                                    )}
-                                    {isFilled.richText(primary.description) && (
-                                        <div className="text-base md:text-xl text-left text-black-700">
-                                            <PrismicRichText field={primary.description}/>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="w-[30%]">
-                                    {isFilled.keyText(primary.tag) && (
-                                        <div className="flex items-center mt-15 justify-end">
-                                            <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
-                                            <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </Bounded>
-                </section>
-            );
         case "showcaseImagesWithCaption": // "Showcase Images with Caption"
             return (
                 <section {...sectionBaseProps} aria-label="Showcase Images with Caption">

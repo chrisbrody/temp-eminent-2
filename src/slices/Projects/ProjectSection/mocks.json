@@ -52,6 +52,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "fruit",
 				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "impossible",
+				"type": "Text"
 			}
 		},
 		"items": []
@@ -108,6 +113,11 @@
 			"tag": {
 				"__TYPE__": "FieldContent",
 				"value": "measure",
+				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "seldom",
 				"type": "Text"
 			}
 		},
@@ -263,6 +273,78 @@
 				"__TYPE__": "FieldContent",
 				"value": "proper",
 				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "theory",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "splitContentTextLeft",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+					"width": 3168,
+					"height": 4752
+				},
+				"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+				"width": 3168,
+				"height": 4752,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "difference",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sit amet dolore mollit cillum ullamco consectetur. Sint do ipsum sit qui dolore. Qui est reprehenderit ipsum magna deserunt consequat sint sit aliqua exercitation."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolore sit exercitation anim incididunt dolore do officia consectetur nostrud velit."
+						}
+					}
+				]
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "earth",
+				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "paid",
+				"type": "Text"
 			}
 		},
 		"items": [
@@ -365,68 +447,6 @@
 						}
 					}
 				]
-			}
-		},
-		"items": [
-			{
-				"__TYPE__": "GroupItemContent",
-				"value": []
-			}
-		]
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "splitContentTextLeft",
-		"primary": {
-			"image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
-					"width": 3168,
-					"height": 4752
-				},
-				"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
-				"width": 3168,
-				"height": 4752,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "difference",
-				"credits": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Sit amet dolore mollit cillum ullamco consectetur. Sint do ipsum sit qui dolore. Qui est reprehenderit ipsum magna deserunt consequat sint sit aliqua exercitation."
-						}
-					}
-				]
-			},
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Dolore sit exercitation anim incididunt dolore do officia consectetur nostrud velit."
-						}
-					}
-				]
-			},
-			"tag": {
-				"__TYPE__": "FieldContent",
-				"value": "earth",
-				"type": "Text"
 			}
 		},
 		"items": [

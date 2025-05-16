@@ -57,6 +57,10 @@ h1, h2, h3, h4, h5, h6 {
   --tw-text-opacity: 1;
   color: rgb(92 92 86 / var(--tw-text-opacity));
 }
+.text-black-900 {
+  --tw-text-opacity: 1;
+  color: rgb(52 52 46 / var(--tw-text-opacity));
+}
 
 /* Menu */
 nav.main-nav a {

@@ -1303,6 +1303,16 @@ export interface ProjectSectionSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
+   * Image Caption (optional) field in *ProjectSection → Narrative Block width 100% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.default.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
    * Title field in *ProjectSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1359,6 +1369,16 @@ export interface ProjectSectionSliceNarrativeBlockWidth80Primary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Image Caption (optional) field in *ProjectSection → Narrative Block  Width 80% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.narrativeBlockWidth80.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
 
   /**
    * Title field in *ProjectSection → Narrative Block  Width 80% → Primary*
@@ -1497,6 +1517,16 @@ export interface ProjectSectionSliceSplitContentPrimary {
   image: prismic.ImageField<never>;
 
   /**
+   * Image Caption (optional) field in *ProjectSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContent.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
    * Title field in *ProjectSection → Split Content text Right → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1539,6 +1569,75 @@ export type ProjectSectionSliceSplitContent = prismic.SharedSliceVariation<
   Simplify<ProjectSectionSliceSplitContentPrimary>,
   never
 >;
+
+/**
+ * Primary content in *ProjectSection → Split Content text Left → Primary*
+ */
+export interface ProjectSectionSliceSplitContentTextLeftPrimary {
+  /**
+   * Main Image field in *ProjectSection → Split Content text Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContentTextLeft.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Caption (optional) field in *ProjectSection → Split Content text Left → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContentTextLeft.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
+   * Title field in *ProjectSection → Split Content text Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContentTextLeft.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *ProjectSection → Split Content text Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContentTextLeft.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Tag (optional) field in *ProjectSection → Split Content text Left → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.splitContentTextLeft.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Split Content text Left variation for ProjectSection Slice
+ *
+ * - **API ID**: `splitContentTextLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSectionSliceSplitContentTextLeft =
+  prismic.SharedSliceVariation<
+    "splitContentTextLeft",
+    Simplify<ProjectSectionSliceSplitContentTextLeftPrimary>,
+    never
+  >;
 
 /**
  * Primary content in *ProjectSection → Before and After Basic → Primary*
@@ -1620,65 +1719,6 @@ export type ProjectSectionSliceShowcaseImagesWithCaption =
   >;
 
 /**
- * Primary content in *ProjectSection → Split Content text Left → Primary*
- */
-export interface ProjectSectionSliceSplitContentTextLeftPrimary {
-  /**
-   * Main Image field in *ProjectSection → Split Content text Left → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.splitContentTextLeft.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Title field in *ProjectSection → Split Content text Left → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.splitContentTextLeft.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * Description field in *ProjectSection → Split Content text Left → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.splitContentTextLeft.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Tag (optional) field in *ProjectSection → Split Content text Left → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.splitContentTextLeft.primary.tag
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  tag: prismic.KeyTextField;
-}
-
-/**
- * Split Content text Left variation for ProjectSection Slice
- *
- * - **API ID**: `splitContentTextLeft`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProjectSectionSliceSplitContentTextLeft =
-  prismic.SharedSliceVariation<
-    "splitContentTextLeft",
-    Simplify<ProjectSectionSliceSplitContentTextLeftPrimary>,
-    never
-  >;
-
-/**
  * Slice variation for *ProjectSection*
  */
 type ProjectSectionSliceVariation =
@@ -1687,8 +1727,8 @@ type ProjectSectionSliceVariation =
   | ProjectSectionSliceFullWidthText
   | ProjectSectionSliceImageAndTextWidth80
   | ProjectSectionSliceSplitContent
-  | ProjectSectionSliceShowcaseImagesWithCaption
-  | ProjectSectionSliceSplitContentTextLeft;
+  | ProjectSectionSliceSplitContentTextLeft
+  | ProjectSectionSliceShowcaseImagesWithCaption;
 
 /**
  * ProjectSection Shared Slice
@@ -1799,16 +1839,16 @@ declare module "@prismicio/client" {
       ProjectSectionSliceFullWidthTextPrimary,
       ProjectSectionSliceImageAndTextWidth80Primary,
       ProjectSectionSliceSplitContentPrimary,
-      ProjectSectionSliceShowcaseImagesWithCaptionPrimary,
       ProjectSectionSliceSplitContentTextLeftPrimary,
+      ProjectSectionSliceShowcaseImagesWithCaptionPrimary,
       ProjectSectionSliceVariation,
       ProjectSectionSliceDefault,
       ProjectSectionSliceNarrativeBlockWidth80,
       ProjectSectionSliceFullWidthText,
       ProjectSectionSliceImageAndTextWidth80,
       ProjectSectionSliceSplitContent,
-      ProjectSectionSliceShowcaseImagesWithCaption,
       ProjectSectionSliceSplitContentTextLeft,
+      ProjectSectionSliceShowcaseImagesWithCaption,
     };
   }
 }
