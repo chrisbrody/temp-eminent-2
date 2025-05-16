@@ -17,6 +17,7 @@ const ProjectHeader: FC<ProjectHeaderProps> = ({ slice }) => {
 
     const formattedDate = isFilled.date(project_date)
         ? new Intl.DateTimeFormat("en-US", {
+            timeZone: "UTC",
             year: "numeric",
             month: "long",
             day: "numeric",
