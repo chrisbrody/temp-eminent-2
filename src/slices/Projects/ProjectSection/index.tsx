@@ -78,10 +78,11 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                 </section>
             );
 
-        case "fullWidthText": // "Full Width Text"
+        case "fullWidthText": // Image and Text width 100%
+        case "imageAndTextWidth80": // Image and Text width 80%
             return (
                 <section {...sectionBaseProps} aria-label="Full Width Text Section">
-                    <Bounded>
+                    <Bounded widthClass={slice.variation === "imageAndTextWidth80" ? "max-w-5xl" : "" }>
                         {isFilled.image(primary.image) && (
                             <div className="mb-2">
                                 <PrismicNextImage

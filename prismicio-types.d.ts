@@ -1347,11 +1347,11 @@ export type ProjectSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ProjectSection → Full Width Text → Primary*
+ * Primary content in *ProjectSection → Image and Text width 100% → Primary*
  */
 export interface ProjectSectionSliceFullWidthTextPrimary {
   /**
-   * Main Image field in *ProjectSection → Full Width Text → Primary*
+   * Main Image field in *ProjectSection → Image and Text width 100% → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1361,7 +1361,7 @@ export interface ProjectSectionSliceFullWidthTextPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Description field in *ProjectSection → Full Width Text → Primary*
+   * Description field in *ProjectSection → Image and Text width 100% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -1372,7 +1372,7 @@ export interface ProjectSectionSliceFullWidthTextPrimary {
 }
 
 /**
- * Full Width Text variation for ProjectSection Slice
+ * Image and Text width 100% variation for ProjectSection Slice
  *
  * - **API ID**: `fullWidthText`
  * - **Description**: Default
@@ -1581,6 +1581,45 @@ export type ProjectSectionSliceShowcaseImagesWithCaption =
   >;
 
 /**
+ * Primary content in *ProjectSection → Image and Text width 80% → Primary*
+ */
+export interface ProjectSectionSliceImageAndTextWidth80Primary {
+  /**
+   * Main Image field in *ProjectSection → Image and Text width 80% → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.imageAndTextWidth80.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *ProjectSection → Image and Text width 80% → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.imageAndTextWidth80.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Image and Text width 80% variation for ProjectSection Slice
+ *
+ * - **API ID**: `imageAndTextWidth80`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSectionSliceImageAndTextWidth80 =
+  prismic.SharedSliceVariation<
+    "imageAndTextWidth80",
+    Simplify<ProjectSectionSliceImageAndTextWidth80Primary>,
+    never
+  >;
+
+/**
  * Slice variation for *ProjectSection*
  */
 type ProjectSectionSliceVariation =
@@ -1588,7 +1627,8 @@ type ProjectSectionSliceVariation =
   | ProjectSectionSliceFullWidthText
   | ProjectSectionSliceSplitContent
   | ProjectSectionSliceNarrativeBlockWidth80
-  | ProjectSectionSliceShowcaseImagesWithCaption;
+  | ProjectSectionSliceShowcaseImagesWithCaption
+  | ProjectSectionSliceImageAndTextWidth80;
 
 /**
  * ProjectSection Shared Slice
@@ -1699,12 +1739,14 @@ declare module "@prismicio/client" {
       ProjectSectionSliceSplitContentPrimary,
       ProjectSectionSliceNarrativeBlockWidth80Primary,
       ProjectSectionSliceShowcaseImagesWithCaptionPrimary,
+      ProjectSectionSliceImageAndTextWidth80Primary,
       ProjectSectionSliceVariation,
       ProjectSectionSliceDefault,
       ProjectSectionSliceFullWidthText,
       ProjectSectionSliceSplitContent,
       ProjectSectionSliceNarrativeBlockWidth80,
       ProjectSectionSliceShowcaseImagesWithCaption,
+      ProjectSectionSliceImageAndTextWidth80,
     };
   }
 }
