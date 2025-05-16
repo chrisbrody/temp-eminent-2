@@ -1,8 +1,9 @@
 // app/blog/page.tsx
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { asText, isFilled, Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
+import type { Metadata } from "next";
 import { components } from "@/slices";
 import { Bounded } from "@/components/Bounded";
 import {undefined} from "io-ts";
@@ -17,30 +18,42 @@ interface BlogPageDocument extends Content.PageDocument { // Assuming PageDocume
 }
 
 
-export async function generateMetadata(): Promise<{
-    description: string;
-    title: string | null;
-    openGraph: { images: { url: any }[]; title: string | null }
-}> {
+export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
-    // Fetch the "Page" document with UID "blog" for metadata
     const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
         .catch(() => null);
 
+    const defaultTitle = "Blog"; // Define a default title
+    const defaultDescription = "Read our latest articles and insights."; // Define a default description
+
     if (!pageContent) {
         return {
-            openGraph: {images: [], title: undefined},
-            title: "Blog",
-            description: "Read our latest articles and insights."
+            title: defaultTitle,
+            description: defaultDescription,
+            openGraph: {
+                title: defaultTitle, // Use the default string title
+                description: defaultDescription, // Add description here too
+                images: [], // Default to no images if pageContent is not found
+            },
         };
     }
 
+    // Determine the title for the page and OpenGraph
+    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.richText(pageContent.data.title) ? asText(pageContent.data.title) : defaultTitle);
+
+    // Determine the description for the page and OpenGraph
+    const pageSpecificDescription = pageContent.data.meta_description || defaultDescription;
+
+    // Determine OpenGraph images
+    const ogImages = pageContent.data.meta_image?.url ? [{ url: pageContent.data.meta_image.url }] : [];
+
     return {
-        title: pageContent.data.meta_title || (isFilled.richText(pageContent.data.title) ? asText(pageContent.data.title) : "Blog"),
-        description: pageContent.data.meta_description || "",
+        title: pageSpecificTitle,
+        description: pageSpecificDescription,
         openGraph: {
-            title: pageContent.data.meta_title || (isFilled.richText(pageContent.data.title) ? asText(pageContent.data.title) : "Blog"),
-            images: pageContent.data.meta_image?.url ? [{ url: pageContent.data.meta_image.url }] : [],
+            title: pageSpecificTitle, // Use the determined title (which will be a string)
+            description: pageSpecificDescription, // Add description here
+            images: ogImages,
         },
     };
 }
@@ -103,39 +116,52 @@ export default async function BlogIndexPage() {
 
             {/* Section for listing individual blog posts */}
             <Bounded yPadding="lg" className="blog-posts-listing">
-                {/* You could also have a title for this section come from the pageContent.data if desired */}
-                <div className="grid gap-8 md:gap-12">
+                {/* Optional: Title for the "Latest Articles" section, could also come from a Slice */}
+                {/* <h2 className="text-3xl md:text-4xl font-ivar-display font-semibold mb-12 text-center">
+                    Latest Articles
+                </h2> */}
+                <div className="space-y-12 md:space-y-16"> {/* Space between blog post items */}
                     {individualBlogPosts.map((post) => (
-                        <article key={post.id} className="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                            {isFilled.richText(post.data.blog_title) && (
-                                <h3 className="text-2xl font-ivar-display font-semibold mb-2">
-                                    <PrismicNextLink document={post}>
-                                        {asText(post.data.blog_title)}
+                        <article key={post.id} className="flex flex-col md:flex-row md:gap-8 items-start">
+                            {/* Image Column */}
+                            {isFilled.image(post.data.blog_image) && (
+                                <div className="w-full md:w-2/5 lg:w-1/3 md:flex-shrink-0 mb-4 md:mb-0">
+                                    <PrismicNextLink document={post} className="block aspect-[4/3] overflow-hidden rounded-md shadow-md hover:shadow-lg transition-shadow">
+                                        <PrismicNextImage
+                                            field={post.data.blog_image}
+                                            alt={post.data.blog_image.alt || ""} // Ensure alt text
+                                            className="w-full h-full object-cover"
+                                            imgixParams={{ ar: "4:3", fit: "crop" }} // Enforce aspect ratio via Imgix
+                                        />
                                     </PrismicNextLink>
-                                </h3>
-                            )}
-                            {isFilled.image(post.data.blog_image) && post.data.blog_image.url && (
-                                <PrismicNextLink document={post} className="block mb-4">
-                                    <img
-                                        src={post.data.blog_image.url}
-                                        alt={post.data.blog_image.alt || ""}
-                                        className="w-full h-48 object-cover rounded"
-                                    />
-                                </PrismicNextLink>
-                            )}
-                            {isFilled.richText(post.data.blog_description) && (
-                                <div className="text-black-700 mb-4 line-clamp-3">
-                                    {asText(post.data.blog_description)}
                                 </div>
                             )}
-                            {isFilled.date(post.data.blog_date) && (
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(new Date(post.data.blog_date))}
-                                </p>
-                            )}
-                            <PrismicNextLink document={post} className="text-gold-900 hover:underline font-semibold">
-                                Read more →
-                            </PrismicNextLink>
+
+                            {/* Text Content Column */}
+                            <div className="w-full md:w-3/5 lg:w-2/3 flex flex-col">
+                                {isFilled.richText(post.data.blog_title) && (
+                                    <h3 className="text-2xl lg:text-3xl font-ivar-display font-semibold mb-2 text-charcoal">
+                                        <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
+                                            {asText(post.data.blog_title)}
+                                        </PrismicNextLink>
+                                    </h3>
+                                )}
+                                {isFilled.richText(post.data.blog_description) && (
+                                    <div className="text-black-700 text-base mb-4 line-clamp-3 md:line-clamp-4">
+                                        {asText(post.data.blog_description)}
+                                    </div>
+                                )}
+                                <div className="mt-auto"> {/* Pushes content below to the bottom */}
+                                    <PrismicNextLink document={post} className="text-gold-900 hover:text-gold-700 text-sm font-semibold inline-block mb-3 transition-colors">
+                                        Read More »
+                                    </PrismicNextLink>
+                                    {isFilled.date(post.data.blog_date) && (
+                                        <p className="text-sm text-gray-500">
+                                            {new Intl.DateTimeFormat("en-US", { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(post.data.blog_date))}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
                         </article>
                     ))}
                 </div>
