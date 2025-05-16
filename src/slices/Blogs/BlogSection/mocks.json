@@ -1,0 +1,48 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+					"width": 3456,
+					"height": 4320
+				},
+				"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+				"width": 3456,
+				"height": 4320,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "usual",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "quiet",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolor eu ut quis adipisicing reprehenderit et reprehenderit id irure sint fugiat fugiat eiusmod. Veniam minim velit elit minim occaecat veniam eu nostrud amet ullamco ullamco. Qui ad et eu laborum ex aliquip elit."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

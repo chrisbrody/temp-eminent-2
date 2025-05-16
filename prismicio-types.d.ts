@@ -1968,6 +1968,71 @@ export type BlogOwnerSlice = prismic.SharedSlice<
   BlogOwnerSliceVariation
 >;
 
+/**
+ * Primary content in *BlogSection → Default → Primary*
+ */
+export interface BlogSectionSliceDefaultPrimary {
+  /**
+   * Image field in *BlogSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *BlogSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *BlogSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BlogSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogSection*
+ */
+type BlogSectionSliceVariation = BlogSectionSliceDefault;
+
+/**
+ * BlogSection Shared Slice
+ *
+ * - **API ID**: `blog_section`
+ * - **Description**: BlogSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogSectionSlice = prismic.SharedSlice<
+  "blog_section",
+  BlogSectionSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2086,6 +2151,10 @@ declare module "@prismicio/client" {
       BlogOwnerSliceDefaultPrimary,
       BlogOwnerSliceVariation,
       BlogOwnerSliceDefault,
+      BlogSectionSlice,
+      BlogSectionSliceDefaultPrimary,
+      BlogSectionSliceVariation,
+      BlogSectionSliceDefault,
     };
   }
 }
