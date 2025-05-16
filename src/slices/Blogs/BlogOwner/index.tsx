@@ -1,6 +1,7 @@
 import {FC, JSX} from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `BlogOwner`.
