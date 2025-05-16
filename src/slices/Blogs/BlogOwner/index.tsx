@@ -27,6 +27,7 @@ const BlogOwner: ({slice}: { slice: any }) => (null | JSX.Element) = ({ slice })
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="text-center mt-8"
     >
       {image?.url && (
           <PrismicNextImage
@@ -37,8 +38,8 @@ const BlogOwner: ({slice}: { slice: any }) => (null | JSX.Element) = ({ slice })
               imgixParams={{ ar: "1:1", fit: "crop" }}
           />
       )}
-      <h3 className="mt-3 capitalize text-base">{name}</h3>
-      <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
+      <h3 className="mt-3 capitalize text-base md:text-lg font-gtAmerica">{name}</h3>
+      <p className="mt-1 capitalize text-base md:text-base opacity-60 font-gtAmerica">{title}</p>
     </section>
   );
 };
