@@ -1,3 +1,4 @@
+// slices/Blogs/BlogOwner/index.tsx
 import {FC, JSX} from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";

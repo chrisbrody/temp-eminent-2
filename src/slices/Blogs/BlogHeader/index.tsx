@@ -1,3 +1,4 @@
+// slices/Blogs/BlogHeader/index.tsx
 import {FC, JSX} from "react";
 import { Content, isFilled, asDate } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
