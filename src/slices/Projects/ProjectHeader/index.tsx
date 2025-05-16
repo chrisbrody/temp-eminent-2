@@ -1,7 +1,7 @@
 // src/slices/Projects/ProjectHeader/index.tsx
-import { FC } from "react";
+import {FC, JSX} from "react";
 import { Content, isFilled, asDate } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react"; // PrismicText is not needed for Key Text fields
+import { SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `ProjectHeader`.
@@ -12,7 +12,7 @@ export type ProjectHeaderProps =
 /**
  * Component for "ProjectHeader" Slices.
  */
-const ProjectHeader: FC<ProjectHeaderProps> = ({ slice }) => {
+const ProjectHeader: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
     const { project_category, project_title, project_date, project_location } = slice.primary;
 
     const formattedDate = isFilled.date(project_date)

@@ -8,6 +8,7 @@ import { cookies } from 'next/headers';
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import Link from "next/link";
 
 type PageParams = { uid: string };
 interface PageProps { params: Promise<PageParams>; }
@@ -71,36 +72,31 @@ export default async function BlogPostPage({ params }: PageProps) {
             : null;
 
         return (
-            <article className="py-8 md:py-12">
-                <div className="mx-auto w-full max-w-3xl px-4 md:px-6">
-                    {isFilled.richText(page.data.blog_title) && (
-                        <h1 className="text-3xl md:text-5xl font-ivar-display font-bold mb-4">
-                            {/* Using asText for h1, assuming simple title */}
-                            {asText(page.data.blog_title)}
-                        </h1>
-                    )}
-
-                    {publicationDate && (
-                        <p className="text-sm text-gray-500 mb-4">Published on {publicationDate}</p>
-                    )}
-
-                    {isFilled.image(page.data.blog_image) && page.data.blog_image.url && (
-                        <img
-                            src={page.data.blog_image.url}
-                            alt={page.data.blog_image.alt || (isFilled.richText(page.data.blog_title) ? asText(page.data.blog_title) : "")}
-                            className="w-full h-auto object-cover rounded-md mb-8"
+            <article>
+                <Link
+                    href="/blog/"
+                    className="back-button text-black-900 text-base md:text-base font-gtAmerica flex items-center underline mx-auto w-full max-w-[1200px] pt-10 pl-4"
+                >
+                    <svg
+                        width="16"
+                        height="14"
+                        viewBox="0 0 16 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mr-2 md:mr-4"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M7.53033 0.46967C7.82322 0.762563 7.82322 1.23744 7.53033 1.53033L2.81066 6.25H15C15.4142 6.25 15.75 6.58579 15.75 7C15.75 7.41421 15.4142 7.75 15 7.75H2.81066L7.53033 12.4697C7.82322 12.7626 7.82322 13.2374 7.53033 13.5303C7.23744 13.8232 6.76256 13.8232 6.46967 13.5303L0.46967 7.53033C0.176777 7.23744 0.176777 6.76256 0.46967 6.46967L6.46967 0.46967C6.76256 0.176777 7.23744 0.176777 7.53033 0.46967Z"
+                            fill="#34342E"
                         />
-                    )}
+                    </svg>
+                    Back to Blog
+                </Link>
 
-                    {/* For blog_description, if it's meant to be displayed with formatting: */}
-                    {isFilled.richText(page.data.blog_description) && (
-                        <div className="prose lg:prose-xl mb-8"> {/* Add basic prose styling or your own */}
-                            <PrismicRichText field={page.data.blog_description} />
-                        </div>
-                    )}
+                <SliceZone slices={page.data.slices} components={components} />
 
-                    <SliceZone slices={page.data.slices} components={components} />
-                </div>
             </article>
         );
     } catch (error: any) {
