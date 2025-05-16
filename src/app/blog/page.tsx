@@ -6,7 +6,6 @@ import { SliceZone } from "@prismicio/react";
 import type { Metadata } from "next";
 import { components } from "@/slices";
 import { Bounded } from "@/components/Bounded";
-import {undefined} from "io-ts";
 
 
 interface PageDocumentData extends Content.PageDocumentData {
@@ -31,9 +30,9 @@ export async function generateMetadata(): Promise<Metadata> {
             title: defaultTitle,
             description: defaultDescription,
             openGraph: {
-                title: defaultTitle, // Use the default string title
-                description: defaultDescription, // Add description here too
-                images: [], // Default to no images if pageContent is not found
+                title: defaultTitle,
+                description: defaultDescription,
+                images: [],
             },
         };
     }
@@ -51,8 +50,8 @@ export async function generateMetadata(): Promise<Metadata> {
         title: pageSpecificTitle,
         description: pageSpecificDescription,
         openGraph: {
-            title: pageSpecificTitle, // Use the determined title (which will be a string)
-            description: pageSpecificDescription, // Add description here
+            title: pageSpecificTitle,
+            description: pageSpecificDescription,
             images: ogImages,
         },
     };
@@ -76,19 +75,6 @@ export default async function BlogIndexPage() {
         ],
     });
 
-    // --- CONSOLE LOGGING ---
-    // if (pageContent) {
-    //     console.log("--- 'Page' Document Data (UID: 'blog') ---");
-    //     console.log("ID:", pageContent.id);
-    //     console.log("UID:", pageContent.uid);
-    //     console.log("Type:", pageContent.type);
-    //     console.log("Data Object:", JSON.stringify(pageContent.data, null, 2));
-    //     console.log("Slices:", JSON.stringify(pageContent.data.slices, null, 2));
-    // } else {
-    //     console.log("!!! 'Page' Document (UID: 'blog') not found or failed to fetch. !!!");
-    // }
-
-    // console.log("\n--- Individual Blog Posts Data (Repeatable Type 'blog') ---");
     if (individualBlogPosts && individualBlogPosts.length > 0) {
         individualBlogPosts.forEach((post, index) => {
             console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
@@ -116,11 +102,7 @@ export default async function BlogIndexPage() {
 
             {/* Section for listing individual blog posts */}
             <Bounded yPadding="lg" className="blog-posts-listing">
-                {/* Optional: Title for the "Latest Articles" section, could also come from a Slice */}
-                {/* <h2 className="text-3xl md:text-4xl font-ivar-display font-semibold mb-12 text-center">
-                    Latest Articles
-                </h2> */}
-                <div className="space-y-12 md:space-y-16"> {/* Space between blog post items */}
+                <div className="space-y-12 md:space-y-16">
                     {individualBlogPosts.map((post) => (
                         <article key={post.id} className="flex flex-col md:flex-row md:gap-8 items-start">
                             {/* Image Column */}
@@ -129,9 +111,8 @@ export default async function BlogIndexPage() {
                                     <PrismicNextLink document={post} className="block aspect-[4/3] overflow-hidden rounded-md shadow-md hover:shadow-lg transition-shadow">
                                         <PrismicNextImage
                                             field={post.data.blog_image}
-                                            alt={post.data.blog_image.alt || ""} // Ensure alt text
                                             className="w-full h-full object-cover"
-                                            imgixParams={{ ar: "4:3", fit: "crop" }} // Enforce aspect ratio via Imgix
+                                            imgixParams={{ ar: "4:3", fit: "crop" }}
                                         />
                                     </PrismicNextLink>
                                 </div>
@@ -151,7 +132,7 @@ export default async function BlogIndexPage() {
                                         {asText(post.data.blog_description)}
                                     </div>
                                 )}
-                                <div className="mt-auto"> {/* Pushes content below to the bottom */}
+                                <div className="mt-auto">
                                     <PrismicNextLink document={post} className="text-gold-900 hover:text-gold-700 text-sm font-semibold inline-block mb-3 transition-colors">
                                         Read More »
                                     </PrismicNextLink>
