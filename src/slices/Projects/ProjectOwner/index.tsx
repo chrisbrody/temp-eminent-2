@@ -28,8 +28,8 @@ const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
                 imgixParams={{ ar: "1:1", fit: "crop" }}
             />
         )}
-        <h3 className="text-lg font-semibold">{name}</h3>
-        <p className="text-gray-600">{title}</p>
+        <h3 className="mt-3 capitalize text-base">{name}</h3>
+        <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
       </section>
   );
 };

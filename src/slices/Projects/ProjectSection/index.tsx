@@ -57,7 +57,7 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
                                 )}
                             </div>
                             <div className="flex gap-x-8">
-                                <div className="w-[70%]">
+                                <div className={slice.primary.tag ? "w-[70%]" : "w-[100%]"}>
                                     {isFilled.richText(primary.title) && (
                                         <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
                                             <PrismicRichText field={primary.title}/>
@@ -69,14 +69,14 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
                                         </div>
                                     )}
                                 </div>
-                                <div className="w-[30%]">
-                                    {isFilled.keyText(primary.tag) && (
+                                {isFilled.keyText(primary.tag) && (
+                                    <div className="w-[30%]">
                                         <div className="flex items-center mt-15 justify-end">
                                             <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
                                             <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
                                         </div>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </Bounded>
@@ -87,15 +87,13 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
         case "imageAndTextWidth80": // Image and Text width 80%
             return (
                 <section {...sectionBaseProps} aria-label={slice.variation === "imageAndTextWidth80" ? "Image and Text width 80%" : "Image and Text width 100%"}>
-                    <Bounded widthClass={slice.variation === "imageAndTextWidth80" ? "max-w-5xl" : ""}>
+                    <Bounded widthClass={slice.variation === "imageAndTextWidth80" ? "max-w-5xl" : "max-w-6xl"}>
                         {isFilled.image(primary.image) && (
-                            <div className="mb-2">
-                                <PrismicNextImage
-                                    field={primary.image}
-                                    className=""
-                                    imgixParams={{ar: "4:3", fit: "crop"}}
-                                />
-                            </div>
+                            <PrismicNextImage
+                                field={primary.image}
+                                className=""
+                                imgixParams={{ar: "4:3", fit: "crop"}}
+                            />
                         )}
                         {isFilled.richText(primary.description) && (
                             <div className="prose prose-xl max-w-3xl mx-auto text-center font-gtAmerica">

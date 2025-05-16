@@ -47,6 +47,7 @@ export default async function ProjectPage({ params }: PageProps) {
     const client = createClient({cookies: await cookies()});
 
     const page = await client.getByUID("featured_project", uid, {
+        // does thi actually do anything?
         fetchLinks: [
             'owner.image',
             'owner.name',
@@ -60,7 +61,7 @@ export default async function ProjectPage({ params }: PageProps) {
             <article>
                 <Link
                     href="/projects/"
-                    className="back-button text-black-900 text-base md:text-base font-gtAmerica flex items-center underline mx-auto w-full max-w-[1200px] pt-10"
+                    className="back-button text-black-900 text-base md:text-base font-gtAmerica flex items-center underline mx-auto w-full max-w-[1200px] pt-10 pl-4"
                 >
                     <svg
                         width="16"
@@ -88,7 +89,7 @@ export default async function ProjectPage({ params }: PageProps) {
         ;
 }
 
-// generateStaticParams returns the resolved shape, so this remains the same
+// generateStaticParams returns the resolved shape
 export async function generateStaticParams(): Promise<PageParams[]> {
     const client = createClient();
     const pages = await client.getAllByType("featured_project");
