@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import { cookies } from 'next/headers';
+import Link from "next/link";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
@@ -57,8 +58,10 @@ export default async function ProjectPage({ params }: PageProps) {
     return (
         <>
             <article>
-                <a className="back-button text-black-900 text-base md:text-base font-gtAmerica flex items-center underline mx-auto w-full max-w-[1200px] pt-10"
-                   tabIndex="0" href="/projects/">
+                <Link
+                    href="/projects/"
+                    className="back-button text-black-900 text-base md:text-base font-gtAmerica flex items-center underline mx-auto w-full max-w-[1200px] pt-10"
+                >
                     <svg
                         width="16"
                         height="14"
@@ -75,7 +78,7 @@ export default async function ProjectPage({ params }: PageProps) {
                         />
                     </svg>
                     Back to Projects
-                </a>
+                </Link>
                 <SliceZone slices={page.data.slices} components={components}/>
             </article>
         </>
