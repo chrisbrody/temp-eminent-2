@@ -49,7 +49,6 @@ const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
                         <div className="mb-6 md:mb-8 aspect-[16/9] overflow-hidden">
                           <PrismicNextImage
                               field={image}
-                              alt={image.alt || ""}
                               className="w-full h-full object-cover"
                               imgixParams={{ fit: "crop", ar: "16:9" }}
                           />
