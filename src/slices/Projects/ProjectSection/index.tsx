@@ -36,8 +36,8 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
 
     // Render different layouts based on the variation ID
     switch (variation) {
-        case "default": // "NarrativeBlock"
-        case "narrativeBlockWidth80": // "Narrative Block Width 80"
+        case "default": // "Narrative Block width 100%"
+        case "narrativeBlockWidth80": // "Narrative Block Width 80%"
             return (
                 <section {...sectionBaseProps} aria-label="Narrative Block Section">
                     <Bounded>
@@ -120,6 +120,11 @@ const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) =
                                         className="shadow-lg w-full"
                                         imgixParams={{ar: "3:4", fit:"crop"}}
                                     />
+                                )}
+                                {isFilled.keyText(slice.primary.image_caption) && (
+                                    <figcaption className="flex justify-center items-center mt-1 text-base leading-4 text-center text-black-900 opacity-90 font-gtAmerica">
+                                        {slice.primary.image_caption}
+                                    </figcaption>
                                 )}
                             </div>
                             {/* Column Text Content */}
