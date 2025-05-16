@@ -1,5 +1,5 @@
 // src/slices/Projects/ProjectSection/index.tsx
-import { FC } from "react";
+import {FC, JSX} from "react";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
@@ -17,7 +17,7 @@ export type ProjectSectionProps =
 /**
  * Component for "ProjectSection" Slices.
  */
-const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
+const ProjectSection: ({slice}: { slice: any }) => (JSX.Element) = ({ slice }) => {
     // Destructure for easier access
     const { variation, primary } = slice;
 
@@ -101,13 +101,14 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                 </section>
             );
 
-        case "splitContent": // "Split Content"
+        case "splitContent": // "Split Content text Right"
+        case "splitContentTextLeft": // "Split Content text Left"
             return (
                 <section {...sectionBaseProps} aria-label="Split Content Section">
                     <Bounded widthClass="max-w-5xl">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                            {/* Column 1: Image */}
-                            <div className="md:order-1">
+                            {/* Column Image */}
+                            <div className={slice.variation === "splitContentTextLeft" ? "md:order-2" : "md:order-1"}>
                                 {isFilled.image(primary.image) && (
                                     <PrismicNextImage
                                         field={primary.image}
@@ -116,17 +117,21 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     />
                                 )}
                             </div>
-                            {/* Column 2: Text Content */}
-                            <div className="md:order-2">
-                                {isFilled.keyText(primary.tag) && (
-                                    <div className="flex items-center justify-end">
-                                        <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
-                                        <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
+                            {/* Column Text Content */}
+                            <div className={slice.variation === "splitContentTextLeft" ? "md:order-1" : "md:order-2"}>
+                                {isFilled.richText(primary.title) && (
+                                    <div className="text-2xl lg:text-[32px] text-black-900 uppercase mb-4">
+                                        <PrismicRichText field={primary.title} />
                                     </div>
                                 )}
-                                {isFilled.richText(primary.title) && (
-                                    <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-8 mb-4">
-                                        <PrismicRichText field={primary.title} />
+                                {isFilled.keyText(primary.tag) && (
+                                    <div
+                                        className={`flex items-center mb-4 ${
+                                            slice.variation === "splitContentTextLeft" ? "justify-start" : "justify-end"
+                                        }`}
+                                    >
+                                        <div className="w-24 border-t border-solid border-gold-900 mr-4"></div>
+                                        <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
                                     </div>
                                 )}
                                 {isFilled.richText(primary.description) && (
@@ -195,12 +200,12 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     />
                                 )}
                                 {isFilled.richText(primary.title_one) && (
-                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] font-sans text-black-900 leading-tight">
+                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] text-black-900 leading-tight font-ivar-display">
                                         <PrismicRichText field={primary.title_one}/>
                                     </div>
                                 )}
                                 {isFilled.richText(primary.description_one) && (
-                                    <div className="text-base text-gray-700 leading-relaxed prose prose-sm max-w-none mt-2">
+                                    <div className="text-base leading-relaxed prose prose-sm max-w-none mt-2">
                                         <PrismicRichText field={primary.description_one}/>
                                     </div>
                                 )}
@@ -215,12 +220,12 @@ const ProjectSection: FC<ProjectSectionProps> = ({ slice }) => {
                                     />
                                 )}
                                 {isFilled.richText(primary.title_two) && (
-                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] lg:text-[32px] font-sans text-black-900 leading-tight">
+                                    <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] text-black-900 leading-tight font-ivar-display">
                                         <PrismicRichText field={primary.title_two}/>
                                     </div>
                                 )}
                                 {isFilled.richText(primary.description_two) && (
-                                    <div className="text-base text-gray-700 leading-relaxed prose prose-sm max-w-none mt-2">
+                                    <div className="text-base leading-relaxed prose prose-sm max-w-none mt-2">
                                         <PrismicRichText field={primary.description_two}/>
                                     </div>
                                 )}
