@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   blog_header: dynamic(() => import("./BlogHeader")),
+  blog_owner: dynamic(() => import("./BlogOwner")),
 };

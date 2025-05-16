@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogDocumentDataSlicesSlice = BlogHeaderSlice;
+type BlogDocumentDataSlicesSlice = BlogOwnerSlice | BlogHeaderSlice;
 
 /**
  * Content for Blog documents
@@ -1923,6 +1923,51 @@ export type BlogHeaderSlice = prismic.SharedSlice<
   BlogHeaderSliceVariation
 >;
 
+/**
+ * Primary content in *BlogOwner → Default → Primary*
+ */
+export interface BlogOwnerSliceDefaultPrimary {
+  /**
+   * Owner field in *BlogOwner → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_owner.default.primary.owner
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  owner: prismic.ContentRelationshipField<"owner">;
+}
+
+/**
+ * Default variation for BlogOwner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogOwnerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogOwnerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogOwner*
+ */
+type BlogOwnerSliceVariation = BlogOwnerSliceDefault;
+
+/**
+ * BlogOwner Shared Slice
+ *
+ * - **API ID**: `blog_owner`
+ * - **Description**: BlogOwner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogOwnerSlice = prismic.SharedSlice<
+  "blog_owner",
+  BlogOwnerSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2037,6 +2082,10 @@ declare module "@prismicio/client" {
       BlogHeaderSliceDefaultPrimary,
       BlogHeaderSliceVariation,
       BlogHeaderSliceDefault,
+      BlogOwnerSlice,
+      BlogOwnerSliceDefaultPrimary,
+      BlogOwnerSliceVariation,
+      BlogOwnerSliceDefault,
     };
   }
 }

@@ -50,6 +50,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "blog_owner": {
+              "type": "SharedSlice"
+            },
             "blog_header": {
               "type": "SharedSlice"
             }

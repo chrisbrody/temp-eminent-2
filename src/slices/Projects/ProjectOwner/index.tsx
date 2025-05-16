@@ -1,15 +1,15 @@
-import { FC } from "react";
+import {FC, JSX} from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
 export type ProjectOwnerProps = SliceComponentProps<Content.ProjectOwnerSlice>;
 
-const ProjectOwner: FC<ProjectOwnerProps> = ({ slice }) => {
+const ProjectOwner: ({slice}: { slice: any }) => (null | JSX.Element) = ({ slice }) => {
   const ownerLink = slice.primary.owner;
 
   if (!ownerLink || !('data' in ownerLink)) {
-    return null; // or a fallback UI
+    return null;
   }
 
   const ownerData = ownerLink.data as Content.OwnerDocument['data'];

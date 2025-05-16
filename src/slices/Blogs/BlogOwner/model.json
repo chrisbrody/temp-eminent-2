@@ -1,8 +1,8 @@
 {
-  "id": "project_owner",
+  "id": "blog_owner",
   "type": "SharedSlice",
-  "name": "ProjectOwner",
-  "description": "ProjectOwner",
+  "name": "BlogOwner",
+  "description": "BlogOwner",
   "variations": [
     {
       "id": "default",
@@ -15,10 +15,12 @@
         "owner": {
           "type": "Link",
           "config": {
-            "label": "owner",
+            "label": "Owner",
             "select": "document",
             "repeat": false,
-            "customtypes": ["owner"]
+            "customtypes": [
+              "owner"
+            ]
           }
         }
       },
