@@ -16,7 +16,6 @@ interface BlogPageDocument extends Content.PageDocument { // Assuming PageDocume
     data: PageDocumentData;
 }
 
-
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
     const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
@@ -87,9 +86,6 @@ export default async function BlogIndexPage() {
         // Fallback if the main "Page" (UID "blog") content isn't found
         return (
             <Bounded yPadding="lg">
-                <h1 className="text-4xl md:text-5xl font-ivar-display font-bold mb-8 md:mb-12 text-center">
-                    Our Blog
-                </h1>
                 <p className="text-center">Blog page content is currently unavailable.</p>
             </Bounded>
         );
@@ -107,37 +103,36 @@ export default async function BlogIndexPage() {
                         <article key={post.id} className="flex flex-col md:flex-row md:gap-8 items-start">
                             {/* Image Column */}
                             {isFilled.image(post.data.blog_image) && (
-                                <div className="w-full md:w-2/5 lg:w-1/3 md:flex-shrink-0 mb-4 md:mb-0">
-                                    <PrismicNextLink document={post} className="block aspect-[4/3] overflow-hidden rounded-md shadow-md hover:shadow-lg transition-shadow">
+                                <div className="w-full lg:w-[50vw] xl:w-[40vw] 2xl:w-[30vw] sm:min-w-[400px] lg:min-w-[450px] 2xl:min-w-[576px]">
+                                    <PrismicNextLink document={post} className="overflow-hidden rounded-md shadow-md hover:shadow-lg transition-shadow">
                                         <PrismicNextImage
                                             field={post.data.blog_image}
                                             className="w-full h-full object-cover"
-                                            imgixParams={{ ar: "4:3", fit: "crop" }}
                                         />
                                     </PrismicNextLink>
                                 </div>
                             )}
 
                             {/* Text Content Column */}
-                            <div className="w-full md:w-3/5 lg:w-2/3 flex flex-col">
+                            <div className="max-w-full xl:max-w-[600px] text-base md:text-xl text-black-700 py-5">
                                 {isFilled.richText(post.data.blog_title) && (
-                                    <h3 className="text-2xl lg:text-3xl font-ivar-display font-semibold mb-2 text-charcoal">
+                                    <h3 className="max-w-full xl:max-w-[460px] font-sans text-black-900 text-4xl uppercase leading-10 mb-4">
                                         <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
                                             {asText(post.data.blog_title)}
                                         </PrismicNextLink>
                                     </h3>
                                 )}
                                 {isFilled.richText(post.data.blog_description) && (
-                                    <div className="text-black-700 text-base mb-4 line-clamp-3 md:line-clamp-4">
+                                    <div className="max-w-full xl:max-w-[600px] text-base md:text-xl text-black-700">
                                         {asText(post.data.blog_description)}
                                     </div>
                                 )}
                                 <div className="mt-auto">
-                                    <PrismicNextLink document={post} className="text-gold-900 hover:text-gold-700 text-sm font-semibold inline-block mb-3 transition-colors">
+                                    <PrismicNextLink document={post} className="text-cta flex justify-start items-center font-serif text-[18px] text-gold-900 mt-4 font-gtAmerica mb-4">
                                         Read More »
                                     </PrismicNextLink>
                                     {isFilled.date(post.data.blog_date) && (
-                                        <p className="text-sm text-gray-500">
+                                        <p className="font-normal text-xs sm:text-sm 2xl:text-base leading-5 2xl:leading-[27px] text-black-900 text-opacity-50">
                                             {new Intl.DateTimeFormat("en-US", { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(post.data.blog_date))}
                                         </p>
                                     )}
