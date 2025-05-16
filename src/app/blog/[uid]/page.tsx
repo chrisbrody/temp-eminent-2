@@ -53,8 +53,13 @@ export default async function BlogPostPage({ params }: PageProps) {
     console.log(`[BlogPostPage] Rendering for UID: "${uid}", Type: "${customTypeApiId}"`);
 
     try {
-        const page = await client.getByUID(customTypeApiId, uid)
-            .catch((e) => {
+        const page = await client.getByUID(customTypeApiId, uid, {
+            fetchLinks: [
+                'owner.image',
+                'owner.name',
+                'owner.title',
+            ]
+        }).catch((e) => {
                 console.error(`[BlogPostPage] client.getByUID for type "${customTypeApiId}" and UID "${uid}" threw an error or was not found:`, e.message);
                 notFound();
                 return null;
