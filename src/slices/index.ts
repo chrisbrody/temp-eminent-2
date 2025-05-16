@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 
 import { components as projectSliceComponents } from './Projects';
+import { components as blogsSliceComponents } from './Blogs';
 
 export const components = {
   hero: dynamic(() => import("./Hero")),
@@ -15,4 +16,5 @@ export const components = {
   text_with_image: dynamic(() => import("./TextWithImage")),
 
   ...projectSliceComponents,
+  ...blogsSliceComponents,
 };

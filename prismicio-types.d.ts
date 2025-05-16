@@ -4,6 +4,111 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type BlogDocumentDataSlicesSlice = BlogHeaderSlice;
+
+/**
+ * Content for Blog documents
+ */
+interface BlogDocumentData {
+  /**
+   * Featured Blog  Image field in *Blog*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  blog_image: prismic.ImageField<never>;
+
+  /**
+   * Blog Title field in *Blog*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  blog_title: prismic.RichTextField;
+
+  /**
+   * Blog Description field in *Blog*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  blog_description: prismic.RichTextField;
+
+  /**
+   * Blog Date field in *Blog*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  blog_date: prismic.DateField;
+
+  /**
+   * Slice Zone field in *Blog*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BlogDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blog.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blog.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Blog*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Blog document from Prismic
+ *
+ * - **API ID**: `blog`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
+
 type FeaturedProjectDocumentDataSlicesSlice =
   | ProjectSectionSlice
   | ProjectOwnerSlice
@@ -366,6 +471,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | BlogDocument
   | FeaturedProjectDocument
   | NavigationDocument
   | OwnerDocument
@@ -1742,6 +1848,81 @@ export type ProjectSectionSlice = prismic.SharedSlice<
   ProjectSectionSliceVariation
 >;
 
+/**
+ * Primary content in *BlogHeader → Default → Primary*
+ */
+export interface BlogHeaderSliceDefaultPrimary {
+  /**
+   * Article Eyebrow field in *BlogHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_header.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Article title field in *BlogHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_header.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Article Date field in *BlogHeader → Default → Primary*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_header.default.primary.date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
+   * Article Read Time field in *BlogHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_header.default.primary.read_time
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  read_time: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for BlogHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogHeader*
+ */
+type BlogHeaderSliceVariation = BlogHeaderSliceDefault;
+
+/**
+ * BlogHeader Shared Slice
+ *
+ * - **API ID**: `blog_header`
+ * - **Description**: BlogHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogHeaderSlice = prismic.SharedSlice<
+  "blog_header",
+  BlogHeaderSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1763,6 +1944,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      BlogDocument,
+      BlogDocumentData,
+      BlogDocumentDataSlicesSlice,
       FeaturedProjectDocument,
       FeaturedProjectDocumentData,
       FeaturedProjectDocumentDataSlicesSlice,
@@ -1849,6 +2033,10 @@ declare module "@prismicio/client" {
       ProjectSectionSliceSplitContent,
       ProjectSectionSliceSplitContentTextLeft,
       ProjectSectionSliceShowcaseImagesWithCaption,
+      BlogHeaderSlice,
+      BlogHeaderSliceDefaultPrimary,
+      BlogHeaderSliceVariation,
+      BlogHeaderSliceDefault,
     };
   }
 }

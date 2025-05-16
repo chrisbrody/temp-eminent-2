@@ -1,0 +1,47 @@
+{
+  "id": "blog_header",
+  "type": "SharedSlice",
+  "name": "BlogHeader",
+  "description": "BlogHeader",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Article Eyebrow",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Article title",
+            "placeholder": ""
+          }
+        },
+        "date": {
+          "type": "Date",
+          "config": {
+            "label": "Article Date",
+            "placeholder": ""
+          }
+        },
+        "read_time": {
+          "type": "Text",
+          "config": {
+            "label": "Article Read Time",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
