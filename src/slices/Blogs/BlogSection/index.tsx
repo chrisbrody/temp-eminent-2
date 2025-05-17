@@ -1,5 +1,5 @@
 // slices/Blogs/BlogSection/index.tsx
-import {FC, JSX} from "react";
+import {JSX} from "react";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
@@ -16,8 +16,8 @@ export type BlogSectionProps = SliceComponentProps<Content.BlogSectionSlice>;
  * Component for "BlogSection" Slices.
  */
 const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
-  const { variation, primary } = slice;
-  const { image, title, description } = primary;
+  const { variation, primary, slice_type } = slice;
+  const { image, image_caption, title, description, tag } = primary;
 
   // Function to get the human-readable name
   const getVariationDisplayName = (id: string) => {
@@ -40,36 +40,47 @@ const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
                 <Bounded
                     as="section"
                     yPadding="sm"
-                    data-slice-type={slice.slice_type}
-                    data-slice-variation={slice.variation}
+                    data-slice-type={slice_type}
+                    data-slice-variation={variation}
                     className="blog-section-slice"
                 >
-                  <article className="">
-                    {isFilled.image(image) && (
-                        <div className="mb-6 md:mb-8 aspect-[16/9] overflow-hidden">
-                          <PrismicNextImage
-                              field={image}
-                              className="w-full h-full object-cover"
-                              imgixParams={{ fit: "crop", ar: "16:9" }}
-                          />
-                        </div>
-                    )}
+                    <article className="">
+                        {isFilled.image(image) && (
+                            <div className="aspect-[16/9] overflow-hidden">
+                                <PrismicNextImage
+                                    field={image}
+                                    className="w-full h-full object-cover"
+                                    imgixParams={{fit: "crop", ar: "16:9"}}
+                                />
+                            </div>
+                        )}
+                        <div className="flex gap-x-8">
+                            <div className={tag ? "w-[80%]" : "w-[100%]"}>
+                                {isFilled.keyText(title) && (
+                                    <h2 className="text-2xl lg:text-[32px] text-black-900 uppercase mt-10 mb-6">
+                                        {title}
+                                    </h2>
+                                )}
 
-                    {isFilled.keyText(title) && (
-                        <h2 className="text-2xl lg:text-[32px] text-black-900 uppercase mt-10 mb-6">
-                          {title}
-                        </h2>
-                    )}
-
-                    {isFilled.richText(description) && (
-                        <div className="text-base md:text-xl text-left text-black-700">
-                          <PrismicRichText
-                              field={description}
-                              components={{}}
-                          />
+                                {isFilled.richText(description) && (
+                                    <div className="text-base md:text-xl text-left text-black-700">
+                                        <PrismicRichText
+                                            field={description}
+                                            components={{}}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                            {isFilled.keyText(tag) && (
+                                <div className="w-[20%]">
+                                    <div className="flex items-center mt-15 mr-5 justify-end">
+                                        <div className="w-24 border-t border-solid border-gold-900 ml-6 mr-4"></div>
+                                        <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{tag}</p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    )}
-                  </article>
+                    </article>
                 </Bounded>
               </section>
           )
@@ -80,40 +91,40 @@ const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
                   <Bounded yPadding="sm" widthClass="max-w-6xl">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                           {/* Column Image */}
-                          <div className={slice.variation === "splitContentTextLeft" ? "md:order-2" : "md:order-1"}>
-                              {isFilled.image(primary.image) && (
+                          <div className={variation === "splitContentTextLeft" ? "md:order-2" : "md:order-1"}>
+                              {isFilled.image(image) && (
                                   <PrismicNextImage
-                                      field={primary.image}
+                                      field={image}
                                       className="shadow-lg w-full"
                                       imgixParams={{ar: "3:4", fit:"crop"}}
                                   />
                               )}
-                              {isFilled.keyText(slice.primary.image_caption) && (
+                              {isFilled.keyText(image_caption) && (
                                   <figcaption className="flex justify-center items-center mt-1 text-base leading-4 text-center text-black-900 opacity-90 font-gtAmerica">
-                                      {slice.primary.image_caption}
+                                      {image_caption}
                                   </figcaption>
                               )}
                           </div>
                           {/* Column Text Content */}
-                          <div className={slice.variation === "splitContentTextLeft" ? "md:order-1" : "md:order-2"}>
-                              {isFilled.keyText(primary.tag) && (
+                          <div className={variation === "splitContentTextLeft" ? "md:order-1" : "md:order-2"}>
+                              {isFilled.keyText(tag) && (
                                   <div
                                       className={`flex items-center mt-4 ${
-                                          slice.variation === "splitContentTextLeft" ? "justify-start" : "justify-end"
+                                          variation === "splitContentTextLeft" ? "justify-start" : "justify-end"
                                       }`}
                                   >
                                       <div className="w-24 border-t border-solid border-gold-900 mr-4"></div>
-                                      <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{primary.tag}</p>
+                                      <p className="font-serif text-sm text-gold-900 min-w-fit font-gtAmerica">{tag}</p>
                                   </div>
                               )}
-                              {isFilled.richText(primary.title) && (
+                              {isFilled.richText(title) && (
                                   <div className="text-2xl lg:text-[32px] text-black-900 uppercase mt-10 mb-6">
-                                      <PrismicRichText field={primary.title} />
+                                      <PrismicRichText field={title} />
                                   </div>
                               )}
-                              {isFilled.richText(primary.description) && (
+                              {isFilled.richText(description) && (
                                   <div className="text-base md:text-xl text-left text-black-700 mt-10 mb-6">
-                                      <PrismicRichText field={primary.description} />
+                                      <PrismicRichText field={description} />
                                   </div>
                               )}
                           </div>

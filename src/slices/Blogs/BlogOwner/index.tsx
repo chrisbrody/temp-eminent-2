@@ -20,7 +20,7 @@ const BlogOwner: ({slice}: { slice: any }) => (null | JSX.Element) = ({ slice })
   }
 
   const ownerData = ownerLink.data as Content.OwnerDocument['data'];
-  console.log(ownerData)
+  // console.log(ownerData)
 
   const { name, title, image } = ownerData;
 
