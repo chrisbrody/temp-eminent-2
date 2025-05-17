@@ -2020,9 +2020,80 @@ export type BlogSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *BlogSection → Split Content text Right → Primary*
+ */
+export interface BlogSectionSliceSplitContentTextRightPrimary {
+  /**
+   * Image field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Caption (optional) field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
+   * title field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Tag (optional) field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Split Content text Right variation for BlogSection Slice
+ *
+ * - **API ID**: `splitContentTextRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogSectionSliceSplitContentTextRight =
+  prismic.SharedSliceVariation<
+    "splitContentTextRight",
+    Simplify<BlogSectionSliceSplitContentTextRightPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *BlogSection*
  */
-type BlogSectionSliceVariation = BlogSectionSliceDefault;
+type BlogSectionSliceVariation =
+  | BlogSectionSliceDefault
+  | BlogSectionSliceSplitContentTextRight;
 
 /**
  * BlogSection Shared Slice
@@ -2156,8 +2227,10 @@ declare module "@prismicio/client" {
       BlogOwnerSliceDefault,
       BlogSectionSlice,
       BlogSectionSliceDefaultPrimary,
+      BlogSectionSliceSplitContentTextRightPrimary,
       BlogSectionSliceVariation,
       BlogSectionSliceDefault,
+      BlogSectionSliceSplitContentTextRight,
     };
   }
 }

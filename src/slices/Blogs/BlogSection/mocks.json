@@ -44,5 +44,72 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "splitContentTextRight",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+					"width": 4380,
+					"height": 2895
+				},
+				"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+				"width": 4380,
+				"height": 2895,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "completely",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna adipisicing eiusmod eiusmod incididunt id sunt nisi. Anim aliquip anim commodo aliquip nostrud reprehenderit adipisicing proident ex. Lorem eiusmod esse nisi laborum eiusmod elit duis mollit."
+						}
+					}
+				]
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "happily",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit irure sit laboris pariatur cillum cillum. Veniam quis tempor aliquip ullamco excepteur eiusmod culpa reprehenderit cupidatat voluptate minim ex. Tempor nisi dolor aliqua ea elit dolor incididunt occaecat."
+						}
+					}
+				]
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "perfectly",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
