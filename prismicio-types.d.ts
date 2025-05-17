@@ -1972,11 +1972,11 @@ export type BlogOwnerSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *BlogSection → Default → Primary*
+ * Primary content in *BlogSection → Narrative Block width 100% → Primary*
  */
 export interface BlogSectionSliceDefaultPrimary {
   /**
-   * Image field in *BlogSection → Default → Primary*
+   * Image field in *BlogSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1986,7 +1986,17 @@ export interface BlogSectionSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Title field in *BlogSection → Default → Primary*
+   * Image Caption (optional) field in *BlogSection → Narrative Block width 100% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.default.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
+   * Title field in *BlogSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -1996,7 +2006,7 @@ export interface BlogSectionSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Description field in *BlogSection → Default → Primary*
+   * Description field in *BlogSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -2006,7 +2016,7 @@ export interface BlogSectionSliceDefaultPrimary {
   description: prismic.RichTextField;
 
   /**
-   * Tag (optional) field in *BlogSection → Default → Primary*
+   * Tag (optional) field in *BlogSection → Narrative Block width 100% → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -2017,7 +2027,7 @@ export interface BlogSectionSliceDefaultPrimary {
 }
 
 /**
- * Default variation for BlogSection Slice
+ * Narrative Block width 100% variation for BlogSection Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -2054,7 +2064,7 @@ export interface BlogSectionSliceSplitContentTextRightPrimary {
   image_caption: prismic.KeyTextField;
 
   /**
-   * title field in *BlogSection → Split Content text Right → Primary*
+   * Title field in *BlogSection → Split Content text Right → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -2099,11 +2109,81 @@ export type BlogSectionSliceSplitContentTextRight =
   >;
 
 /**
+ * Primary content in *BlogSection → Narrative Block width 80% → Primary*
+ */
+export interface BlogSectionSliceNarrativeBlockWidth80Primary {
+  /**
+   * Image field in *BlogSection → Narrative Block width 80% → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.narrativeBlockWidth80.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Caption (optional) field in *BlogSection → Narrative Block width 80% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.narrativeBlockWidth80.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
+   * Title field in *BlogSection → Narrative Block width 80% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.narrativeBlockWidth80.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *BlogSection → Narrative Block width 80% → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.narrativeBlockWidth80.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Tag (optional) field in *BlogSection → Narrative Block width 80% → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.narrativeBlockWidth80.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Narrative Block width 80% variation for BlogSection Slice
+ *
+ * - **API ID**: `narrativeBlockWidth80`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogSectionSliceNarrativeBlockWidth80 =
+  prismic.SharedSliceVariation<
+    "narrativeBlockWidth80",
+    Simplify<BlogSectionSliceNarrativeBlockWidth80Primary>,
+    never
+  >;
+
+/**
  * Slice variation for *BlogSection*
  */
 type BlogSectionSliceVariation =
   | BlogSectionSliceDefault
-  | BlogSectionSliceSplitContentTextRight;
+  | BlogSectionSliceSplitContentTextRight
+  | BlogSectionSliceNarrativeBlockWidth80;
 
 /**
  * BlogSection Shared Slice
@@ -2238,9 +2318,11 @@ declare module "@prismicio/client" {
       BlogSectionSlice,
       BlogSectionSliceDefaultPrimary,
       BlogSectionSliceSplitContentTextRightPrimary,
+      BlogSectionSliceNarrativeBlockWidth80Primary,
       BlogSectionSliceVariation,
       BlogSectionSliceDefault,
       BlogSectionSliceSplitContentTextRight,
+      BlogSectionSliceNarrativeBlockWidth80,
     };
   }
 }

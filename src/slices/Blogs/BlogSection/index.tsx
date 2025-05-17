@@ -34,15 +34,16 @@ const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
 
   // Render different layouts based on the variation ID
   switch (variation) {
-    case "default": //  Image with Rich Text
+      case "default": //  Narrative Block Width 100%
+      case "narrativeBlockWidth80": // Narrative Block Width 80%
           return(
-              <section {...sectionBaseProps} aria-label="Image with Rich Text">
+              <section {...sectionBaseProps} aria-label={variation === "narrativeBlockWidth80" ? "Narrative Block Width 80%" : "Narrative Block Width 100%"}>
                 <Bounded
                     as="section"
                     yPadding="sm"
                     data-slice-type={slice_type}
                     data-slice-variation={variation}
-                    className="blog-section-slice"
+                    widthClass={variation === "narrativeBlockWidth80" ? "max-w-5xl" : "max-w-6xl"}
                 >
                     <article className="">
                         {isFilled.image(image) && (
@@ -53,6 +54,11 @@ const BlogSection: ({slice}: { slice: any }) => JSX.Element = ({ slice }) => {
                                     imgixParams={{fit: "crop", ar: "16:9"}}
                                 />
                             </div>
+                        )}
+                        {isFilled.keyText(image_caption) && (
+                            <figcaption className="flex justify-center items-center mt-1 text-base leading-4 text-center text-black-900 opacity-90 font-gtAmerica">
+                                {image_caption}
+                            </figcaption>
                         )}
                         <div className="flex gap-x-8">
                             <div className={tag ? "w-[80%]" : "w-[100%]"}>

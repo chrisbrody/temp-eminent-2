@@ -6,7 +6,7 @@
   "variations": [
     {
       "id": "default",
-      "name": "Default",
+      "name": "Narrative Block width 100%",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -18,6 +18,13 @@
             "label": "Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
           }
         },
         "title": {
@@ -72,10 +79,59 @@
         "title": {
           "type": "StructuredText",
           "config": {
-            "label": "title",
+            "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag (optional)",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "narrativeBlockWidth80",
+      "name": "Narrative Block width 80%",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
           }
         },
         "description": {

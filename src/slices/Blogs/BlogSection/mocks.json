@@ -46,6 +46,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "everything",
 				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "facing",
+				"type": "Text"
 			}
 		},
 		"items": []
@@ -99,7 +104,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Elit irure sit laboris pariatur cillum cillum. Veniam quis tempor aliquip ullamco excepteur eiusmod culpa reprehenderit cupidatat voluptate minim ex. Tempor nisi dolor aliqua ea elit dolor incididunt occaecat."
+							"text": "Culpa ex fugiat et. Commodo mollit aute minim ex et est."
 						}
 					}
 				]
@@ -107,6 +112,67 @@
 			"tag": {
 				"__TYPE__": "FieldContent",
 				"value": "perfectly",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "narrativeBlockWidth80",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+					"width": 4010,
+					"height": 4010
+				},
+				"url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+				"width": 4010,
+				"height": 4010,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "prove",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "entirely",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "search",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sint aliqua consequat quis aliqua cupidatat tempor voluptate irure nulla enim nulla deserunt occaecat. Et dolore ut adipisicing aute nisi do mollit dolor fugiat mollit incididunt cillum quis esse. Eu proident adipisicing qui aliquip deserunt culpa ea duis sunt quis duis."
+						}
+					}
+				]
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "property",
 				"type": "Text"
 			}
 		},
