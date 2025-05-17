@@ -133,7 +133,7 @@ export default async function BlogIndexPage() {
                                     </PrismicNextLink>
                                     {isFilled.date(post.data.blog_date) && (
                                         <p className="font-normal text-xs sm:text-sm 2xl:text-base leading-5 2xl:leading-[27px] text-black-900 text-opacity-50">
-                                            {new Intl.DateTimeFormat("en-US", { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(post.data.blog_date))}
+                                            {new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(post.data.blog_date))}
                                         </p>
                                     )}
                                 </div>

@@ -1,13 +1,12 @@
 // app/blog/[uid]/page.tsx
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { asText, isFilled } from "@prismicio/client";
-import { SliceZone, PrismicRichText } from "@prismicio/react"; // Added PrismicRichText
-import { cookies } from 'next/headers';
-// import Link from "next/link";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
+import {asText, isFilled} from "@prismicio/client";
+import {SliceZone} from "@prismicio/react";
+import {cookies} from 'next/headers';
 
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
+import {createClient} from "@/prismicio";
+import {components} from "@/slices";
 import Link from "next/link";
 
 type PageParams = { uid: string };
@@ -50,7 +49,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     const client = createClient({ cookies: await cookies() });
     const customTypeApiId = "blog";
 
-    console.log(`[BlogPostPage] Rendering for UID: "${uid}", Type: "${customTypeApiId}"`);
+    // console.log(`[BlogPostPage] Rendering for UID: "${uid}", Type: "${customTypeApiId}"`);
 
     try {
         const page = await client.getByUID(customTypeApiId, uid, {
@@ -70,11 +69,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             return notFound();
         }
 
-        console.log(`[BlogPostPage] Successfully fetched page data. Main title (blog_title): ${isFilled.richText(page.data.blog_title) ? asText(page.data.blog_title) : "Not Provided"}`);
+        // console.log(`[BlogPostPage] Successfully fetched page data. Main title (blog_title): ${isFilled.richText(page.data.blog_title) ? asText(page.data.blog_title) : "Not Provided"}`);
 
-        const publicationDate = isFilled.date(page.data.blog_date)
-            ? new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(new Date(page.data.blog_date))
-            : null;
 
         return (
             <article>
@@ -110,9 +106,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     }
 }
 
-// generateStaticParams remains the same as it was already correct in its logic
-// assuming it was correctly fetching UIDs for the "blog" type.
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams(): Promise<{ uid: string | null }[]> {
     const client = createClient();
     const customTypeApiId = "blog";
 
@@ -126,10 +120,9 @@ export async function generateStaticParams(): Promise<PageParams[]> {
         // console.log("Fetched UIDs for 'blog' type:", pages.map(page => page.uid));
     }
 
-    const paramsToReturn = pages.map((page) => ({
+    // console.log("generateStaticParams for 'blog' will return:", JSON.stringify(paramsToReturn, null, 2));
+
+    return pages.map((page) => ({
         uid: page.uid,
     }));
-
-    // console.log("generateStaticParams for 'blog' will return:", JSON.stringify(paramsToReturn, null, 2));
-    return paramsToReturn;
 }
