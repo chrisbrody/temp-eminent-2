@@ -41,6 +41,11 @@
 						}
 					}
 				]
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "everything",
+				"type": "Text"
 			}
 		},
 		"items": []
