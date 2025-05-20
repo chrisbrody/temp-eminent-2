@@ -1,4 +1,4 @@
-// app/blog/[uid]/page.tsx
+// app/blog/page.tsx
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { asText, isFilled, Content } from "@prismicio/client";
@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     // Determine the title for the page and OpenGraph
-    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.keyText(pageContent.data.title) ? asText(pageContent.data.title) : defaultTitle);
+    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.richText(pageContent.data.title) ? asText(pageContent.data.title) : defaultTitle);
 
     // Determine the description for the page and OpenGraph
     const pageSpecificDescription = pageContent.data.meta_description || defaultDescription;
@@ -76,7 +76,7 @@ export default async function BlogIndexPage() {
 
     if (individualBlogPosts && individualBlogPosts.length > 0) {
         individualBlogPosts.forEach((post, index) => {
-            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.keyText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
+            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
         });
     } else {
         console.log("No individual blog posts found.");
@@ -115,10 +115,10 @@ export default async function BlogIndexPage() {
 
                             {/* Text Content Column */}
                             <div className="max-w-full xl:max-w-[600px] text-base md:text-xl text-black-700 py-5">
-                                {isFilled.keyText(post.data.blog_title) && (
+                                {isFilled.richText(post.data.blog_title) && (
                                     <h3 className="max-w-full xl:max-w-[460px] font-sans text-black-900 text-4xl uppercase leading-10 mb-4">
                                         <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
-                                            {post.data.blog_title}
+                                            {asText(post.data.blog_title)}
                                         </PrismicNextLink>
                                     </h3>
                                 )}
