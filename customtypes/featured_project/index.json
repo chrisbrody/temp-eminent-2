@@ -21,27 +21,16 @@
         }
       },
       "project_title": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
           "label": "Project Title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "project_location": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Project Location",
-          "placeholder": "",
-          "allowTargetBlank": false,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "placeholder": ""
         }
       },
       "project_tag": {
         "type": "Select",
         "config": {
-          "label": "Project Filter Tag",
+          "label": "Project Category Tag",
           "placeholder": "",
           "options": [
             "Kitchen Design",
@@ -52,18 +41,35 @@
           "default_value": "Kitchen Design"
         }
       },
+      "owner": {
+        "type": "Link",
+        "config": {
+          "label": "Owner",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["owner"]
+        }
+      },
+      "project_location": {
+        "type": "Text",
+        "config": {
+          "label": "Project Location",
+          "placeholder": ""
+        }
+      },
+      "project_date": {
+        "type": "Date",
+        "config": {
+          "label": "Project Date",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
             "project_section": {
-              "type": "SharedSlice"
-            },
-            "project_owner": {
-              "type": "SharedSlice"
-            },
-            "project_header": {
               "type": "SharedSlice"
             }
           }
