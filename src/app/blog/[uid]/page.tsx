@@ -1,13 +1,15 @@
 // app/blog/[uid]/page.tsx
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
-import {asText, isFilled} from "@prismicio/client";
+import {asText, isFilled, asDate} from "@prismicio/client";
 import {SliceZone} from "@prismicio/react";
 import {cookies} from 'next/headers';
+import Link from "next/link";
+import { PrismicNextImage } from "@prismicio/next";
 
 import {createClient} from "@/prismicio";
 import {components} from "@/slices";
-import Link from "next/link";
+import type { BlogDocument, OwnerDocument } from '../../../../prismicio-types';
 
 type PageParams = { uid: string };
 interface PageProps { params: Promise<PageParams>; }
@@ -52,7 +54,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     // console.log(`[BlogPostPage] Rendering for UID: "${uid}", Type: "${customTypeApiId}"`);
 
     try {
-        const page = await client.getByUID(customTypeApiId, uid, {
+        const page = await client.getByUID<BlogDocument>(customTypeApiId, uid, {
             fetchLinks: [
                 'owner.image',
                 'owner.name',
@@ -70,6 +72,31 @@ export default async function BlogPostPage({ params }: PageProps) {
         }
 
         // console.log(`[BlogPostPage] Successfully fetched page data. Main title (blog_title): ${isFilled.richText(page.data.blog_title) ? asText(page.data.blog_title) : "Not Provided"}`);
+
+        const { blog_title, blog_eyebrow, blog_date, blog_description } = page.data;
+
+        const formattedDate = isFilled.date(blog_date)
+            ? new Intl.DateTimeFormat("en-US", {
+                timeZone: "UTC",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            }).format(asDate(blog_date))
+            : null;
+
+        const ownerLink = page.data.owner;
+        console.log(ownerLink)
+
+        if (!ownerLink || !('data' in ownerLink) || !ownerLink.data) {
+            return null;
+        }
+
+        const ownerData = ownerLink.data as OwnerDocument['data'];
+        console.log(ownerData)
+
+        const { name, title, image } = ownerData;
+
+        console.log(name, title, image, formattedDate, blog_title, blog_eyebrow, blog_description)
 
 
         return (
