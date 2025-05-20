@@ -79,12 +79,14 @@ const FeaturedProjects: ({slice}: { slice: any }) => JSX.Element = ({ slice }) =
     const renderProjectLinkContent = (projectDoc: Content.FeaturedProjectDocument | undefined) => {
         if (!projectDoc) return null;
 
-        const title = isFilled.richText(projectDoc.data.project_title)
-            ? asText(projectDoc.data.project_title)
+        const title = isFilled.keyText(projectDoc.data.project_title)
+            ? projectDoc.data.project_title
             : projectDoc.uid || "View Project";
 
-        const location = isFilled.richText(projectDoc.data.project_location)
-            ? asText(projectDoc.data.project_location) : null
+        const location = isFilled.keyText(projectDoc.data.project_location)
+            ? projectDoc.data.project_location
+            : null;
+
         const imageUrl = projectDoc.data.project_image?.url;
 
         return (
