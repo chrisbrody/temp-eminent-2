@@ -27,13 +27,35 @@ interface BlogDocumentData {
   /**
    * Blog Title field in *Blog*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.blog_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  blog_title: prismic.RichTextField;
+  blog_title: prismic.KeyTextField;
+
+  /**
+   * Blog Title Short (optional) field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_title_short
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  blog_title_short: prismic.KeyTextField;
+
+  /**
+   * Blog Eyebrow field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.blog_eyebrow
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  blog_eyebrow: prismic.KeyTextField;
 
   /**
    * Blog Description field in *Blog*
@@ -56,6 +78,17 @@ interface BlogDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#date
    */
   blog_date: prismic.DateField;
+
+  /**
+   * Owner field in *Blog*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.owner
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  owner: prismic.ContentRelationshipField<"owner">;
 
   /**
    * Slice Zone field in *Blog*
@@ -112,10 +145,7 @@ interface BlogDocumentData {
 export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
-type FeaturedProjectDocumentDataSlicesSlice =
-  | ProjectSectionSlice
-  | ProjectOwnerSlice
-  | ProjectHeaderSlice;
+type FeaturedProjectDocumentDataSlicesSlice = ProjectSectionSlice;
 
 /**
  * Content for Featured Project documents
@@ -135,27 +165,16 @@ interface FeaturedProjectDocumentData {
   /**
    * Project Title field in *Featured Project*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: featured_project.project_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  project_title: prismic.RichTextField;
+  project_title: prismic.KeyTextField;
 
   /**
-   * Project Location field in *Featured Project*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_project.project_location
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  project_location: prismic.RichTextField;
-
-  /**
-   * Project Filter Tag field in *Featured Project*
+   * Project Category Tag field in *Featured Project*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -171,6 +190,39 @@ interface FeaturedProjectDocumentData {
     | "Interior Design",
     "filled"
   >;
+
+  /**
+   * Project Location field in *Featured Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_project.project_location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_location: prismic.KeyTextField;
+
+  /**
+   * Project Date field in *Featured Project*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_project.project_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  project_date: prismic.DateField;
+
+  /**
+   * Owner field in *Featured Project*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_project.owner
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  owner: prismic.ContentRelationshipField<"owner">;
 
   /**
    * Slice Zone field in *Featured Project*
@@ -2040,75 +2092,6 @@ export type BlogSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *BlogSection → Split Content text Right → Primary*
- */
-export interface BlogSectionSliceSplitContentTextRightPrimary {
-  /**
-   * Image field in *BlogSection → Split Content text Right → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_section.splitContentTextRight.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Image Caption (optional) field in *BlogSection → Split Content text Right → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_section.splitContentTextRight.primary.image_caption
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  image_caption: prismic.KeyTextField;
-
-  /**
-   * Title field in *BlogSection → Split Content text Right → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_section.splitContentTextRight.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * Description field in *BlogSection → Split Content text Right → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_section.splitContentTextRight.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Tag (optional) field in *BlogSection → Split Content text Right → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_section.splitContentTextRight.primary.tag
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  tag: prismic.KeyTextField;
-}
-
-/**
- * Split Content text Right variation for BlogSection Slice
- *
- * - **API ID**: `splitContentTextRight`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogSectionSliceSplitContentTextRight =
-  prismic.SharedSliceVariation<
-    "splitContentTextRight",
-    Simplify<BlogSectionSliceSplitContentTextRightPrimary>,
-    never
-  >;
-
-/**
  * Primary content in *BlogSection → Narrative Block width 80% → Primary*
  */
 export interface BlogSectionSliceNarrativeBlockWidth80Primary {
@@ -2178,12 +2161,81 @@ export type BlogSectionSliceNarrativeBlockWidth80 =
   >;
 
 /**
+ * Primary content in *BlogSection → Split Content text Right → Primary*
+ */
+export interface BlogSectionSliceSplitContentTextRightPrimary {
+  /**
+   * Image field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Caption (optional) field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+
+  /**
+   * Title field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Tag (optional) field in *BlogSection → Split Content text Right → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_section.splitContentTextRight.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Split Content text Right variation for BlogSection Slice
+ *
+ * - **API ID**: `splitContentTextRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogSectionSliceSplitContentTextRight =
+  prismic.SharedSliceVariation<
+    "splitContentTextRight",
+    Simplify<BlogSectionSliceSplitContentTextRightPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *BlogSection*
  */
 type BlogSectionSliceVariation =
   | BlogSectionSliceDefault
-  | BlogSectionSliceSplitContentTextRight
-  | BlogSectionSliceNarrativeBlockWidth80;
+  | BlogSectionSliceNarrativeBlockWidth80
+  | BlogSectionSliceSplitContentTextRight;
 
 /**
  * BlogSection Shared Slice
@@ -2317,12 +2369,12 @@ declare module "@prismicio/client" {
       BlogOwnerSliceDefault,
       BlogSectionSlice,
       BlogSectionSliceDefaultPrimary,
-      BlogSectionSliceSplitContentTextRightPrimary,
       BlogSectionSliceNarrativeBlockWidth80Primary,
+      BlogSectionSliceSplitContentTextRightPrimary,
       BlogSectionSliceVariation,
       BlogSectionSliceDefault,
-      BlogSectionSliceSplitContentTextRight,
       BlogSectionSliceNarrativeBlockWidth80,
+      BlogSectionSliceSplitContentTextRight,
     };
   }
 }

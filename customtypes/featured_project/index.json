@@ -41,15 +41,6 @@
           "default_value": "Kitchen Design"
         }
       },
-      "owner": {
-        "type": "Link",
-        "config": {
-          "label": "Owner",
-          "select": "document",
-          "repeat": false,
-          "customtypes": ["owner"]
-        }
-      },
       "project_location": {
         "type": "Text",
         "config": {
@@ -62,6 +53,15 @@
         "config": {
           "label": "Project Date",
           "placeholder": ""
+        }
+      },
+      "owner": {
+        "type": "Link",
+        "config": {
+          "label": "Owner",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["owner"]
         }
       },
       "slices": {
