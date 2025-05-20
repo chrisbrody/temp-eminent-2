@@ -12,7 +12,7 @@ const ProjectOwner: ({slice}: { slice: any }) => (null | JSX.Element) = ({ slice
     return null;
   }
 
-  const ownerData = ownerLink.data as Content.OwnerDocument['data'];
+  const ownerData = ownerLink.data as any;
     // console.log(ownerData)
 
   const { name, title, image } = ownerData;
