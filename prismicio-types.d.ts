@@ -91,6 +91,17 @@ interface BlogDocumentData {
   owner: prismic.ContentRelationshipField<"owner">;
 
   /**
+   * Article Read Time field in *Blog*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.read_time
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  read_time: prismic.NumberField;
+
+  /**
    * Slice Zone field in *Blog*
    *
    * - **Field Type**: Slice Zone

@@ -68,6 +68,13 @@
           "customtypes": ["owner"]
         }
       },
+      "read_time": {
+        "type": "Number",
+        "config": {
+          "label": "Article Read Time",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
