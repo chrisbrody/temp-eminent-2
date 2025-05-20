@@ -51,9 +51,10 @@ export default async function ProjectPage({ params }: PageProps) {
         fetchLinks: ['owner.name', 'owner.title', 'owner.image'],
     }).catch(() => notFound());
 
-    // console.log(page)
+    console.log(page)
 
-    const { project_tag, project_title, project_date, project_location } = page.data;
+    const { project_tag, project_title, project_location } = page.data;
+    const project_date = (page.data as any).project_date;
 
     const formattedDate = isFilled.date(project_date)
         ? new Intl.DateTimeFormat("en-US", {
