@@ -71,8 +71,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             return notFound();
         }
 
-        console.log('pagedata:')
-        console.log(page.data)
+        // console.log('pagedata:')
+        // console.log(page.data)
 
         const { blog_title, blog_eyebrow, blog_date, read_time } = page.data;
 
@@ -85,16 +85,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             }).format(asDate(blog_date))
             : null;
 
+        // owner data
         const ownerLink = page.data.owner;
-        console.log(ownerLink)
-
         if (!ownerLink || !('data' in ownerLink) || !ownerLink.data) {
             return null;
         }
-
         const ownerData = ownerLink.data as OwnerDocument['data'];
-        console.log(ownerData)
-
         const { name, title, image } = ownerData;
 
         return (
@@ -166,7 +162,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                             )}
 
                             {/* Project Read Time */}
-                            {isFilled.keyText(read_time) && (
+                            {isFilled.number(read_time) && (
                                 <span className="inline-flex items-center">
                                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
                                          xmlns="http://www.w3.org/2000/svg" className="mr-2"><g opacity="0.5"><path
