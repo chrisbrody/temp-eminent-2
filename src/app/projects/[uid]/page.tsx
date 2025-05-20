@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }).catch(() => notFound());
 
     return {
-        title: page.data.meta_title || (page.data.project_title ? asText(page.data.project_title) : "Featured Project"),
+        title: page.data.meta_title || page.data.project_title || "Featured Project",
         description: page.data.meta_description || "",
         openGraph: {
-            title: page.data.meta_title || (page.data.project_title ? asText(page.data.project_title) : "Featured Project"),
+            title: page.data.meta_title || page.data.project_title || "Featured Project",
             images: page.data.meta_image?.url ? [{ url: page.data.meta_image.url }] : [],
         },
     };
