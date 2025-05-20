@@ -10,6 +10,8 @@ import { PrismicNextImage } from "@prismicio/next";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
+import type { OwnerDocument } from '../../../../prismicio-types';
+
 // Define a clear type for your route parameters
 type PageParams = {
     uid: string;
@@ -73,7 +75,7 @@ export default async function ProjectPage({ params }: PageProps) {
         return null;
     }
 
-    const ownerData = ownerLink.data as Content.OwnerDocument['data'];
+    const ownerData = ownerLink.data as OwnerDocument['data'];
     console.log(ownerData)
 
     const { name, title, image } = ownerData;
