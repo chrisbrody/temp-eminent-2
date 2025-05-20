@@ -76,7 +76,7 @@ export default async function BlogIndexPage() {
 
     if (individualBlogPosts && individualBlogPosts.length > 0) {
         individualBlogPosts.forEach((post, index) => {
-            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
+            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.keyText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
         });
     } else {
         console.log("No individual blog posts found.");
@@ -115,7 +115,7 @@ export default async function BlogIndexPage() {
 
                             {/* Text Content Column */}
                             <div className="max-w-full xl:max-w-[600px] text-base md:text-xl text-black-700 py-5">
-                                {isFilled.richText(post.data.blog_title) && (
+                                {isFilled.keyText(post.data.blog_title) && (
                                     <h3 className="max-w-full xl:max-w-[460px] font-sans text-black-900 text-4xl uppercase leading-10 mb-4">
                                         <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
                                             {asText(post.data.blog_title)}
