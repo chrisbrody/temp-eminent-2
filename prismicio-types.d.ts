@@ -47,17 +47,6 @@ interface BlogDocumentData {
   blog_title_short: prismic.KeyTextField;
 
   /**
-   * Blog Eyebrow field in *Blog*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog.blog_eyebrow
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  blog_eyebrow: prismic.KeyTextField;
-
-  /**
    * Blog Description field in *Blog*
    *
    * - **Field Type**: Rich Text
@@ -67,6 +56,25 @@ interface BlogDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   blog_description: prismic.RichTextField;
+
+  /**
+   * Blog Tip Type field in *Blog*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Bathroom Tips
+   * - **API ID Path**: blog.blog_tip_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  blog_tip_type: prismic.SelectField<
+    | "Bathroom Tips"
+    | "Interior tips"
+    | "Kitchen Tips"
+    | "Living Tips"
+    | "Remodeling Tips",
+    "filled"
+  >;
 
   /**
    * Blog Date field in *Blog*

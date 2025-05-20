@@ -36,13 +36,6 @@
           "placeholder": ""
         }
       },
-      "blog_eyebrow": {
-        "type": "Text",
-        "config": {
-          "label": "Blog Eyebrow",
-          "placeholder": ""
-        }
-      },
       "blog_description": {
         "type": "StructuredText",
         "config": {
@@ -50,6 +43,21 @@
           "placeholder": "",
           "allowTargetBlank": true,
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "blog_tip_type": {
+        "type": "Select",
+        "config": {
+          "label": "Blog Tip Type",
+          "placeholder": "",
+          "options": [
+            "Bathroom Tips",
+            "Interior tips",
+            "Kitchen Tips",
+            "Living Tips",
+            "Remodeling Tips"
+          ],
+          "default_value": "Bathroom Tips"
         }
       },
       "blog_date": {

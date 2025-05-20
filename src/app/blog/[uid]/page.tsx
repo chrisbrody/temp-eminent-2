@@ -74,7 +74,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         // console.log('pagedata:')
         // console.log(page.data)
 
-        const { blog_title, blog_eyebrow, blog_date, read_time } = page.data;
+        const { blog_title, blog_date, read_time, blog_tip_type } = page.data;
+
+        // console.log(page.data)
 
         const formattedDate = isFilled.date(blog_date)
             ? new Intl.DateTimeFormat("en-US", {
@@ -120,9 +122,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <section className="blog-header-slice bg-white pt-6 md:pt-10 text-charcoal">
                     <div className="container mx-auto px-4 text-center">
                         {/* Blog Eyebrow */}
-                        {isFilled.keyText(blog_eyebrow) && (
+                        {isFilled.keyText(blog_tip_type) && (
                             <div className="mb-3 font-thin uppercase tracking-wider text-gold font-gtAmerica">
-                                {blog_eyebrow}
+                                {blog_tip_type}
                             </div>
                         )}
 
