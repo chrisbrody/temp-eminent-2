@@ -180,7 +180,25 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </div>
                 </section>
 
-                <SliceZone slices={page.data.slices} components={components} />
+                {/* Owner Info */}
+                {isFilled.keyText(name) && (
+                    <section className="text-center mt-8" id="project-owner">
+                        {image?.url && (
+                            <PrismicNextImage
+                                field={image}
+                                className="mx-auto rounded-full object-cover mb-4"
+                                width={56}
+                                height={56}
+                                imgixParams={{ar: "1:1", fit: "crop"}}
+                            />
+                        )}
+                        <h3 className="mt-3 capitalize text-base">{name}</h3>
+                        <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
+                    </section>
+                )}
+
+
+                <SliceZone slices={page.data.slices} components={components}/>
 
             </article>
         );
