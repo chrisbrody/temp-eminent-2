@@ -38,13 +38,13 @@ interface BlogDocumentData {
   /**
    * Blog Title Short (optional) field in *Blog*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.blog_title_short
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  blog_title_short: prismic.KeyTextField;
+  blog_title_short: prismic.RichTextField;
 
   /**
    * Blog Description field in *Blog*

@@ -115,10 +115,14 @@ export default async function BlogIndexPage() {
 
                             {/* Text Content Column */}
                             <div className="max-w-full xl:max-w-[600px] text-base md:text-xl text-black-700 py-5">
-                                {isFilled.richText(post.data.blog_title) && (
+                                {(isFilled.richText(post.data.blog_title_short) || isFilled.richText(post.data.blog_title)) && (
                                     <h3 className="max-w-full xl:max-w-[460px] font-sans text-black-900 text-4xl uppercase leading-10 mb-4">
                                         <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
-                                            {asText(post.data.blog_title)}
+                                            {asText(
+                                                isFilled.richText(post.data.blog_title_short)
+                                                    ? post.data.blog_title_short
+                                                    : post.data.blog_title
+                                            )}
                                         </PrismicNextLink>
                                     </h3>
                                 )}
