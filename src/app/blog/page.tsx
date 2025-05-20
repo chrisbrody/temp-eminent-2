@@ -1,4 +1,4 @@
-// app/blog/page.tsx
+// app/blog/[uid]/page.tsx
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { asText, isFilled, Content } from "@prismicio/client";
@@ -118,7 +118,7 @@ export default async function BlogIndexPage() {
                                 {isFilled.keyText(post.data.blog_title) && (
                                     <h3 className="max-w-full xl:max-w-[460px] font-sans text-black-900 text-4xl uppercase leading-10 mb-4">
                                         <PrismicNextLink document={post} className="hover:text-gold-700 transition-colors">
-                                            {asText(post.data.blog_title)}
+                                            {post.data.blog_title}
                                         </PrismicNextLink>
                                     </h3>
                                 )}
