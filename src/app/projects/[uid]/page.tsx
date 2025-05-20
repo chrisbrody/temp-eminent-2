@@ -68,10 +68,15 @@ export default async function ProjectPage({ params }: PageProps) {
     // get owner info
     const ownerLink = page.data.owner;
     console.log(ownerLink)
+
+    if (!ownerLink || !('data' in ownerLink) || !ownerLink.data) {
+        return null;
+    }
+
     const ownerData = ownerLink.data as Content.OwnerDocument['data'];
     console.log(ownerData)
-    const { name, title, image } = ownerData;
 
+    const { name, title, image } = ownerData;
 
     return (
         <>
