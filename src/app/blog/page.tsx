@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     // Determine the title for the page and OpenGraph
-    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.richText(pageContent.data.title) ? asText(pageContent.data.title) : defaultTitle);
+    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.keyText(pageContent.data.title) ? asText(pageContent.data.title) : defaultTitle);
 
     // Determine the description for the page and OpenGraph
     const pageSpecificDescription = pageContent.data.meta_description || defaultDescription;
