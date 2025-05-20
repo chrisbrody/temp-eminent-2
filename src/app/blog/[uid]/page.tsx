@@ -71,9 +71,10 @@ export default async function BlogPostPage({ params }: PageProps) {
             return notFound();
         }
 
-        // console.log(`[BlogPostPage] Successfully fetched page data. Main title (blog_title): ${isFilled.richText(page.data.blog_title) ? asText(page.data.blog_title) : "Not Provided"}`);
+        console.log('pagedata:')
+        console.log(page.data)
 
-        const { blog_title, blog_eyebrow, blog_date, blog_description } = page.data;
+        const { blog_title, blog_eyebrow, blog_date, read_time } = page.data;
 
         const formattedDate = isFilled.date(blog_date)
             ? new Intl.DateTimeFormat("en-US", {
@@ -95,9 +96,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         console.log(ownerData)
 
         const { name, title, image } = ownerData;
-
-        console.log(name, title, image, formattedDate, blog_title, blog_eyebrow, blog_description)
-
 
         return (
             <article>
@@ -122,6 +120,16 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </svg>
                     Back to Blog
                 </Link>
+
+                <section className="blog-header-slice bg-white pt-6 md:pt-10 text-charcoal">
+                    <div className="container mx-auto px-4 text-center">
+                        {isFilled.keyText(blog_eyebrow) && (
+                            <div className="mb-3 font-thin uppercase tracking-wider text-gold font-gtAmerica">
+                                {blog_eyebrow}
+                            </div>
+                        )}
+                    </div>
+                </section>
 
                 <SliceZone slices={page.data.slices} components={components} />
 
