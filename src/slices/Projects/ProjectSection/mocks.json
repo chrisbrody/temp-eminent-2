@@ -506,27 +506,32 @@
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
-			"heading": {
+			"title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Laboris minim dolor labore commodo. Tempor eu duis veniam aliquip. Velit quis incididunt sit ea deserunt."
+							"text": "Reprehenderit in voluptate sit nostrud ex consectetur. Consectetur duis sit non est reprehenderit ullamco do eiusmod aute ut consectetur."
 						}
 					}
 				]
 			},
-			"caption": {
+			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Aliquip sit ipsum adipisicing aliquip aliquip quis commodo nulla occaecat elit."
+							"text": "Ex velit adipisicing irure occaecat aute consequat nulla id. Ipsum laboris eiusmod tempor."
 						}
 					}
 				]
+			},
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"value": "dead",
+				"type": "Text"
 			}
 		},
 		"items": [

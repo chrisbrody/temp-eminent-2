@@ -351,22 +351,29 @@
             "thumbnails": []
           }
         },
-        "heading": {
+        "title": {
           "type": "StructuredText",
           "config": {
-            "label": "heading",
+            "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "caption": {
+        "description": {
           "type": "StructuredText",
           "config": {
-            "label": "Caption",
+            "label": "Description",
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag (optional)",
+            "placeholder": ""
           }
         }
       },

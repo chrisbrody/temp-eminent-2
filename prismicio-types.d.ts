@@ -1923,24 +1923,34 @@ export interface ProjectSectionSliceBeforeAndAfterSliderPrimary {
   after_image: prismic.ImageField<never>;
 
   /**
-   * heading field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   * Title field in *ProjectSection → BeforeAndAfterSlider → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.heading
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.title
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading: prismic.RichTextField;
+  title: prismic.RichTextField;
 
   /**
-   * Caption field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   * Description field in *ProjectSection → BeforeAndAfterSlider → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.caption
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  caption: prismic.RichTextField;
+  description: prismic.RichTextField;
+
+  /**
+   * Tag (optional) field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
 }
 
 /**
