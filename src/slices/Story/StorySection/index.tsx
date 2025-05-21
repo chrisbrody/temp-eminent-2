@@ -211,7 +211,6 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
 
     case "beforeAndAfterSlider": // "Before And After Slider"
       const sliderPrimary = primary as StorySectionSliceBeforeAndAfterSliderPrimary;
-      console.log(sliderPrimary)
 
       const beforeImage = sliderPrimary.before_image;
       const afterImage = sliderPrimary.after_image;
@@ -220,14 +219,14 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
       const afterWidth = afterImage?.dimensions?.width || 0;
       const useLargeWidth = beforeWidth > 1000 && afterWidth > 1000;
       // console.log(useLargeWidth)
-      const containerMaxWidth = useLargeWidth ? "max-w-[1000px]" : "max-w-[400px]";
+      const containerMaxWidth = useLargeWidth ? "max-w-[100%]" : "max-w-[400px]";
 
       if (!isFilled.image(beforeImage) || !isFilled.image(afterImage)) {
         console.warn("BeforeAndAfterSlider variation: Missing 'before_image' or 'after_image'.");
         return null;
       }
 
-      const BeforeAndAfterWidth = primary.split_content_width == "100%" ? "max-w-6xl" : "max-w-5xl"
+      const BeforeAndAfterWidth = primary.before_and_after_width == "100%" ? "max-w-6xl" : "max-w-5xl"
 
       return (
           <section
@@ -324,6 +323,73 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
                       </div>
                     </div>
                 )}
+              </div>
+            </Bounded>
+          </section>
+      );
+
+    case "beforeAndAfterBasic":
+      let BeforeAndAfterBasicWidth;
+
+      switch (primary.before_and_after_basic_width) {
+        case "100%":
+          BeforeAndAfterBasicWidth = "max-w-6xl";
+          break;
+        case "80%":
+          BeforeAndAfterBasicWidth = "max-w-5xl";
+          break;
+        case "60%":
+          BeforeAndAfterBasicWidth = "max-w-3xl";
+          break;
+        default:
+          BeforeAndAfterBasicWidth = "max-w-6xl";
+      }
+
+      return (
+          <section {...sectionBaseProps} aria-label="Showcase Images with Caption">
+            <Bounded widthClass={BeforeAndAfterBasicWidth}>
+              <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0">
+
+                {/* Column 1: Image One & Description One */}
+                <div className="flex flex-col">
+                  {isFilled.image(primary.before_image) && (
+                      <PrismicNextImage
+                          field={primary.before_image}
+                          className=""
+                      />
+                  )}
+                  {isFilled.richText(primary.before_title) && (
+                      <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] text-black-900 leading-tight font-ivar-display">
+                        <PrismicRichText field={primary.before_title}/>
+                      </div>
+                  )}
+                  {isFilled.richText(primary.before_description) && (
+                      <div className="text-base leading-relaxed prose prose-sm max-w-none mt-2">
+                        <PrismicRichText field={primary.before_description}/>
+                      </div>
+                  )}
+                </div>
+
+                {/* Column 2: Image Two & Description Two */}
+                <div className="flex flex-col">
+                  {isFilled.image(primary.after_image) && (
+                      <PrismicNextImage
+                          field={primary.after_image}
+                          className="img-responsive"
+                      />
+                  )}
+                  {isFilled.richText(primary.after_title) && (
+                      <div className="mt-2 flex items-center uppercase sm:text-[22px] md:text-[26px] text-black-900 leading-tight font-ivar-display">
+                        <PrismicRichText field={primary.after_title}/>
+                      </div>
+                  )}
+                  {isFilled.richText(primary.after_description) && (
+                      <div className="text-base leading-relaxed prose prose-sm max-w-none mt-2">
+                        <PrismicRichText field={primary.after_description}/>
+                      </div>
+                  )}
+                </div>
+
               </div>
             </Bounded>
           </section>

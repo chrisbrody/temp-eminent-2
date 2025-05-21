@@ -56,9 +56,9 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
+						"type": "heading2",
 						"content": {
-							"text": "Damage"
+							"text": "Cookies"
 						}
 					}
 				]
@@ -128,9 +128,9 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
+						"type": "heading2",
 						"content": {
-							"text": "Practical"
+							"text": "Weight"
 						}
 					}
 				]
@@ -213,21 +213,124 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
+						"type": "heading2",
 						"content": {
-							"text": "Compare"
+							"text": "Printed"
 						}
 					}
 				]
 			},
 			"before_and_after_width": {
 				"__TYPE__": "FieldContent",
-				"value": "80%",
+				"value": "100%",
 				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "beforeAndAfterBasic",
+		"primary": {
+			"before_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+					"width": 4272,
+					"height": 2848
+				},
+				"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+				"width": 4272,
+				"height": 2848,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "flat",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
 			},
-			"slider_function_toggle": {
-				"__TYPE__": "BooleanContent",
-				"value": false
+			"after_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+					"width": 4160,
+					"height": 3120
+				},
+				"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+				"width": 4160,
+				"height": 3120,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "discovery",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"before_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Buffalo"
+						}
+					}
+				]
+			},
+			"before_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Do occaecat esse non enim sit qui quis duis est nulla duis. Nostrud nulla commodo magna cupidatat ipsum ipsum. Adipisicing sint adipisicing do eiusmod."
+						}
+					}
+				]
+			},
+			"after_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Powerful"
+						}
+					}
+				]
+			},
+			"after_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ex Lorem ipsum est veniam consectetur fugiat. Reprehenderit anim anim et. Nostrud sit est ad ullamco laboris do laboris eu quis deserunt aliquip ipsum do ad."
+						}
+					}
+				]
+			},
+			"before_and_after_basic_width": {
+				"__TYPE__": "FieldContent",
+				"value": "100%",
+				"type": "Select"
 			}
 		},
 		"items": [

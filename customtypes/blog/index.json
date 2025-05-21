@@ -90,10 +90,10 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "story_section": {
+            "blog_section": {
               "type": "SharedSlice"
             },
-            "blog_section": {
+            "story_section": {
               "type": "SharedSlice"
             }
           }

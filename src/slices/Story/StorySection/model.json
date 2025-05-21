@@ -33,7 +33,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+            "single": "heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -96,7 +96,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "multi": "heading1,heading2,heading3,heading4,heading5,heading6"
+            "multi": "heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -172,7 +172,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+            "single": "heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -194,7 +194,7 @@
         "before_and_after_width": {
           "type": "Select",
           "config": {
-            "label": "Before and After Width",
+            "label": "Before and After Slider Width",
             "placeholder": "",
             "options": [
               "100%",
@@ -202,14 +202,81 @@
             ],
             "default_value": "100%"
           }
-        },
-        "slider_function_toggle": {
-          "type": "Boolean",
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "beforeAndAfterBasic",
+      "name": "Before And After Basic",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "before_image": {
+          "type": "Image",
           "config": {
-            "label": "Slider Function Toggle On / Off",
-            "placeholder_false": "Slider Inactive - Image are side by side",
-            "placeholder_true": "Slider Active",
-            "default_value": true
+            "label": "Before Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "before_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Before Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,heading3,heading4,heading5,heading6"
+          }
+        },
+        "before_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Before Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "after_image": {
+          "type": "Image",
+          "config": {
+            "label": "After Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "after_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "After Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,heading3,heading4,heading5,heading6"
+          }
+        },
+        "after_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "After Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "before_and_after_basic_width": {
+          "type": "Select",
+          "config": {
+            "label": "Before and After Basic Width",
+            "placeholder": "",
+            "options": [
+              "100%",
+              "80%",
+              "60%"
+            ],
+            "default_value": "100%"
           }
         }
       },

@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogDocumentDataSlicesSlice = StorySectionSlice | BlogSectionSlice;
+type BlogDocumentDataSlicesSlice = BlogSectionSlice | StorySectionSlice;
 
 /**
  * Content for Blog documents
@@ -2444,7 +2444,7 @@ export interface StorySectionSliceBeforeAndAfterSliderPrimary {
   tag: prismic.KeyTextField;
 
   /**
-   * Before and After Width field in *StorySection → Before And After Slider → Primary*
+   * Before and After Slider Width field in *StorySection → Before And After Slider → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -2453,17 +2453,6 @@ export interface StorySectionSliceBeforeAndAfterSliderPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   before_and_after_width: prismic.SelectField<"100%" | "80%", "filled">;
-
-  /**
-   * Slider Function Toggle On / Off field in *StorySection → Before And After Slider → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: story_section.beforeAndAfterSlider.primary.slider_function_toggle
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  slider_function_toggle: prismic.BooleanField;
 }
 
 /**
@@ -2481,12 +2470,105 @@ export type StorySectionSliceBeforeAndAfterSlider =
   >;
 
 /**
+ * Primary content in *StorySection → Before And After Basic → Primary*
+ */
+export interface StorySectionSliceBeforeAndAfterBasicPrimary {
+  /**
+   * Before Image field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.before_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  before_image: prismic.ImageField<never>;
+
+  /**
+   * Before Title field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.before_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  before_title: prismic.TitleField;
+
+  /**
+   * Before Description field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.before_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  before_description: prismic.RichTextField;
+
+  /**
+   * After Image field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.after_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  after_image: prismic.ImageField<never>;
+
+  /**
+   * After Title field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.after_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  after_title: prismic.TitleField;
+
+  /**
+   * After Description field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.after_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  after_description: prismic.RichTextField;
+
+  /**
+   * Before and After Basic Width field in *StorySection → Before And After Basic → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 100%
+   * - **API ID Path**: story_section.beforeAndAfterBasic.primary.before_and_after_basic_width
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  before_and_after_basic_width: prismic.SelectField<
+    "100%" | "80%" | "60%",
+    "filled"
+  >;
+}
+
+/**
+ * Before And After Basic variation for StorySection Slice
+ *
+ * - **API ID**: `beforeAndAfterBasic`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StorySectionSliceBeforeAndAfterBasic = prismic.SharedSliceVariation<
+  "beforeAndAfterBasic",
+  Simplify<StorySectionSliceBeforeAndAfterBasicPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *StorySection*
  */
 type StorySectionSliceVariation =
   | StorySectionSliceDefault
   | StorySectionSliceSplitContent
-  | StorySectionSliceBeforeAndAfterSlider;
+  | StorySectionSliceBeforeAndAfterSlider
+  | StorySectionSliceBeforeAndAfterBasic;
 
 /**
  * StorySection Shared Slice
@@ -2624,10 +2706,12 @@ declare module "@prismicio/client" {
       StorySectionSliceDefaultPrimary,
       StorySectionSliceSplitContentPrimary,
       StorySectionSliceBeforeAndAfterSliderPrimary,
+      StorySectionSliceBeforeAndAfterBasicPrimary,
       StorySectionSliceVariation,
       StorySectionSliceDefault,
       StorySectionSliceSplitContent,
       StorySectionSliceBeforeAndAfterSlider,
+      StorySectionSliceBeforeAndAfterBasic,
     };
   }
 }
