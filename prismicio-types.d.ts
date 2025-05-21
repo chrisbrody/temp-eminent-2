@@ -2230,11 +2230,11 @@ export type BlogSectionSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *StorySection → Image Carousel → Primary → Carousel Images*
+ * Item in *StorySection → Carousel of Images → Primary → Carousel Images*
  */
 export interface StorySectionSliceImageCarouselPrimaryCarouselImagesItem {
   /**
-   * Image field in *StorySection → Image Carousel → Primary → Carousel Images*
+   * Image field in *StorySection → Carousel of Images → Primary → Carousel Images*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -2244,7 +2244,7 @@ export interface StorySectionSliceImageCarouselPrimaryCarouselImagesItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Caption field in *StorySection → Image Carousel → Primary → Carousel Images*
+   * Caption field in *StorySection → Carousel of Images → Primary → Carousel Images*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -2599,11 +2599,11 @@ export type StorySectionSliceBeforeAndAfterBasic = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *StorySection → Image Carousel → Primary*
+ * Primary content in *StorySection → Carousel of Images → Primary*
  */
 export interface StorySectionSliceImageCarouselPrimary {
   /**
-   * Carousel Images field in *StorySection → Image Carousel → Primary*
+   * Carousel Images field in *StorySection → Carousel of Images → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -2616,7 +2616,7 @@ export interface StorySectionSliceImageCarouselPrimary {
 }
 
 /**
- * Image Carousel variation for StorySection Slice
+ * Carousel of Images variation for StorySection Slice
  *
  * - **API ID**: `imageCarousel`
  * - **Description**: Default
