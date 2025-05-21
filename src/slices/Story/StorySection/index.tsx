@@ -1,12 +1,12 @@
 // src/slices/Story/StorySection/index.tsx
 "use client"
 
-import { JSX, useState, useRef, useEffect, useCallback } from "react";
+import { FC, JSX, useState, useRef, useEffect, useCallback } from "react";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { Bounded } from "@/components/Bounded";
-import { useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 import model from "./model.json";
 
@@ -14,6 +14,16 @@ import type {
   ProjectSectionSliceBeforeAndAfterSliderPrimary,
   StorySectionSliceBeforeAndAfterSliderPrimary
 } from '../../../../prismicio-types';
+
+type CarouselImageItem = {
+  image: {
+    url: string;
+    alt?: string;
+    dimensions?: { width: number; height: number };
+    // Add other properties if needed, e.g., copyright
+  };
+  caption: any; // Prismic RichText field type, typically an array of RichText elements
+};
 
 /**
  * Props for `StorySection`.
