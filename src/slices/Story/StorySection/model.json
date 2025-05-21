@@ -33,7 +33,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -96,7 +96,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -150,7 +150,7 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "image": {
+        "before_image": {
           "type": "Image",
           "config": {
             "label": "Before Image",
@@ -172,7 +172,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": false,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
         },
         "description": {
@@ -189,6 +189,27 @@
           "config": {
             "label": "Tag (optional)",
             "placeholder": ""
+          }
+        },
+        "before_and_after_width": {
+          "type": "Select",
+          "config": {
+            "label": "Before and After Width",
+            "placeholder": "",
+            "options": [
+              "100%",
+              "80%"
+            ],
+            "default_value": "100%"
+          }
+        },
+        "slider_function_toggle": {
+          "type": "Boolean",
+          "config": {
+            "label": "Slider Function Toggle On / Off",
+            "placeholder_false": "Slider Inactive - Image are side by side",
+            "placeholder_true": "Slider Active",
+            "default_value": true
           }
         }
       },

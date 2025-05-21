@@ -31,17 +31,6 @@
 				"value": "sell",
 				"type": "Text"
 			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Proident velit est deserunt excepteur ut aliquip consectetur qui deserunt."
-						}
-					}
-				]
-			},
 			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -62,6 +51,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "100%",
 				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Damage"
+						}
+					}
+				]
 			}
 		},
 		"items": []
@@ -98,17 +98,6 @@
 				"value": "half",
 				"type": "Text"
 			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "In sunt excepteur veniam sit qui ut est eiusmod commodo consequat aliqua aute velit proident velit. Proident occaecat laboris nisi adipisicing proident mollit voluptate exercitation Lorem eiusmod magna consequat. Culpa anim reprehenderit do."
-						}
-					}
-				]
-			},
 			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -134,6 +123,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "Text Right, Image Left",
 				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Practical"
+						}
+					}
+				]
 			}
 		},
 		"items": [
@@ -147,40 +147,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "beforeAndAfterSlider",
 		"primary": {
-			"image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
-					"width": 3935,
-					"height": 5894
-				},
-				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
-				"width": 3935,
-				"height": 5894,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "acres",
-				"credits": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Minim aliqua laborum commodo duis incididunt aliqua irure laboris excepteur proident."
-						}
-					}
-				]
-			},
 			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -219,6 +185,49 @@
 				"credits": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"before_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+					"width": 4752,
+					"height": 3168
+				},
+				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+				"width": 4752,
+				"height": 3168,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "gas",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Compare"
+						}
+					}
+				]
+			},
+			"before_and_after_width": {
+				"__TYPE__": "FieldContent",
+				"value": "80%",
+				"type": "Select"
+			},
+			"slider_function_toggle": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": [

@@ -2244,12 +2244,12 @@ export interface StorySectionSliceDefaultPrimary {
   /**
    * Title field in *StorySection → Narrative Block → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: story_section.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.RichTextField;
+  title: prismic.TitleField;
 
   /**
    * Description field in *StorySection → Narrative Block → Primary*
@@ -2398,10 +2398,10 @@ export interface StorySectionSliceBeforeAndAfterSliderPrimary {
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: story_section.beforeAndAfterSlider.primary.image
+   * - **API ID Path**: story_section.beforeAndAfterSlider.primary.before_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  before_image: prismic.ImageField<never>;
 
   /**
    * After Image field in *StorySection → Before And After Slider → Primary*
@@ -2416,12 +2416,12 @@ export interface StorySectionSliceBeforeAndAfterSliderPrimary {
   /**
    * Title field in *StorySection → Before And After Slider → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: story_section.beforeAndAfterSlider.primary.title
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.RichTextField;
+  title: prismic.TitleField;
 
   /**
    * Description field in *StorySection → Before And After Slider → Primary*
@@ -2442,6 +2442,28 @@ export interface StorySectionSliceBeforeAndAfterSliderPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tag: prismic.KeyTextField;
+
+  /**
+   * Before and After Width field in *StorySection → Before And After Slider → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 100%
+   * - **API ID Path**: story_section.beforeAndAfterSlider.primary.before_and_after_width
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  before_and_after_width: prismic.SelectField<"100%" | "80%", "filled">;
+
+  /**
+   * Slider Function Toggle On / Off field in *StorySection → Before And After Slider → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: story_section.beforeAndAfterSlider.primary.slider_function_toggle
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  slider_function_toggle: prismic.BooleanField;
 }
 
 /**
