@@ -7,14 +7,7 @@ import type { Metadata } from "next";
 import { components } from "@/slices";
 import { Bounded } from "@/components/Bounded";
 
-
-interface PageDocumentData extends Content.PageDocumentData {
-
-}
-
-interface BlogPageDocument extends Content.PageDocument { // Assuming PageDocument is generated
-    data: PageDocumentData;
-}
+import type { PageDocument, BlogDocument } from '../../../prismicio-types';
 
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
@@ -74,13 +67,14 @@ export default async function BlogIndexPage() {
         ],
     });
 
-    if (individualBlogPosts && individualBlogPosts.length > 0) {
-        individualBlogPosts.forEach((post, index) => {
-            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
-        });
-    } else {
-        console.log("No individual blog posts found.");
-    }
+    // console for showing we have blogs or not
+    // if (individualBlogPosts && individualBlogPosts.length > 0) {
+    //     individualBlogPosts.forEach((post, index) => {
+    //         console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
+    //     });
+    // } else {
+    //     console.log("No individual blog posts found.");
+    // }
 
     if (!pageContent) {
         // Fallback if the main "Page" (UID "blog") content isn't found
