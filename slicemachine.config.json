@@ -1,5 +1,5 @@
 {
-  "libraries": ["./src/slices", "./src/slices/Projects", "./src/slices/Blogs"],
+  "libraries": ["./src/slices", "./src/slices/Projects", "./src/slices/Blogs", "./src/slices/Story"],
   "adapter": "@slicemachine/adapter-next",
   "repositoryName": "eminentid2",
   "apiEndpoint": "https://eminentid2.prismic.io/api/v2",

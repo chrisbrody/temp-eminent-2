@@ -1,0 +1,198 @@
+{
+  "id": "story_section",
+  "type": "SharedSlice",
+  "name": "StorySection",
+  "description": "StorySection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Narrative Block",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag (optional)",
+            "placeholder": ""
+          }
+        },
+        "narrative_block_width": {
+          "type": "Select",
+          "config": {
+            "label": "Narrative Block Width",
+            "placeholder": "",
+            "options": [
+              "100%",
+              "80%"
+            ],
+            "default_value": "100%"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "splitContent",
+      "name": "Split Content",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image (optional)",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption (optional)",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag (optional)",
+            "placeholder": ""
+          }
+        },
+        "content_direction": {
+          "type": "Select",
+          "config": {
+            "label": "Content Direction",
+            "placeholder": "",
+            "options": [
+              "Text Right, Image Left",
+              "Text Left, Image Right"
+            ],
+            "default_value": "Text Right, Image Left"
+          }
+        },
+        "split_content_width": {
+          "type": "Select",
+          "config": {
+            "label": "Split Content Width",
+            "placeholder": "",
+            "options": [
+              "100%",
+              "80%"
+            ],
+            "default_value": "100%"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "beforeAndAfterSlider",
+      "name": "Before And After Slider",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Before Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "after_image": {
+          "type": "Image",
+          "config": {
+            "label": "After Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag (optional)",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
