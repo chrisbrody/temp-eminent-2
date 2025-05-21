@@ -157,7 +157,7 @@ export default async function ProjectsIndexPage() {
                         return (
                             <div
                                 key={`project-row-${pairIndex}`}
-                                className="flex flex-col md:flex-row md:gap-8 items-stretch"
+                                className="flex flex-col md:flex-row md:gap-8 items-stretch mb-6"
                             >
                                 {firstProject && (
                                     <div className={`w-full ${isOddRow ? 'md:w-3/5' : 'md:w-2/5'}`}>
