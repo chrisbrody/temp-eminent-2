@@ -7,11 +7,17 @@ import type { Metadata } from "next";
 import { components } from "@/slices";
 import { Bounded } from "@/components/Bounded";
 
-import type { PageDocument, BlogDocument } from '../../../prismicio-types';
+interface PageDocumentData extends Content.PageDocumentData {
+
+}
+
+interface BlogPageDocument extends Content.PageDocument { // Assuming PageDocument is generated
+    data: PageDocumentData;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
-    const pageContent = await client.getByUID<PageDocument>("page", "blog")
+    const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
         .catch(() => null);
 
     const defaultTitle = "Blog"; // Define a default title
@@ -53,7 +59,7 @@ export default async function BlogIndexPage() {
     const client = createClient();
 
     // Fetch the content for the "Page" document with UID "blog"
-    const pageContent = await client.getByUID<BlogDocument>("page", "blog")
+    const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
         .catch(() => {
             console.error("Failed to fetch 'page' document with UID 'blog'.");
             return null;
@@ -67,14 +73,13 @@ export default async function BlogIndexPage() {
         ],
     });
 
-    // console for showing we have blogs or not
-    // if (individualBlogPosts && individualBlogPosts.length > 0) {
-    //     individualBlogPosts.forEach((post, index) => {
-    //         console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
-    //     });
-    // } else {
-    //     console.log("No individual blog posts found.");
-    // }
+    if (individualBlogPosts && individualBlogPosts.length > 0) {
+        individualBlogPosts.forEach((post, index) => {
+            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
+        });
+    } else {
+        console.log("No individual blog posts found.");
+    }
 
     if (!pageContent) {
         // Fallback if the main "Page" (UID "blog") content isn't found
