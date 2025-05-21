@@ -199,7 +199,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     </div>
 
                     {/*  Featured Project Image */}
-                    {isFilled.keyText(display_image) && project_image.url && (
+                    {display_image && project_image.url && (
                         <div className={`featured-image ${display_image ? "md:max-w-[70%] md:order-2 order-1" : ""}`}>
                             <PrismicNextImage
                                 field={project_image}
