@@ -287,7 +287,7 @@ const ProjectSection: ({slice}: { slice: any }) => (React.JSX.Element | null) = 
             const beforeWidth = beforeImage?.dimensions?.width || 0;
             const afterWidth = afterImage?.dimensions?.width || 0;
             const useLargeWidth = beforeWidth > 1000 && afterWidth > 1000;
-            console.log(useLargeWidth)
+            // console.log(useLargeWidth)
             const containerMaxWidth = useLargeWidth ? "max-w-[1000px]" : "max-w-[400px]";
 
             if (!isFilled.image(beforeImage) || !isFilled.image(afterImage)) {

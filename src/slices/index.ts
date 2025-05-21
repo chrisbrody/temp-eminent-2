@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 import { components as projectSliceComponents } from './Projects';
 import { components as blogsSliceComponents } from './Blogs';
+import { components as storySliceComponents } from './Story';
 
 export const components = {
   hero: dynamic(() => import("./Hero")),
@@ -17,4 +18,5 @@ export const components = {
 
   ...projectSliceComponents,
   ...blogsSliceComponents,
+  ...storySliceComponents,
 };

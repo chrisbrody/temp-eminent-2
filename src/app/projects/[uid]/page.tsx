@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: PageProps) {
         fetchLinks: ['owner.name', 'owner.title', 'owner.image'],
     }).catch(() => notFound());
 
-    console.log(page)
+    // console.log(page)
 
     const { project_tag, project_title, project_location } = page.data;
     const project_date = (page.data as any).project_date;
@@ -69,14 +69,14 @@ export default async function ProjectPage({ params }: PageProps) {
 
     // get owner info
     const ownerLink = page.data.owner;
-    console.log(ownerLink)
+    // console.log(ownerLink)
 
     if (!ownerLink || !('data' in ownerLink) || !ownerLink.data) {
         return null;
     }
 
     const ownerData = ownerLink.data as OwnerDocument['data'];
-    console.log(ownerData)
+    // console.log(ownerData)
 
     const { name, title, image } = ownerData;
 
