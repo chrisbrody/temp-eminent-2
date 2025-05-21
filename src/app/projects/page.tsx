@@ -85,7 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
         };
     }
 
-    const pageSpecificTitle = pageContent.data.meta_title || (isFilled.keyText(pageContent.data.title) ? pageContent.data.title : defaultTitle);
+    const pageSpecificTitle = pageContent.data.meta_title || defaultTitle;
     const pageSpecificDescription = pageContent.data.meta_description || defaultDescription;
     const ogImages = pageContent.data.meta_image?.url ? [{ url: pageContent.data.meta_image.url }] : [];
 
