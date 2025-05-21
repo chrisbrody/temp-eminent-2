@@ -2230,6 +2230,31 @@ export type BlogSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *StorySection → Image Carousel → Primary → Carousel Images*
+ */
+export interface StorySectionSliceImageCarouselPrimaryCarouselImagesItem {
+  /**
+   * Image field in *StorySection → Image Carousel → Primary → Carousel Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.imageCarousel.primary.carousel_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *StorySection → Image Carousel → Primary → Carousel Images*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.imageCarousel.primary.carousel_images[].caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *StorySection → Narrative Block → Primary*
  */
 export interface StorySectionSliceDefaultPrimary {
@@ -2574,13 +2599,44 @@ export type StorySectionSliceBeforeAndAfterBasic = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *StorySection → Image Carousel → Primary*
+ */
+export interface StorySectionSliceImageCarouselPrimary {
+  /**
+   * Carousel Images field in *StorySection → Image Carousel → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: story_section.imageCarousel.primary.carousel_images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carousel_images: prismic.GroupField<
+    Simplify<StorySectionSliceImageCarouselPrimaryCarouselImagesItem>
+  >;
+}
+
+/**
+ * Image Carousel variation for StorySection Slice
+ *
+ * - **API ID**: `imageCarousel`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StorySectionSliceImageCarousel = prismic.SharedSliceVariation<
+  "imageCarousel",
+  Simplify<StorySectionSliceImageCarouselPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *StorySection*
  */
 type StorySectionSliceVariation =
   | StorySectionSliceDefault
   | StorySectionSliceSplitContent
   | StorySectionSliceBeforeAndAfterSlider
-  | StorySectionSliceBeforeAndAfterBasic;
+  | StorySectionSliceBeforeAndAfterBasic
+  | StorySectionSliceImageCarousel;
 
 /**
  * StorySection Shared Slice
@@ -2719,11 +2775,14 @@ declare module "@prismicio/client" {
       StorySectionSliceSplitContentPrimary,
       StorySectionSliceBeforeAndAfterSliderPrimary,
       StorySectionSliceBeforeAndAfterBasicPrimary,
+      StorySectionSliceImageCarouselPrimaryCarouselImagesItem,
+      StorySectionSliceImageCarouselPrimary,
       StorySectionSliceVariation,
       StorySectionSliceDefault,
       StorySectionSliceSplitContent,
       StorySectionSliceBeforeAndAfterSlider,
       StorySectionSliceBeforeAndAfterBasic,
+      StorySectionSliceImageCarousel,
     };
   }
 }

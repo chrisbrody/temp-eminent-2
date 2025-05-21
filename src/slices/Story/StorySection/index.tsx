@@ -1,11 +1,12 @@
 // src/slices/Story/StorySection/index.tsx
 "use client"
 
-import { FC, JSX, useState, useRef, useEffect, useCallback } from "react";
+import { JSX, useState, useRef, useEffect, useCallback } from "react";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { Bounded } from "@/components/Bounded";
+import { useInView } from "framer-motion";
 
 import model from "./model.json";
 
@@ -395,8 +396,113 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
           </section>
       );
 
+    case "imageCarousel": {
+      const [current, setCurrent] = useState(0);
+      // Ensure primary.carousel_images is typed as an array of CarouselImageItem
+      const images: CarouselImageItem[] = primary.carousel_images || [];
+
+      const nextImage = () => {
+        if (!images.length) return; // Prevent errors if no images
+        setCurrent((prev) => (prev + 1) % images.length);
+      };
+
+      const prevImage = () => {
+        if (!images.length) return; // Prevent errors if no images
+        setCurrent((prev) => (prev - 1 + images.length) % images.length);
+      };
+
+      const carouselRef = useRef<HTMLDivElement>(null);
+      // useInView is used here as provided by the user.
+      // `once: true` means it only triggers when the element enters the viewport for the first time.
+      const isInView = useInView(carouselRef, { once: true, amount: 0.3 });
+
+      // Don't render the carousel if there are no images
+      if (!images.length) {
+        return null;
+      }
+
+      return (
+          <section
+              {...sectionBaseProps} // Applies common section props like `data-slice-type`
+              ref={carouselRef} // Attach the ref for `useInView`
+              className="relative w-screen h-screen overflow-hidden flex items-center justify-center bg-black"
+              aria-label="Full screen image carousel"
+          >
+            {/* Image Track: This div holds all images side-by-side.
+                `transform: translateX` moves the entire track to show the current image. */}
+            <div
+                className="flex h-full w-full transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${current * 100}%)` }}
+            >
+              {images.map((item, index) => (
+                  <div
+                      key={`carousel-image-${index}`} // Using index as key is acceptable for static lists
+                      className="flex-shrink-0 w-full h-full" // Each image wrapper takes full width/height of its slot
+                  >
+                    {isFilled.image(item.image) && (
+                        <PrismicNextImage
+                            field={item.image}
+                            className="w-full h-full object-cover" // Ensures image covers the area without distortion
+                            imgixParams={{ q: 70, auto: 'format,compress' }} // Example: Optimize image quality and format
+                        />
+                    )}
+                  </div>
+              ))}
+            </div>
+
+            {/* Caption: Displays the caption for the current image. */}
+            {isFilled.keyText(images[current]?.caption) && (
+                <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white text-center z-20 p-4 bg-black/50 rounded-lg max-w-lg mx-auto">
+                  {images[current]?.caption}
+                </div>
+            )}
+
+            {/* Navigation Buttons: Next and Previous */}
+            {images.length > 1 && ( // Only show buttons if there's more than one image
+                <>
+                  <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-20 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                      aria-label="Previous image"
+                  >
+                    {/* SVG for Left Arrow */}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                  </button>
+                  <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-20 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                      aria-label="Next image"
+                  >
+                    {/* SVG for Right Arrow */}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </button>
+                </>
+            )}
+
+            {/* Indicators (Dots) */}
+            {images.length > 1 && ( // Only show indicators if there's more than one image
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                  {images.map((_, index) => (
+                      <button
+                          key={`indicator-${index}`}
+                          onClick={() => setCurrent(index)}
+                          className={`w-3 h-3 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
+                              index === current ? 'bg-white' : 'bg-white/50 hover:bg-white/70'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                      />
+                  ))}
+                </div>
+            )}
+          </section>
+      );
+    }
+
     default:
-      // Fallback for unknown variations or if you haven't implemented one yet
       return (
           <section
               {...sectionBaseProps}
