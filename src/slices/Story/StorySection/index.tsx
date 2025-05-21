@@ -12,7 +12,8 @@ import model from "./model.json";
 
 import type {
   ProjectSectionSliceBeforeAndAfterSliderPrimary,
-  StorySectionSliceBeforeAndAfterSliderPrimary
+  StorySectionSliceBeforeAndAfterSliderPrimary,
+  StorySectionSliceImageCarouselPrimary
 } from '../../../../prismicio-types';
 
 /**
@@ -400,8 +401,10 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
       );
 
     case "imageCarousel": {
-      // Ensure primary.carousel_images is typed as an array of CarouselImageItem
-      const images = primary.carousel_images || [];
+      // Cast 'primary' to the specific type for this variation
+      const imageCarouselPrimary = primary as StorySectionSliceImageCarouselPrimary;
+      // Access the group field from the correctly typed 'primary' object
+      const images = imageCarouselPrimary.carousel_images || [];
 
       const nextImage = () => {
         if (!images.length) return; // Prevent errors if no images
@@ -530,31 +533,6 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
         slices.
         <br/>
         <strong>You can edit this slice directly in your code editor.</strong>
-        {/**
-         * 💡 Use Prismic MCP with your code editor
-         *
-         * Get AI-powered help to build your slice components — based on your actual model.
-         *
-         * ▶️ Setup:
-         * 1. Add a new MCP Server in your code editor:
-         *
-         * {
-         *   "mcpServers": {
-         *     "Prismic MCP": {
-         *       "command": "npx",
-         *       "args": ["-y", "@prismicio/mcp-server"]
-         *     }
-         *   }
-         * }
-         *
-         * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-         *
-         * ✅ Then open your slice file and ask your code editor:
-         *    "Code this slice"
-         *
-         * Your code editor reads your slice model and helps you code faster ⚡
-         * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-         */}
       </section>
   );
 };
