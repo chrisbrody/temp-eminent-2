@@ -92,12 +92,6 @@
           "choices": {
             "blog_section": {
               "type": "SharedSlice"
-            },
-            "blog_owner": {
-              "type": "SharedSlice"
-            },
-            "blog_header": {
-              "type": "SharedSlice"
             }
           }
         }

@@ -4,10 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogDocumentDataSlicesSlice =
-  | BlogSectionSlice
-  | BlogOwnerSlice
-  | BlogHeaderSlice;
+type BlogDocumentDataSlicesSlice = BlogSectionSlice;
 
 /**
  * Content for Blog documents
@@ -1993,126 +1990,6 @@ export type ProjectSectionSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *BlogHeader → Default → Primary*
- */
-export interface BlogHeaderSliceDefaultPrimary {
-  /**
-   * Article Eyebrow field in *BlogHeader → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_header.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Article title field in *BlogHeader → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_header.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Article Date field in *BlogHeader → Default → Primary*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_header.default.primary.date
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  date: prismic.DateField;
-
-  /**
-   * Article Read Time field in *BlogHeader → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_header.default.primary.read_time
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  read_time: prismic.KeyTextField;
-}
-
-/**
- * Default variation for BlogHeader Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogHeaderSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<BlogHeaderSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *BlogHeader*
- */
-type BlogHeaderSliceVariation = BlogHeaderSliceDefault;
-
-/**
- * BlogHeader Shared Slice
- *
- * - **API ID**: `blog_header`
- * - **Description**: BlogHeader
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogHeaderSlice = prismic.SharedSlice<
-  "blog_header",
-  BlogHeaderSliceVariation
->;
-
-/**
- * Primary content in *BlogOwner → Default → Primary*
- */
-export interface BlogOwnerSliceDefaultPrimary {
-  /**
-   * Owner field in *BlogOwner → Default → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_owner.default.primary.owner
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  owner: prismic.ContentRelationshipField<"owner">;
-}
-
-/**
- * Default variation for BlogOwner Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogOwnerSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<BlogOwnerSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *BlogOwner*
- */
-type BlogOwnerSliceVariation = BlogOwnerSliceDefault;
-
-/**
- * BlogOwner Shared Slice
- *
- * - **API ID**: `blog_owner`
- * - **Description**: BlogOwner
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogOwnerSlice = prismic.SharedSlice<
-  "blog_owner",
-  BlogOwnerSliceVariation
->;
-
-/**
  * Primary content in *BlogSection → Narrative Block width 100% → Primary*
  */
 export interface BlogSectionSliceDefaultPrimary {
@@ -2450,14 +2327,6 @@ declare module "@prismicio/client" {
       ProjectSectionSliceSplitContentTextLeft,
       ProjectSectionSliceShowcaseImagesWithCaption,
       ProjectSectionSliceBeforeAndAfterSlider,
-      BlogHeaderSlice,
-      BlogHeaderSliceDefaultPrimary,
-      BlogHeaderSliceVariation,
-      BlogHeaderSliceDefault,
-      BlogOwnerSlice,
-      BlogOwnerSliceDefaultPrimary,
-      BlogOwnerSliceVariation,
-      BlogOwnerSliceDefault,
       BlogSectionSlice,
       BlogSectionSliceDefaultPrimary,
       BlogSectionSliceNarrativeBlockWidth80Primary,
