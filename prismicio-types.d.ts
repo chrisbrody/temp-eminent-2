@@ -1899,6 +1899,65 @@ export type ProjectSectionSliceShowcaseImagesWithCaption =
   >;
 
 /**
+ * Primary content in *ProjectSection → BeforeAndAfterSlider → Primary*
+ */
+export interface ProjectSectionSliceBeforeAndAfterSliderPrimary {
+  /**
+   * Before Image field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.before_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  before_image: prismic.ImageField<never>;
+
+  /**
+   * After Image field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.after_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  after_image: prismic.ImageField<never>;
+
+  /**
+   * heading field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Caption field in *ProjectSection → BeforeAndAfterSlider → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_section.beforeAndAfterSlider.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
+/**
+ * BeforeAndAfterSlider variation for ProjectSection Slice
+ *
+ * - **API ID**: `beforeAndAfterSlider`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSectionSliceBeforeAndAfterSlider =
+  prismic.SharedSliceVariation<
+    "beforeAndAfterSlider",
+    Simplify<ProjectSectionSliceBeforeAndAfterSliderPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *ProjectSection*
  */
 type ProjectSectionSliceVariation =
@@ -1908,7 +1967,8 @@ type ProjectSectionSliceVariation =
   | ProjectSectionSliceImageAndTextWidth80
   | ProjectSectionSliceSplitContent
   | ProjectSectionSliceSplitContentTextLeft
-  | ProjectSectionSliceShowcaseImagesWithCaption;
+  | ProjectSectionSliceShowcaseImagesWithCaption
+  | ProjectSectionSliceBeforeAndAfterSlider;
 
 /**
  * ProjectSection Shared Slice
@@ -2370,6 +2430,7 @@ declare module "@prismicio/client" {
       ProjectSectionSliceSplitContentPrimary,
       ProjectSectionSliceSplitContentTextLeftPrimary,
       ProjectSectionSliceShowcaseImagesWithCaptionPrimary,
+      ProjectSectionSliceBeforeAndAfterSliderPrimary,
       ProjectSectionSliceVariation,
       ProjectSectionSliceDefault,
       ProjectSectionSliceNarrativeBlockWidth80,
@@ -2378,6 +2439,7 @@ declare module "@prismicio/client" {
       ProjectSectionSliceSplitContent,
       ProjectSectionSliceSplitContentTextLeft,
       ProjectSectionSliceShowcaseImagesWithCaption,
+      ProjectSectionSliceBeforeAndAfterSlider,
       BlogHeaderSlice,
       BlogHeaderSliceDefaultPrimary,
       BlogHeaderSliceVariation,

@@ -73,13 +73,13 @@ export default async function BlogIndexPage() {
         ],
     });
 
-    if (individualBlogPosts && individualBlogPosts.length > 0) {
-        individualBlogPosts.forEach((post, index) => {
-            console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
-        });
-    } else {
-        console.log("No individual blog posts found.");
-    }
+    // if (individualBlogPosts && individualBlogPosts.length > 0) {
+    //     individualBlogPosts.forEach((post, index) => {
+    //         console.log(`  Post ${index + 1} (UID: ${post.uid}): ${isFilled.richText(post.data.blog_title) ? asText(post.data.blog_title) : 'N/A'}`);
+    //     });
+    // } else {
+    //     console.log("No individual blog posts found.");
+    // }
 
     if (!pageContent) {
         // Fallback if the main "Page" (UID "blog") content isn't found

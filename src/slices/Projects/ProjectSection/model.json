@@ -326,6 +326,51 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "beforeAndAfterSlider",
+      "name": "BeforeAndAfterSlider",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "before_image": {
+          "type": "Image",
+          "config": {
+            "label": "Before Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "after_image": {
+          "type": "Image",
+          "config": {
+            "label": "After Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "caption": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Caption",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
