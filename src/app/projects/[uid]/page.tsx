@@ -53,9 +53,9 @@ export default async function ProjectPage({ params }: PageProps) {
         fetchLinks: ['owner.name', 'owner.title', 'owner.image'],
     }).catch(() => notFound());
 
-    // console.log(page)
+    console.log(page)
 
-    const { project_tag, project_title, project_location } = page.data;
+    const { project_tag, project_title, project_location, project_image, display_image } = page.data;
     const project_date = (page.data as any).project_date;
 
     const formattedDate = isFilled.date(project_date)
@@ -105,12 +105,13 @@ export default async function ProjectPage({ params }: PageProps) {
                     Back to Projects
                 </Link>
 
+
+
                 {/* Project Header */}
                 <section
-                    className="project-header-slice bg-white pt-6 md:pt-10 text-charcoal"
+                    className={`project-header-slice bg-white pt-6 md:pt-10 text-charcoal ${display_image ? "grid md:flex items-center justify-center gap-5" : ""}`}
                 >
-                    <div className="container mx-auto px-4 text-center">
-
+                    <div className={`px-4 text-center ${display_image ? "md:max-w-[30%] md:order-1 order-2" : "container mx-auto"}`}>
                         {/* Project Category */}
                         {isFilled.keyText(project_tag) && (
                             <div className="mb-3 font-thin uppercase tracking-wider text-gold">
@@ -180,22 +181,34 @@ export default async function ProjectPage({ params }: PageProps) {
                         </span>
                             )}
                         </div>
-                    </div>
-                </section>
 
-                {/* Owner Info */}
-                <section className="text-center mt-8" id="project-owner">
-                    {image?.url && (
-                        <PrismicNextImage
-                            field={image}
-                            className="mx-auto rounded-full object-cover mb-4"
-                            width={56}
-                            height={56}
-                            imgixParams={{ar: "1:1", fit: "crop"}}
-                        />
+                        {/* Owner Info */}
+                        <div className="text-center mt-8" id="project-owner">
+                            {image?.url && (
+                                <PrismicNextImage
+                                    field={image}
+                                    className="mx-auto rounded-full object-cover mb-4"
+                                    width={56}
+                                    height={56}
+                                    imgixParams={{ar: "1:1", fit: "crop"}}
+                                />
+                            )}
+                            <h3 className="mt-3 capitalize text-base">{name}</h3>
+                            <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
+                        </div>
+                    </div>
+
+                    {/*  Featured Project Image */}
+                    {isFilled.keyText(display_image) && project_image.url && (
+                        <div className={`featured-image ${display_image ? "md:max-w-[70%] md:order-2 order-1" : ""}`}>
+                            <PrismicNextImage
+                                field={project_image}
+                                className="mx-auto object-contain w-full"
+                                imgixParams={{ar: "1:1", fit: "crop"}}
+                            />
+                        </div>
                     )}
-                    <h3 className="mt-3 capitalize text-base">{name}</h3>
-                    <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
+
                 </section>
 
                 <SliceZone slices={page.data.slices} components={components}/>

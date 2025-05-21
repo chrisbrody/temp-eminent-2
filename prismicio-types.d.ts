@@ -181,6 +181,18 @@ interface FeaturedProjectDocumentData {
   project_image: prismic.ImageField<never>;
 
   /**
+   * Show Featured Image On Project Page field in *Featured Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: featured_project.display_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  display_image: prismic.BooleanField;
+
+  /**
    * Project Title field in *Featured Project*
    *
    * - **Field Type**: Text

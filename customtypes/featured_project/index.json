@@ -20,6 +20,15 @@
           "thumbnails": []
         }
       },
+      "display_image": {
+        "type": "Boolean",
+        "config": {
+          "label": "Show Featured Image On Project Page",
+          "placeholder_false": "Featured Image Not Shown On Project Page Above Header ",
+          "placeholder_true": "Featured Image Shown On Project Page Above Header ",
+          "default_value": false
+        }
+      },
       "project_title": {
         "type": "Text",
         "config": {
