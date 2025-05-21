@@ -443,7 +443,6 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
                         <PrismicNextImage
                             field={item.image}
                             className="w-full h-full object-cover" // Ensures image covers the area without distortion
-                            imgixParams={{ q: 70, auto: 'format,compress' }} // Example: Optimize image quality and format
                         />
                     )}
                   </div>
