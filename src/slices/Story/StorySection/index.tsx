@@ -41,6 +41,7 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
 
   // Callback for mouse/touch move events for the slider
   const handleMove = useCallback((clientX: number) => {
@@ -407,7 +408,6 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
       );
 
     case "imageCarousel": {
-      const [current, setCurrent] = useState(0);
       // Ensure primary.carousel_images is typed as an array of CarouselImageItem
       const images: CarouselImageItem[] = primary.carousel_images || [];
 
