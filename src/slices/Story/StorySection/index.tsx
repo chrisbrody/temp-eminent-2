@@ -42,6 +42,8 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(carouselRef, { once: true, amount: 0.3 });
 
   // Callback for mouse/touch move events for the slider
   const handleMove = useCallback((clientX: number) => {
@@ -420,11 +422,6 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
         if (!images.length) return; // Prevent errors if no images
         setCurrent((prev) => (prev - 1 + images.length) % images.length);
       };
-
-      const carouselRef = useRef<HTMLDivElement>(null);
-      // useInView is used here as provided by the user.
-      // `once: true` means it only triggers when the element enters the viewport for the first time.
-      const isInView = useInView(carouselRef, { once: true, amount: 0.3 });
 
       // Don't render the carousel if there are no images
       if (!images.length) {
