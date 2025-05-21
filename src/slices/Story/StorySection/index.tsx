@@ -15,16 +15,6 @@ import type {
   StorySectionSliceBeforeAndAfterSliderPrimary
 } from '../../../../prismicio-types';
 
-type CarouselImageItem = {
-  image: {
-    url: string;
-    alt?: string;
-    dimensions?: { width: number; height: number };
-    // Add other properties if needed, e.g., copyright
-  };
-  caption: any; // Prismic RichText field type, typically an array of RichText elements
-};
-
 /**
  * Props for `StorySection`.
  */
@@ -411,7 +401,7 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
 
     case "imageCarousel": {
       // Ensure primary.carousel_images is typed as an array of CarouselImageItem
-      const images: CarouselImageItem[] = primary.carousel_images || [];
+      const images = primary.carousel_images || [];
 
       const nextImage = () => {
         if (!images.length) return; // Prevent errors if no images
