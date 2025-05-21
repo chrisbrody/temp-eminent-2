@@ -11,7 +11,7 @@ import type { PageDocument, BlogDocument } from '../../../prismicio-types';
 
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
-    const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
+    const pageContent = await client.getByUID<PageDocument>("page", "blog")
         .catch(() => null);
 
     const defaultTitle = "Blog"; // Define a default title
@@ -53,7 +53,7 @@ export default async function BlogIndexPage() {
     const client = createClient();
 
     // Fetch the content for the "Page" document with UID "blog"
-    const pageContent = await client.getByUID<BlogPageDocument>("page", "blog")
+    const pageContent = await client.getByUID<BlogDocument>("page", "blog")
         .catch(() => {
             console.error("Failed to fetch 'page' document with UID 'blog'.");
             return null;
