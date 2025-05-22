@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogDocumentDataSlicesSlice = BlogSectionSlice | StorySectionSlice;
+type BlogDocumentDataSlicesSlice = StorySectionSlice;
 
 /**
  * Content for Blog documents
@@ -161,9 +161,7 @@ interface BlogDocumentData {
 export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
-type FeaturedProjectDocumentDataSlicesSlice =
-  | StorySectionSlice
-  | ProjectSectionSlice;
+type FeaturedProjectDocumentDataSlicesSlice = StorySectionSlice;
 
 /**
  * Content for Featured Project documents

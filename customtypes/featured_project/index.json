@@ -80,9 +80,6 @@
           "choices": {
             "story_section": {
               "type": "SharedSlice"
-            },
-            "project_section": {
-              "type": "SharedSlice"
             }
           }
         }
