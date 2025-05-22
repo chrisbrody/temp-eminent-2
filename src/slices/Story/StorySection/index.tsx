@@ -360,7 +360,7 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
                   {isFilled.image(primary.before_image) && (
                       <PrismicNextImage
                           field={primary.before_image}
-                          className=""
+                          className="img-responsive w-full"
                       />
                   )}
                   {isFilled.richText(primary.before_title) && (
@@ -380,7 +380,7 @@ const StorySection: ({slice}: { slice: any }) => (React.JSX.Element | null) = ({
                   {isFilled.image(primary.after_image) && (
                       <PrismicNextImage
                           field={primary.after_image}
-                          className="img-responsive"
+                          className="img-responsive w-full"
                       />
                   )}
                   {isFilled.richText(primary.after_title) && (
