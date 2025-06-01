@@ -68,7 +68,7 @@ export function Header() {
                                 height={75}
                             />
                         ) : (
-                            <span className="text-2xl font-bold text-slate-800">Your Site Name</span>
+                            <span className="text-2xl font-bold text-slate-800">Eminent Interior Design</span>
                         )}
                     </Link>
                     <p className="text-red-500">Navigation content not found in Prismic.</p>
