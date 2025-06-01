@@ -87,13 +87,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             }).format(asDate(blog_date))
             : null;
 
-        // owner data
+        // get owner info if available
+        let ownerData: OwnerDocument['data'] | null = null; // Initialize to null
         const ownerLink = page.data.owner;
-        if (!ownerLink || !('data' in ownerLink) || !ownerLink.data) {
-            return null;
+
+        if (ownerLink && 'data' in ownerLink && ownerLink.data) {
+            ownerData = ownerLink.data as OwnerDocument['data']; // Assign only if data exists
+            // console.log(ownerData)
         }
-        const ownerData = ownerLink.data as OwnerDocument['data'];
-        const { name, title, image } = ownerData;
 
         return (
             <article>
@@ -183,19 +184,19 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </section>
 
                 {/* Owner Info */}
-                {isFilled.keyText(name) && (
+                {ownerData && (
                     <section className="text-center mt-8" id="project-owner">
-                        {image?.url && (
+                        {ownerData?.image.url && (
                             <PrismicNextImage
-                                field={image}
+                                field={ownerData.image}
                                 className="mx-auto rounded-full object-cover mb-4"
                                 width={56}
                                 height={56}
                                 imgixParams={{ar: "1:1", fit: "crop"}}
                             />
                         )}
-                        <h3 className="mt-3 capitalize text-base">{name}</h3>
-                        <p className="mt-1 capitalize text-base md:text-base opacity-60">{title}</p>
+                        <h3 className="mt-3 capitalize text-base">{ownerData.name}</h3>
+                        <p className="mt-1 capitalize text-base md:text-base opacity-60">{ownerData.title}</p>
                     </section>
                 )}
 
