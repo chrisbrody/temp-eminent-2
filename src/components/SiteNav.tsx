@@ -64,7 +64,6 @@ export function Header() {
                         {logoImage && logoImage.url ? (
                             <PrismicNextImage
                                 field={logoImage}
-                                alt={logoImage.alt || "Site Logo"}
                                 width={175}
                                 height={75}
                             />
