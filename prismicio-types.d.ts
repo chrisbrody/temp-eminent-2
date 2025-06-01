@@ -346,6 +346,8 @@ export interface NavigationDocumentDataLinksItem {
   custom_css_class: prismic.KeyTextField;
 }
 
+type NavigationDocumentDataSlicesSlice = NavDropdownSlice | NavLinkSlice;
+
 /**
  * Content for Navigation documents
  */
@@ -360,6 +362,17 @@ interface NavigationDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   links: prismic.GroupField<Simplify<NavigationDocumentDataLinksItem>>;
+
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
 }
 
 /**
@@ -535,6 +548,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   siteTitle: prismic.TitleField;
+
+  /**
+   * Site Logo field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.site_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  site_logo: prismic.ImageField<never>;
 }
 
 /**
@@ -911,6 +935,159 @@ type InspiredDesignSliceVariation = InspiredDesignSliceDefault;
 export type InspiredDesignSlice = prismic.SharedSlice<
   "inspired_design",
   InspiredDesignSliceVariation
+>;
+
+/**
+ * Item in *NavDropdown → Default → Primary → Sub-link Label*
+ */
+export interface NavDropdownSliceDefaultPrimarySubLabelItem {
+  /**
+   * Sub-link Label field in *NavDropdown → Default → Primary → Sub-link Label*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_dropdown.default.primary.sub_label[].sub_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sub_label: prismic.KeyTextField;
+
+  /**
+   * Sub-link field in *NavDropdown → Default → Primary → Sub-link Label*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_dropdown.default.primary.sub_label[].sub_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sub_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *NavDropdown → Default → Primary*
+ */
+export interface NavDropdownSliceDefaultPrimary {
+  /**
+   * Dropdown Label field in *NavDropdown → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_dropdown.default.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Dropdown Link field in *NavDropdown → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_dropdown.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Sub-link Label field in *NavDropdown → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_dropdown.default.primary.sub_label[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sub_label: prismic.GroupField<
+    Simplify<NavDropdownSliceDefaultPrimarySubLabelItem>
+  >;
+}
+
+/**
+ * Default variation for NavDropdown Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavDropdownSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavDropdownSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavDropdown*
+ */
+type NavDropdownSliceVariation = NavDropdownSliceDefault;
+
+/**
+ * NavDropdown Shared Slice
+ *
+ * - **API ID**: `nav_dropdown`
+ * - **Description**: NavDropdown
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavDropdownSlice = prismic.SharedSlice<
+  "nav_dropdown",
+  NavDropdownSliceVariation
+>;
+
+/**
+ * Primary content in *NavLink → Default → Primary*
+ */
+export interface NavLinkSliceDefaultPrimary {
+  /**
+   * Label field in *NavLink → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_link.default.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Link field in *NavLink → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_link.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for NavLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavLink*
+ */
+type NavLinkSliceVariation = NavLinkSliceDefault;
+
+/**
+ * NavLink Shared Slice
+ *
+ * - **API ID**: `nav_link`
+ * - **Description**: NavLink
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavLinkSlice = prismic.SharedSlice<
+  "nav_link",
+  NavLinkSliceVariation
 >;
 
 /**
@@ -2678,6 +2855,7 @@ declare module "@prismicio/client" {
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
+      NavigationDocumentDataSlicesSlice,
       OwnerDocument,
       OwnerDocumentData,
       PageDocument,
@@ -2706,6 +2884,15 @@ declare module "@prismicio/client" {
       InspiredDesignSliceDefaultPrimary,
       InspiredDesignSliceVariation,
       InspiredDesignSliceDefault,
+      NavDropdownSlice,
+      NavDropdownSliceDefaultPrimarySubLabelItem,
+      NavDropdownSliceDefaultPrimary,
+      NavDropdownSliceVariation,
+      NavDropdownSliceDefault,
+      NavLinkSlice,
+      NavLinkSliceDefaultPrimary,
+      NavLinkSliceVariation,
+      NavLinkSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,

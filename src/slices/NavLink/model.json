@@ -1,0 +1,37 @@
+{
+  "id": "nav_link",
+  "type": "SharedSlice",
+  "name": "NavLink",
+  "description": "NavLink",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": false,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

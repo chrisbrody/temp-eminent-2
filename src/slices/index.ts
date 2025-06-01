@@ -2,21 +2,15 @@
 
 import dynamic from "next/dynamic";
 
-import { components as projectSliceComponents } from './Projects';
-import { components as blogsSliceComponents } from './Blogs';
-import { components as storySliceComponents } from './Story';
-
 export const components = {
   hero: dynamic(() => import("./Hero")),
   image: dynamic(() => import("./Image")),
   image_cards: dynamic(() => import("./ImageCards")),
   inspired_design: dynamic(() => import("./InspiredDesign")),
+  nav_dropdown: dynamic(() => import("./NavDropdown").then((mod) => mod.NavDropdown)),
+  nav_link: dynamic(() => import("./NavLink").then((mod) => mod.NavLink)),
   quote: dynamic(() => import("./Quote")),
   section_header: dynamic(() => import("./SectionHeader")),
   text: dynamic(() => import("./Text")),
   text_with_image: dynamic(() => import("./TextWithImage")),
-
-  ...projectSliceComponents,
-  ...blogsSliceComponents,
-  ...storySliceComponents,
 };

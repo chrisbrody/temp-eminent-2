@@ -1,0 +1,51 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"sub_label": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"sub_link",
+								{
+									"key": "f86e9243-3b36-4ca8-bf03-51b12c39d069",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							],
+							[
+								"sub_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ourselves",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"link": {
+				"key": "e6ecf135-f01c-490b-b3e5-7ccaea69c460",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "alive",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

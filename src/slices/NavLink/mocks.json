@@ -1,0 +1,22 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "valuable",
+				"type": "Text"
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "f3c2e5f5-2bd9-4576-a660-74c5a05bd7fe",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			}
+		},
+		"items": []
+	}
+]

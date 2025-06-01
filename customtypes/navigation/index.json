@@ -37,6 +37,20 @@
             }
           }
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "nav_dropdown": {
+              "type": "SharedSlice"
+            },
+            "nav_link": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }
