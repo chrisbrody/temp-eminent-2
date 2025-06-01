@@ -5,13 +5,14 @@ import { PrismicNextLink } from "@prismicio/next";
 import { isFilled } from "@prismicio/client";
 import type { Content } from "@prismicio/client";
 import { useState } from 'react';
-import { usePathname } from 'next/navigation'; // Keep usePathname for active state
+import { usePathname } from 'next/navigation'; // Required for active state
 
 type NavDropdownProps = {
   slice: Content.NavDropdownSlice;
+  toggleMobileMenu?: () => void; // Prop to close the main mobile menu
 };
 
-export function NavDropdown({ slice }: NavDropdownProps) {
+export function NavDropdown({ slice, toggleMobileMenu }: NavDropdownProps) {
   const pathname = usePathname();
   const parentLabel = slice.primary.label;
   const parentLink = slice.primary.link;
@@ -19,7 +20,7 @@ export function NavDropdown({ slice }: NavDropdownProps) {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // Determine active state for parent dropdown
+  // --- Active State Logic (from previous correct versions) ---
   const parentLinkUrl = isFilled.link(parentLink) && parentLink.link_type === 'Document' ? parentLink.url : null;
   const isParentActive = parentLinkUrl && pathname === parentLinkUrl;
   const isAnySubLinkActive = Array.isArray(subLinks) && subLinks.some(item => {
@@ -28,14 +29,22 @@ export function NavDropdown({ slice }: NavDropdownProps) {
   });
   const isActiveDropdown = isParentActive || isAnySubLinkActive;
 
-  // Define active and inactive classes for mobile (gold and underline)
+  // --- Class Definitions ---
+  // Mobile-first base styles (apply on all screens, overridden by md)
+  const mobileBaseLinkClasses = "flex items-center justify-center font-serif text-3xl uppercase py-2 hover:text-gold-500";
+  const mobileBaseSubLinkClasses = "block px-4 py-2 text-center text-xl hover:text-gold-500";
+
+  // Mobile active/inactive colors (from image)
   const mobileActiveClasses = "text-gold-500 underline";
   const mobileInactiveClasses = "text-white";
 
-  // Define active/inactive classes for desktop (assuming text-slate-800 for inactive, and underline for active)
-  // Adjust 'text-blue-600' to your desired desktop active color (e.g., 'text-gold-500')
-  const desktopActiveClasses = "text-blue-600 underline";
-  const desktopInactiveClasses = "text-slate-800";
+  // Desktop base styles (apply on md and up)
+  const desktopBaseLinkClasses = "md:font-semibold md:tracking-tight md:text-slate-800 md:text-base md:justify-start md:py-0";
+  const desktopBaseSubLinkClasses = "md:block md:px-4 md:py-2 md:text-slate-700 md:hover:bg-gray-100";
+
+  // Desktop active/inactive colors (adjust text-blue-600 to your desired desktop active color)
+  const desktopActiveClasses = "md:text-blue-600 md:underline";
+  const desktopInactiveClasses = "md:text-slate-800";
 
 
   if (!isFilled.keyText(parentLabel)) {
@@ -52,15 +61,20 @@ export function NavDropdown({ slice }: NavDropdownProps) {
         {isFilled.link(parentLink) ? (
             <PrismicNextLink
                 field={parentLink}
-                className={`nav-link dropdown-toggle flex items-center
-                            // Base styles (mobile first, then overridden by md)
-                            justify-center font-serif text-3xl uppercase py-2 hover:text-gold-500
+                className={`nav-link dropdown-toggle
+                            // Mobile styles (apply first)
+                            ${mobileBaseLinkClasses}
                             ${isActiveDropdown ? mobileActiveClasses : mobileInactiveClasses}
-
-                            // Desktop overrides (md: prefix)
-                            md:font-semibold md:tracking-tight md:text-base md:justify-start md:py-0 md:normal-case md:no-underline md:hover:no-underline
-                            ${isActiveDropdown ? desktopActiveClasses : desktopInactiveClasses}`} // Desktop active state
-                onClick={() => setIsOpen(!isOpen)}
+                            // Desktop overrides (apply on md and up)
+                            ${desktopBaseLinkClasses}
+                            ${isActiveDropdown ? desktopActiveClasses : desktopInactiveClasses}`}
+                onClick={() => {
+                  setIsOpen(!isOpen); // Toggle dropdown state
+                  // If this is a direct link, close the main mobile menu
+                  if (parentLinkUrl && toggleMobileMenu) {
+                    toggleMobileMenu();
+                  }
+                }}
             >
               {parentLabel}
               <svg className={`ml-1 h-4 w-4 transform transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,15 +83,14 @@ export function NavDropdown({ slice }: NavDropdownProps) {
             </PrismicNextLink>
         ) : (
             <span
-                className={`nav-link dropdown-toggle flex items-center cursor-pointer
-                            // Base styles (mobile first, then overridden by md)
-                            justify-center font-serif text-3xl uppercase py-2 hover:text-gold-500
+                className={`nav-link dropdown-toggle cursor-pointer
+                            // Mobile styles (apply first)
+                            ${mobileBaseLinkClasses}
                             ${isActiveDropdown ? mobileActiveClasses : mobileInactiveClasses}
-
-                            // Desktop overrides (md: prefix)
-                            md:font-semibold md:tracking-tight md:text-base md:justify-start md:py-0 md:normal-case md:no-underline md:hover:no-underline
-                            ${isActiveDropdown ? desktopActiveClasses : desktopInactiveClasses}`} // Desktop active state
-                onClick={() => setIsOpen(!isOpen)}
+                            // Desktop overrides (apply on md and up)
+                            ${desktopBaseLinkClasses}
+                            ${isActiveDropdown ? desktopActiveClasses : desktopInactiveClasses}`}
+                onClick={() => setIsOpen(!isOpen)} // Only toggle dropdown, no main menu close for non-links
             >
               {parentLabel}
               <svg className={`ml-1 h-4 w-4 transform transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,14 +102,14 @@ export function NavDropdown({ slice }: NavDropdownProps) {
         {/* Dropdown Menu (Sub-links) */}
         {Array.isArray(subLinks) && subLinks.length > 0 && (
             <ul className={`dropdown-menu
-                           // Desktop styles (from working desktop version):
+                           // Desktop styles (from your working desktop version - UNCHANGED):
                            md:absolute md:top-full md:left-0 md:bg-white md:shadow-lg md:rounded-md md:py-2 md:z-10 md:w-48
                            md:opacity-0 md:pointer-events-none md:transition-opacity md:duration-200 md:ease-in-out
                            md:group-hover:opacity-100 md:group-hover:pointer-events-auto
                            md:group-focus-within:opacity-100 md:group-focus-within:pointer-events-auto
                            md:hidden md:group-hover:block md:group-focus-within:block
 
-                           // Mobile styles (from working mobile version):
+                           // Mobile styles (from your working mobile version - UNCHANGED):
                            ${isOpen ? 'block' : 'hidden'}
                            w-full relative shadow-none rounded-none py-0 mt-2 md:mt-0
                            bg-[#34342E] text-white`}>
@@ -116,13 +129,17 @@ export function NavDropdown({ slice }: NavDropdownProps) {
                       <PrismicNextLink
                           field={subLink}
                           className={`block px-4 py-2
-                                      // Base styles (mobile first, then overridden by md)
-                                      text-center text-xl hover:text-gold-500
+                                      // Mobile styles (apply first)
+                                      ${mobileBaseSubLinkClasses}
                                       ${isSubLinkActive ? mobileActiveClasses : mobileInactiveClasses}
-
-                                      // Desktop overrides (md: prefix)
-                                      md:text-base md:text-slate-700 md:hover:bg-gray-100 md:normal-case md:no-underline md:hover:no-underline
-                                      ${isSubLinkActive ? desktopActiveClasses : desktopInactiveClasses}`} // Desktop active state
+                                      // Desktop overrides (apply on md and up)
+                                      ${desktopBaseSubLinkClasses}
+                                      ${isSubLinkActive ? desktopActiveClasses : desktopInactiveClasses}`}
+                          onClick={() => { // Close main mobile menu on sub-link click
+                            if (toggleMobileMenu) {
+                              toggleMobileMenu();
+                            }
+                          }}
                       >
                         {subLabel}
                       </PrismicNextLink>
