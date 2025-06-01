@@ -31,7 +31,7 @@ export function NavDropdown({ slice }: NavDropdownProps) {
         {isFilled.link(parentLink) ? (
             <PrismicNextLink
                 field={parentLink}
-                className="nav-link dropdown-toggle flex items-center font-semibold tracking-tight text-slate-800"
+                className="nav-link dropdown-toggle flex items-center justify-center font-serif text-white text-3xl uppercase py-2 hover:text-gold-500 md:font-semibold md:tracking-tight md:text-slate-800 md:text-base"
                 onClick={() => setIsOpen(!isOpen)}
             >
               {parentLabel}
@@ -41,7 +41,7 @@ export function NavDropdown({ slice }: NavDropdownProps) {
             </PrismicNextLink>
         ) : (
             <span
-                className="nav-link dropdown-toggle flex items-center cursor-pointer font-semibold tracking-tight text-slate-800"
+                className="nav-link dropdown-toggle flex items-center justify-center cursor-pointer font-serif text-white text-3xl uppercase py-2 hover:text-gold-500 md:font-semibold md:tracking-tight md:text-slate-800 md:text-base"
                 onClick={() => setIsOpen(!isOpen)}
             >
               {parentLabel}
@@ -54,19 +54,15 @@ export function NavDropdown({ slice }: NavDropdownProps) {
         {/* Dropdown Menu (Sub-links) */}
         {Array.isArray(subLinks) && subLinks.length > 0 && (
             <ul className={`dropdown-menu
-                           // Desktop styles: Absolute positioning, hidden by default, visible on hover/focus
                            md:absolute md:top-full md:left-0 md:bg-white md:shadow-lg md:rounded-md md:py-2 md:z-10 md:w-48
                            md:opacity-0 md:pointer-events-none md:transition-opacity md:duration-200 md:ease-in-out
                            md:group-hover:opacity-100 md:group-hover:pointer-events-auto
                            md:group-focus-within:opacity-100 md:group-focus-within:pointer-events-auto
-                           
-                           // Crucial: Ensure it's hidden by default on desktop, and shown by group-hover
-                           // This is the most common and reliable way for desktop dropdowns
                            md:hidden md:group-hover:block md:group-focus-within:block
 
-                           // Mobile styles: Always block, full width, no absolute positioning
-                           ${isOpen ? 'block' : 'hidden'} // Control mobile visibility with isOpen state
-                           w-full relative shadow-none rounded-none py-0 mt-2 md:mt-0`}>
+                           ${isOpen ? 'block' : 'hidden'}
+                           w-full relative shadow-none rounded-none py-0 mt-2 md:mt-0
+                           bg-[#34342E] text-white`}>
               {subLinks.map((item, index) => {
                 const subLabel = item.sub_label;
                 const subLink = item.sub_link;
@@ -77,7 +73,7 @@ export function NavDropdown({ slice }: NavDropdownProps) {
 
                 return (
                     <li key={`sub-link-${index}`} className={`dropdown-item`}>
-                      <PrismicNextLink field={subLink} className="block px-4 py-2 text-slate-700 hover:bg-gray-100">
+                      <PrismicNextLink field={subLink} className="block px-4 py-2 text-center text-white text-xl hover:text-gold-500">
                         {subLabel}
                       </PrismicNextLink>
                     </li>
