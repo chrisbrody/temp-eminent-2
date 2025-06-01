@@ -118,7 +118,6 @@ export function Header() {
                         {logoImage && logoImage.url ? (
                             <PrismicNextImage
                                 field={logoImage}
-                                alt={logoImage.alt || "Site Logo"} // Always provide a fallback alt
                                 width={175} // Adjust as needed
                                 height={75} // Adjust as needed
                             />
